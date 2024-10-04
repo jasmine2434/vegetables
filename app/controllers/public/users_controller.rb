@@ -4,6 +4,8 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
+    @user = current_user
+    #@user = User.find(params[:id])
 
   end
 
@@ -22,7 +24,8 @@ class Public::UsersController < ApplicationController
       else
         flash[:notice] = "更新に失敗しました"
         render :edit
-
+      end
+  end
 
   private
 
@@ -33,6 +36,5 @@ class Public::UsersController < ApplicationController
   def set_user
     @user = user.find(params[:id])
   end
-
 
 end
