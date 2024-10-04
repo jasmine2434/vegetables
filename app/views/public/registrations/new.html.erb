@@ -1,0 +1,52 @@
+
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="container">
+  <%= form_with model: User.new, url: user_registration_path do |f| %>
+    <%#= render "public/shared/error_messages", resource: User.new %>
+
+    <div class="row">
+      <div class="col">
+        <h2>新規登録</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-3"><%= f.label :name, "名前" %></div>
+      <div class="col-3"><%= f.text_field :name %></div>
+      <div class="col-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-3"><%= f.label :email, "メールアドレス" %></div>
+      <div class="col-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+      <div class="col-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-3"><%= f.label :password, "パスワード(6文字以上)" %></div>
+      <div class="col-3">
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-3"><%= f.label :password_confirmation, "パスワード（確認用）" %></div>
+      <div class="col-3"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+      <div class="col-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-3 py-1"><%= f.submit "新規登録", class: "btn btn-success" %></div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <h4>既に登録済みの方</h4>
+      <%= link_to "こちら", new_user_session_path %><%= "からログインしてください。" %>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+</div>
