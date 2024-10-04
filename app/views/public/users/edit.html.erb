@@ -1,2 +1,33 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+
+ <% if @user.errors.any? %>
+    <%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+  
+  <main>
+    <p class="notice"><%= notice %></p>
+      <%= yield %>
+  </main>
+  
+    <div class="container">
+    <div class="row">
+      <h2>ユーザー編集</h2>
+    </div>
+    
+    <div class="row">
+        <%= form_with model: @user, url: public_users_edit_path do |f| %>
+        <label for="inputName">名前</label>
+          <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></p>
+        
+        <label for="inputImage">プロフィール画像</label>
+          <p><%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %></p>
+          
+        <%= f.submit "更新する", method: :update, class: "btn btn-secondary" %>
+        
+      <% end %>
+    </div>
+  </div>

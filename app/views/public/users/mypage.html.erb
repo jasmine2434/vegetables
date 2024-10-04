@@ -1,23 +1,27 @@
-<h1>Public::Users#mypage</h1>
+
  <p class="notice"><%= notice %></p>
 
     <div class="container">
+      <h1>マイページ</h1>
       <div class="row">
       <div class="col-md-3">
-        <h3>User info</h3>
+        <h3>ユーザー情報</h3>
           <div class="user_image">
             <%#= image_tag @user.get_image(100,100) %>
           </div>
 
-        <div class="table">
-          <table>
-            <tr><th>name</th><td><%= @user.name %></td></tr>
-            <tr><th>introduction</th><td><%#= @user.introduction %></td></tr>
-          </table>
+         <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5">ユーザー名</div>
+          <div class="col-3"><%= @user.name %></div>
+          </div>
+        </div>
+         
         </div>
 
         <div class="row">
-          <%= link_to public_users_edit_path(@user.id), class: "btn btn-light form-control" do%>
+          <%= link_to "プロフィール編集", 
+          public_users_edit_path(@user.id), class: "btn btn-light form-control" %>
             <i class="fa-solid fa-user-gear"></i>
-          <% end %>
+        </div>
         </div>
