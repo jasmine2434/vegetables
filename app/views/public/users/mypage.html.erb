@@ -8,8 +8,8 @@
           <div><%= image_tag @user.get_profile_image(100,100) %></div>
             <% if @user.email != "guest@example.com" %>
           <div class="row">
-            <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
-            <i class="fa-solid fa-user-gear">プロフィール編集</i>
+            <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" %>
+            <i class="fa-solid fa-user-gear"></i>プロフィール編集
           </div>
           <% end %>
 
@@ -30,7 +30,7 @@
 
 
   <div class="table">
-     
+
     <table>
       <tr>
         <th></th>
