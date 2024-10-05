@@ -16,12 +16,12 @@
           <% end %>
         </li>
         <li>
-          <%= link_to public_users_mypage_path(current_user.id) , class:"nav-link text-light" do %>
+          <%= link_to my_page_path(current_user.id) , class:"nav-link text-light" do %>
             <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">マイページ</button>
           <% end %>
         </li>
         <li>
-          <%= link_to  posts_index_path , class:"nav-link text-light" do %>
+          <%= link_to  vegetables_path , class:"nav-link text-light" do %>
             <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">投稿一覧</button>
           <% end %>
         </li>

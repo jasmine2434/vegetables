@@ -19,7 +19,7 @@
     </div>
     
     <div class="row">
-        <%= form_with model: @user, url: public_users_edit_path do |f| %>
+        <%= form_with model: @user do |f| %>
         <label for="inputName">名前</label>
           <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></p>
         

@@ -1,0 +1,28 @@
+
+<h1>新規投稿画面</h1>
+
+<div class="container">
+  
+  <div class="row">
+    <div class="row">
+        <h3>ユーザー</h3>
+          <div class="user_image">
+            <%= @user.name %>
+            <%#= image_tag @user.get_profile_image(100,100) %>
+          </div>
+  </div>
+    <div class="row">
+        <%= form_with model: @vegetable do |f| %>
+          <h4>画像</h4>
+            <%= f.file_field :image, accept: "image/*" %>
+          <h4>野菜名</h4>
+            <%= f.text_field :vege_name %>
+
+          <h4>説明</h4>
+            <%= f.text_area :body %>
+
+            <div class="actions">
+              <%= f.submit "投稿する", class: "btn btn-success"%>
+            </div>
+        <% end %>
+      </div>

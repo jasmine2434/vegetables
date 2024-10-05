@@ -5,8 +5,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    #@user = User.find(params[:id])
-
+    @vegetables = @user.vegetables
   end
 
   def show
@@ -26,7 +25,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
       if @user.update(user_params)
         flash[:notice] = "変更を保存しました"
-        redirect_to public_users_mypage
+        redirect_to my_page_path
       else
         flash[:notice] = "変更が失敗しました"
         render :edit
@@ -36,7 +35,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :is_active)
+    params.require(:user).permit(:name, :profile_image, :image)
   end
 
   def set_user

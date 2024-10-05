@@ -1,1 +1,19 @@
 <h1>新規投稿画面</h1>
+
+<div class="container">
+    <div class="row">
+      
+      <h3>New book</h3>
+        <%= form_with model: vegetable do |v| %>
+        
+          <h4>Title</h4>
+            <%= f.text_field :vege_name %>
+            
+          <h4>Opinion</h4>
+            <%= f.text_area :body %>
+            
+            <div class="actions">
+              <%= f.submit "投稿する", class: "btn btn-success"%>
+            </div>
+        <% end %>
+      </div>

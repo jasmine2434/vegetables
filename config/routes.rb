@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-    get 'posts/new'
-  end
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/edit'
-  namespace :public do
-    get 'users/mypage'
-    get 'users/edit'
-    get 'users/show'
-  end
+  
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -28,9 +14,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     #get '/about' => 'homes:about', as: 'about'
-    get '/users/my_page' => 'users#my_page' ,as: 'my_page'
-    get '/users/information/edit' => 'users#edit'
-    patch '/users/information' => 'users#update'
+    get '/users/my_page' => 'users#mypage' ,as: 'my_page'
+    
+  resources :users, only: [:index, :show, :edit, :update]
+  
+  resources :vegetables do
+    resource :favorite, only: [:create, :destroy, :update]
+  end
+
+  resources :profile_image
+    
   end
 
 

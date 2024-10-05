@@ -5,33 +5,43 @@
           <h2>ユーザー情報</h2>
           <div>ユーザー名</div>
           <div><%= @user.name %></div>
-          <div><%#= image_tag @user.get_profile_image(100,100) %></div>
+          <div><%= image_tag @user.get_profile_image(100,100) %></div>
             <div class="row">
-              <%= link_to public_users_edit_path(@user.id), class: "btn btn-success form-control" do%>
+              <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" do%>
                 <i class="fa-solid fa-user-gear">プロフィール編集</i>
               <% end %>
             </div>
             <div class="row">
-              <%= link_to public_posts_new_path, class: "btn btn-success form-control" do%>
+              <%= link_to new_vegetable_path, class: "btn btn-success form-control" do%>
                 <i class="fa-solid fa-pen">新規投稿</i>
               <% end %>
             </div>
         </div>
-
-
       <div class="col-md-8 offset-md-1">
 
 <h2>投稿一覧</h2>
 
+
   <div class="table">
+     <% @vagetables.each do |vege| %>
     <table>
       <tr>
         <th></th>
+        <th>野菜画像</th>
         <th>野菜名</th>
         <th>説明文</th>
       </tr>
+      <tr>
+        <td><%= image_tag get_image(100,100) %>
+        </td>
+        <td><%= link_to vegetalbe_path(vegetable.id) do %>
+          <%= vege_name %>
+          <% end %>
+        </td>
+      </tr>
 
     </table>
+    <% end %>
   </div>
 </div>
 </div>
