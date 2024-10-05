@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'posts/index'
+    get 'posts/show'
+    get 'posts/edit'
+  end
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/edit'
+  namespace :public do
     get 'users/mypage'
     get 'users/edit'
     get 'users/show'

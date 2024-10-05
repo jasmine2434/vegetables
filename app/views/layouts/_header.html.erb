@@ -1,15 +1,23 @@
 <header>
   <nav>
+    <h4 style="font-family: 'Kosugi Maru', cursive;">野菜と健康</h4>
+
     <% if user_signed_in? %>
     <div class="d-flex justify-content-end align-items-center ">
       <ul class="navbar-nav" style="flex-direction: row;">
+        
         <li class="mr-4">
           <span class="text-center" style="font-weight: 600;">
             こんにちは、<%= current_user.name %>さん
           </span>
         </li>
         <li>
-          <%=  link_to public_users_mypage_path(current_user.id) , class:"nav-link text-light" do %>
+          <%= link_to root_path, class:"nav-link text-light" do %>
+            <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">トップページ</button>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to public_users_mypage_path(current_user.id) , class:"nav-link text-light" do %>
             <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">マイページ</button>
           <% end %>
         </li>
@@ -23,12 +31,16 @@
             <button type="button" class="btn btn-outline-secondary mr-5" style="color: black; font-weight: 600; border-color: #d3d3d3;">ログアウト</button>
           <% end %>
         </li>
+        <li>
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <%= text_field_tag :search, nil, placeholder: "Search" %>
+          </div>
+        </li>
+        
       </ul>
     </div>
-    <div class="search">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <%= text_field_tag :search, nil, placeholder: "Search" %>
-    </div>
+    
 
     <% elsif admin_signed_in? %>
     <div class="d-flex justify-content-end align-items-center">
