@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @vegetables = @user.vegetables
+    @vegetables = current_user.vegetables
   end
 
   def show

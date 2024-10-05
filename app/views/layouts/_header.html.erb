@@ -1,16 +1,16 @@
 <header>
   <nav>
     <nav class="navbar navbar-light" style="background-color: #3cb371;">
-  <span class="navbar-brand mb-0 h1">野菜と健康</span>
+      <span class="navbar-brand mb-0 h1">野菜と健康</span>
+      
+       
     <% if user_signed_in? %>
     <div class="d-flex justify-content-end align-items-center" style="height: 60px">
       <ul class="navbar-nav" style="flex-direction: row;">
-
-       <li>
-          <span class="text-center" style="font-weight: 500;">
-            こんにちは、<%= current_user.name %>さん
-          </span>
-        </li>
+<span class="text-center" style="font-weight: 500;">
+        こんにちは、<%= current_user.name %>さん
+      </span>
+       
         <li>
           <%= link_to root_path, class:"nav-link text-light" do %>
             <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">トップページ</button>
@@ -78,12 +78,17 @@
           <% end %>
         </li>
         <li>
+          <%= link_to  user_session_path, class:"nav-link text-light"  do %>
+            <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">ゲストログイン</button>
+          <% end %>
+        </li>
+        <li>
           <%= link_to new_user_registration_path , class:"nav-link text-light"  do %>
             <button type="button" class="btn btn-outline-secondary mr-4" style="color: black; font-weight: 600; border-color: #d3d3d3;">新規登録</button>
           <% end %>
         </li>
         <li>
-          <%= link_to  new_user_session_path , class:"nav-link text-light"  do %>
+          <%= link_to  user_session_path , class:"nav-link text-light"  do %>
             <button type="button" class="btn btn-outline-secondary mr-5" style="color: black; font-weight: 600; border-color: #d3d3d3;">ログイン</button>
           <% end %>
         </li>

@@ -6,6 +6,13 @@
           <div>ユーザー名</div>
           <div><%= @user.name %></div>
           <div><%= image_tag @user.get_profile_image(100,100) %></div>
+            <% if @user.email != "guest@example.com" %>
+          <div class="row">
+            <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
+            <i class="fa-solid fa-user-gear">プロフィール編集</i>
+          </div>
+          <% end %>
+
             <div class="row">
               <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" do%>
                 <i class="fa-solid fa-user-gear">プロフィール編集</i>
@@ -23,7 +30,7 @@
 
 
   <div class="table">
-     <% @vagetables.each do |vege| %>
+     
     <table>
       <tr>
         <th></th>
@@ -32,9 +39,10 @@
         <th>説明文</th>
       </tr>
       <tr>
+        <% @vegetables.each do |vege| %>
         <td><%= image_tag get_image(100,100) %>
         </td>
-        <td><%= link_to vegetalbe_path(vegetable.id) do %>
+        <td><%= link_to vegetalbe_path(vege.id) do %>
           <%= vege_name %>
           <% end %>
         </td>

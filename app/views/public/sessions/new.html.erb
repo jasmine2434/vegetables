@@ -35,15 +35,18 @@
   <% end %>
 
   <div class="row">
-    <div class="col-2"></div>
-    <div class="col-4"><h4>会員登録がお済みでない方</h4></div>
     <div class="col-1"></div>
+    <h4 class="col-9">会員登録がお済みでない方は
+    <%= link_to "こちら", new_user_registration_path %><%= "から新規登録を行ってください。" %>
+    </h4>
   </div>
 
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-4"><%= link_to "こちら", new_user_registration_path %><%= "から新規登録を行ってください。" %></div>
+    <div class="col-1"></div>
+    <div class="col-5"><h4>ゲストユーザーはこちらからログイン</h4></div>
+    <div class="col-3"><%= link_to "ログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %></div>
   </div>
+
 </div>
 
 <%#= render "public/shared/links" %>
