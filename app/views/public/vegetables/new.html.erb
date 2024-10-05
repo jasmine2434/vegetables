@@ -1,28 +1,52 @@
-
-<h1>新規投稿画面</h1>
+<div class="container-fluid text-center" style="padding: 0;">
+    <div class="row no-gutters" style="height: 90vh;">
+      <div class="col-md-12" style="display: flex; justify-content: center; align-items: center; background-image: url('<%= asset_path("retasu.jpg")%>'); background-size: cover; background-position: center; position: relative;">
 
 <div class="container">
-  
   <div class="row">
-    <div class="row">
-        <h3>ユーザー</h3>
-          <div class="user_image">
-            <%= @user.name %>
-            <%#= image_tag @user.get_profile_image(100,100) %>
-          </div>
+    <div class="col">
+      <h1>新規投稿画面</h1>
+    </div>
   </div>
-    <div class="row">
-        <%= form_with model: @vegetable do |f| %>
-          <h4>画像</h4>
-            <%= f.file_field :image, accept: "image/*" %>
-          <h4>野菜名</h4>
-            <%= f.text_field :vege_name %>
 
-          <h4>説明</h4>
-            <%= f.text_area :body %>
-
-            <div class="actions">
-              <%= f.submit "投稿する", class: "btn btn-success"%>
-            </div>
-        <% end %>
+  <div class="row">
+    <!-- ユーザー名とプロフィール画像 -->
+    <div class="col-md-3">
+      <h3>ユーザー名</h3>
+      <div class="user_info d-flex align-items-center">
+        <div><%= @user.name %></div>
+        <div class="ml-3">
+          <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
+        </div>
       </div>
+    </div>
+
+  <div class="col-md-9">
+      <%= form_with model: @vegetable do |f| %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.label :vege_name, "野菜名" %>
+            <%= f.text_field :vege_name, class: "form-control", autofocus: true, autocomplete: "vege_name" %>
+          </div>
+          <div class="col-md-5">
+            <%= f.label :image, "画像" %>
+            <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-8">
+            <%= f.label :body, "説明文" %>
+            <%= f.text_area :body, class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-8">
+            <%= f.submit "投稿する", class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
