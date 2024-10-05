@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
         redirect_to post_path(@post.id)
     else
         @users = User.all
-        @posts = Book.all
+        @posts = Post.all
         @user = current_user
         render :index
     end
@@ -21,7 +21,8 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show
+  def mypage
+    @posts = Post.all
     @post = Post.find(params[:id])
   end
 
@@ -33,7 +34,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "更新されました"
-      redirect_to post_path
+      redirect_to public_users_mypage_path
     else
       render :edit
     end

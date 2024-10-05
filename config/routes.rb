@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'posts/index'
     get 'posts/show'
     get 'posts/edit'
+    get 'posts/new'
   end
   get 'posts/index'
   get 'posts/show'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     get 'users/edit'
     get 'users/show'
   end
-  devise_for :users,skip: [:passwords], controllers: {
+  devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -28,7 +29,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     #get '/about' => 'homes:about', as: 'about'
     get '/users/my_page' => 'users#my_page' ,as: 'my_page'
-    get '/users/information/edit' => 'users#edit' ,as: 'information_edit'
+    get '/users/information/edit' => 'users#edit'
+    patch '/users/information' => 'users#update'
   end
 
 

@@ -1,32 +1,27 @@
-
- <p class="notice"><%= notice %></p>
-
     <div class="container">
       <h1>マイページ</h1>
       <div class="row">
         <div class="col-md-3">
-          <h3>ユーザー情報</h3>
+          <h2>ユーザー情報</h2>
           <div>ユーザー名</div>
           <div><%= @user.name %></div>
-          <div><%= image_tag @user.get_profile_image(100,100) %></div>
+          <div><%#= image_tag @user.get_profile_image(100,100) %></div>
+            <div class="row">
+              <%= link_to public_users_edit_path(@user.id), class: "btn btn-success form-control" do%>
+                <i class="fa-solid fa-user-gear">プロフィール編集</i>
+              <% end %>
+            </div>
+            <div class="row">
+              <%= link_to public_posts_new_path, class: "btn btn-success form-control" do%>
+                <i class="fa-solid fa-pen">新規投稿</i>
+              <% end %>
+            </div>
         </div>
-      </div>
-      
-        <div class="row">
-          <%= link_to "プロフィール編集", 
-          public_users_edit_path(@user.id), class: "btn btn-success form-control" %>
-            <i class="fa-solid fa-user-gear"></i>
-        </div>
-        
-        <div class="row">
-          <%= link_to "新規投稿", root_path, class: "btn btn-success" %>
-        </div>
-        </div>
-        
-        
+
+
       <div class="col-md-8 offset-md-1">
 
-<h1>Books</h1>
+<h2>投稿一覧</h2>
 
   <div class="table">
     <table>
@@ -36,35 +31,6 @@
         <th>説明文</th>
       </tr>
 
-      <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to user_path(post.user.id) do %>
-          <%= image_tag post.user.get_profile_image(100,100)  %>
-          <% end %></td>
-        <td><%= link_to post_path(post.id) do %>
-          <%= post.vege_name %>
-          <% end %>
-        <td><%= post.body %></td>
-          
-          
-          
-          <% if post.favorited_by?(current_user) %>
-                <td>
-                  <%= link_to post_favorite_path(post), method: :delete do %>
-                    ♥<%= post.favorites.count %>
-                  <% end %>
-                </td>
-                <% else %>
-                <td>
-                  <%= link_to book_favorite_path(post), method: :post do %>
-                    ♡<%= post.favorites.count %>
-                  <% end %>
-                </td>
-              <% end %>
-          
-          
-      </tr>
-      <% end %>
     </table>
   </div>
 </div>
