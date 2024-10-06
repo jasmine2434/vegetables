@@ -2,17 +2,17 @@
     <div class="row">
       <h2>ユーザー編集</h2>
     </div>
-    
+
     <div class="row">
         <%= form_with model: @user do |f| %>
         <label for="inputName">名前</label>
           <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></p>
-        
+
         <label for="inputImage">プロフィール画像</label>
           <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
-          
+
         <%= f.submit "更新する", method: :update, class: "btn btn-secondary" %>
-        
+
       <% end %>
     </div>
   </div>

@@ -1,52 +1,55 @@
-<h1>Public::Vegetables#show</h1>
-
 <div class="container">
-   <div class="col-md-8 offset-md-1">
+  <div class="row">
+    <h2 class="title text-center mt-4">野菜投稿showページ</h2>
+  </div>
 
-<h2>投稿詳細画面</h2>
+  <div class="row mt-5">
+    <div class="col-md-2 text-center">
+      <%= image_tag @vegetable.get_image(250, 250), class: "img-fluid" %>
+    </div>
 
-<div class="row">
-  <% @vegetables.each do |vege| %>
-  <div class="col-md-4">
-    <div class="div">野菜画像</div>
-      <%= image_tag get_image(100,100) %>
+    <div class="col-md-10">
+      <div class="row mb-3">
+        <div class="col-3"></div>
+        <h4 class="col-3">野菜名</h4>
+        <h4 class="col-4"><%= @vegetable.vege_name %></h4>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <div class="col-3">ジャンル</div>
+        <div class="col-4"><%= @vegetable.genre.name %></div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <div class="col-3">説明文</div>
+        <div class="col-4"><%= @vegetable.body %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <%= link_to my_page_path(@user.id), class: "btn btn-success form-control" do %>
+        <i class="fa-solid fa-delete-left"></i> 戻る
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-success form-control" do %>
+        <i class="fa-regular fa-pen-to-square"></i> 投稿編集
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to my_page_path(@user.id), class: "btn btn-success form-control" do %>
+        <i class="fa-solid fa-seedling"></i> 投稿一覧
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to root_path, class: "btn btn-success form-control" do %>
+        <i class="fa-regular fa-comment"></i> コメント
+      <% end %>
+    </div>
   </div>
 </div>
 
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-2">野菜名</div>
-    <div class="col-3"><%= vege_name %></div>
-  </div>
-
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-2">ジャンル</div>
-    <div class="col-3"><%= vege_genre %></div>
-  </div>
-
-  </div>
-  <div class="row">
-    <%= vege_body %>
-  </div>
-  <% end %>
-
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-      <%= link_to edit_vegetable_path(@user.id), class: "btn btn-success form-control" do%>
-        <i class="fa-solid fa-user-gear">投稿編集</i>
-      <% end %>
-    </div>
-    <div class="col-md-4">
-      <%= link_to my_page_path(@user.id), class: "btn btn-success form-control" do%>
-        <i class="fa-solid fa-user-gear">投稿一覧</i>
-      <% end %>
-    </div>
-    <div class="col-md-4">
-      <%= link_to root_path, class: "btn btn-success form-control" do%>
-        <i class="fa-solid fa-user-gear">コメント</i>
-      <% end %>
-    </div>
-</div>

@@ -4,7 +4,7 @@ class CreateVegetables < ActiveRecord::Migration[6.1]
       t.integer :user_id , null: false
       t.string :vege_name, null: false
       t.text :body, null: false
-      t.integer :genere_id, null: false
+      t.integer :genre_id, null: false
       t.timestamps
     end
   end

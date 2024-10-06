@@ -21,7 +21,7 @@
               <% end %>
             </div>
 
-            <h5 class="row mt-5">グループ</h5>
+            <h5 class="row mt-5">仮グループ一覧</h5>
 
         </div>
 
@@ -35,18 +35,20 @@
               <th scope="col">野菜画像</th>
               <th scope="col">野菜名</th>
               <th scope="col">いいね</th>
+              <th scope="col">コメント数</th>
             </tr>
           </thead>
           <tbody>
             <% @vegetables.each do |vege| %>
             <tr>
-              <th scope="row">1</th>
-              <td><%= image_tag get_image(100,100) %></td>
-              <td><%= link_to vegetalbe_path(vege.id) do %>
-                  <%= vege_name %>
+              <th scope="row"></th>
+              <td><%= image_tag vege.get_image(100, 100) %></td>
+              <td><%= link_to vegetable_path(vege.id) do %>
+                  <%= vege.vege_name %>
                   <% end %>
               </td>
-              <td>♡</td>
+              <td>仮♡</td>
+              <td>仮コメント数</td>
             </tr>
             <% end %>
           </tbody>

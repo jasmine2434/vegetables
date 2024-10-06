@@ -3,10 +3,11 @@ class Public::VegetablesController < ApplicationController
   def new
     @vegetable = Vegetable.new
     @user = current_user
+    @genres = Genre.all
   end
 
   def create
-    @vegetable = Vegetable.new(post_params)
+    @vegetable = Vegetable.new(vegetable_params)
     @vegetable.user_id = current_user.id
     if @vegetable.save
         flash[:notice] = "投稿されました"
@@ -25,18 +26,22 @@ class Public::VegetablesController < ApplicationController
   end
 
   def show
-    @vegetables = Vegetable.find(params[:id])
+    @user = current_user
+    @user = User.find(params[:id])
+    @vegetable = Vegetable.find(params[:id])
   end
 
   def edit
-    @vegetables = Vegetable.find(params[:id])
+    @vegetable = Vegetable.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
     @vegetable= Vegetable.find(params[:id])
-    if @vegetalbe.update(post_params)
+    #@genres = Genre.all
+    if @vegetable.update(vegetable_params)
       flash[:notice] = "更新されました"
-      redirect_to public_users_mypage_path
+      redirect_to vegetalbe_path
     else
       flash[:notice] = "更新に失敗しました"
       render :edit
@@ -51,8 +56,8 @@ class Public::VegetablesController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:vegetable).permit(:vege_name, :body, :image)
+  def vegetable_params
+    params.require(:vegetable).permit(:vege_name, :body, :image, :genre_id)
   end
 
   def check_user
