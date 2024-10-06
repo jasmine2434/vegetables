@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'genres/index'
+    root to: "homes#top"
+    resources :vegetables, only: [:index, :show, :destroy]
+    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :users, only: [:index, :show]
+    resources :comments, only: [:index, :show, :destroy]
   end
+
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

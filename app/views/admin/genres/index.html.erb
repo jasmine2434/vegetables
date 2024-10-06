@@ -1,33 +1,48 @@
-<h1>Admin::Genres#index</h1>
 <div class="container">
-  <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
-    <div class="row mb-5">
-        <h2>ジャンル一覧・追加</h2>
-    </div>
-    <div class="row">
-        <div class="col-2"><%= f.label :name, "ジャンル名" %></div>
-        <div class="col-4"><%= f.text_field :name %></div>
-        <div class="col-4"><%= f.submit "新規登録", class: "btn btn-success" %></div>
-    </div>
-  <% end %>
+  <h2 class="mb-4">ジャンル一覧・追加・編集</h2>
+
   <div class="row">
-      <div class="col-5">
-          <table class="table table-bordered">
-              <thead>
-                  <tr>
-                      <th>ジャンル</th>
-                      <th></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <% @genres.each do |g| %>
-                    <tr>
-                        <td class="p-2"><%= g.name %></td>
-                        <td class="p-2"><%= link_to "編集する", edit_admin_genre_path(g), class: "btn btn-success" %></td>
-                    </tr>
-                  <% end %>
-              </tbody>
-          </table>
-      </div>
+    <!-- フォームの部分 -->
+    <div class="col-md-6">
+      <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label" for="genre_name">ジャンル名</label>
+          <div class="col-sm-9">
+            <%= f.text_field :name, class: "form-control", id: "genre_name" %>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-sm-9 offset-sm-3">
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+      
+ 
+      
+    </div>
+
+    <!-- ジャンルテーブルを右側に表示 -->
+    <div class="col-md-6">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="text-center" style="background-color: #d3d3d3;">ジャンル</th>
+            <th style="background-color: #d3d3d3;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |g| %>
+            <tr>
+              <td class="p-2 text-center"><%= g.name %></td>
+              <td class="p-2 text-center">
+                <%= link_to "編集する", admin_genres_path(g), class: "btn btn-primary" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
