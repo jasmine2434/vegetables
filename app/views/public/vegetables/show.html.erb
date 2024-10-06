@@ -1,2 +1,52 @@
 <h1>Public::Vegetables#show</h1>
-<p>Find me in app/views/public/vegetables/show.html.erb</p>
+
+<div class="container">
+   <div class="col-md-8 offset-md-1">
+
+<h2>投稿詳細画面</h2>
+
+<div class="row">
+  <% @vegetables.each do |vege| %>
+  <div class="col-md-4">
+    <div class="div">野菜画像</div>
+      <%= image_tag get_image(100,100) %>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2">野菜名</div>
+    <div class="col-3"><%= vege_name %></div>
+  </div>
+  
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2">ジャンル</div>
+    <div class="col-3">         </div>
+  </div>
+  
+  </div>
+  <div class="row">
+    <%= vege_body %>
+  </div>
+  <% end %>
+  
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+      <%= link_to edit_vegetable_path(@user.id), class: "btn btn-success form-control" do%>
+        <i class="fa-solid fa-user-gear">投稿編集</i>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to my_page_path(@user.id), class: "btn btn-success form-control" do%>
+        <i class="fa-solid fa-user-gear">投稿一覧</i>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to root_path, class: "btn btn-success form-control" do%>
+        <i class="fa-solid fa-user-gear">コメント</i>
+      <% end %>
+    </div>
+</div>

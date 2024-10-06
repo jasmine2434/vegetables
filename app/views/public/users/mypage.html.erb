@@ -1,56 +1,56 @@
     <div class="container">
       <h1>マイページ</h1>
       <div class="row">
-        <div class="col-md-3">
-          <h2>ユーザー情報</h2>
-          <div>ユーザー名</div>
-          <div><%= @user.name %></div>
-          <div><%= image_tag @user.get_profile_image(100,100) %></div>
-            <% if @user.email != "guest@example.com" %>
+        <div class="col-md-4">
           <div class="row">
-            <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" %>
-            <i class="fa-solid fa-user-gear"></i>プロフィール編集
+            <h4 class="col-5">ユーザー名</h4>
+            <h4 class="col-4"><%= @user.name %></h4>
           </div>
-          <% end %>
-
-            <div class="row">
+            <div><%= image_tag @user.get_profile_image(100,100) %></div>
+              <% unless @user.guest_user? %>
+          <div class="row mt-5">
               <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" do%>
-                <i class="fa-solid fa-user-gear">プロフィール編集</i>
+              <i class="fa-solid fa-user-gear"></i>プロフィール編集
               <% end %>
-            </div>
-            <div class="row">
+          </div>
+              <% end %>
+
+            <div class="row mt-5">
               <%= link_to new_vegetable_path, class: "btn btn-success form-control" do%>
                 <i class="fa-solid fa-pen">新規投稿</i>
               <% end %>
             </div>
+            
+            <h5 class="row mt-5">グループ</h5>
+            
         </div>
-      <div class="col-md-8 offset-md-1">
+        
+      <div class="col-md-7 offset-md-1">
+        <h2>投稿一覧</h2>
 
-<h2>投稿一覧</h2>
-
-
-  <div class="table">
-
-    <table>
-      <tr>
-        <th></th>
-        <th>野菜画像</th>
-        <th>野菜名</th>
-        <th>説明文</th>
-      </tr>
-      <tr>
-        <% @vegetables.each do |vege| %>
-        <td><%= image_tag get_image(100,100) %>
-        </td>
-        <td><%= link_to vegetalbe_path(vege.id) do %>
-          <%= vege_name %>
-          <% end %>
-        </td>
-      </tr>
-
-    </table>
-    <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">野菜画像</th>
+              <th scope="col">野菜名</th>
+              <th scope="col">いいね</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @vegetables.each do |vege| %>
+            <tr>
+              <th scope="row">1</th>
+              <td><%= image_tag get_image(100,100) %></td>
+              <td><%= link_to vegetalbe_path(vege.id) do %>
+                  <%= vege_name %>
+                  <% end %>
+              </td>
+              <td>♡</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
   </div>
-</div>
-</div>
 </div>

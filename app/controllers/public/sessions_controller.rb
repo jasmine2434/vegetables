@@ -32,19 +32,24 @@ class Public::SessionsController < Devise::SessionsController
 
   private
 
-    def customer_state
-        customer = User.find_by(email: params[:user][:email])
-        if customer.nil?
-          flash[:alert] = "アカウントが見つかりません。新規会員登録を行ってください。"
-          redirect_to new_user_registration_path and return
-        end
+  def customer_state
+      customer = User.find_by(email: params[:user][:email])
+      if customer.nil?
+        flash[:alert] = "アカウントが見つかりません。新規会員登録を行ってください。"
+        redirect_to new_user_registration_path and return
+      end
 
-        if user.is_active == false
-          flash[:alert] = "退会済みです。新規会員登録を行ってください"
-          redirect_to new_user_registration_path
-        end
+      if user.is_active == false
+        flash[:alert] = "退会済みです。新規会員登録を行ってください"
+        redirect_to new_user_registration_path
+      end
+  end
 
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
-
+  end  
 
 end

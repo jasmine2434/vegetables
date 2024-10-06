@@ -1,67 +1,65 @@
 class Public::VegetablesController < ApplicationController
-    
+
   def new
     @vegetable = Vegetable.new
     @user = current_user
   end
-    
+
   def create
-    @vegetable = Vegetalbe.new(vegetalbe_params)
+    @vegetable = Vegetable.new(post_params)
     @vegetable.user_id = current_user.id
     if @vegetable.save
         flash[:notice] = "投稿されました"
-        redirect_to post_path(@post.id)
+        redirect_to my_page_path(@vegetable.id)
     else
-        @users = User.all
-        @vegetables = Post.all
         @user = current_user
-        render :index
+        flash[:notice] = "投稿に失敗しました"
+        render :new
     end
   end
-  
+
   def index
     @users = User.all
-    @vegetable = Post.new
+    @vegetables = Vegetable.all
     @user = current_user
-    @posts = Post.all
   end
 
-  def mypage
-    @posts = Post.all
-    @post = Post.find(params[:id])
+  def show
+    @vegetables = Vegetable.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @vegetables = Vegetable.find(params[:id])
   end
-  
+
   def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
+    @vegetable= Vegetable.find(params[:id])
+    if @vegetalbe.update(post_params)
       flash[:notice] = "更新されました"
       redirect_to public_users_mypage_path
     else
+      flash[:notice] = "更新に失敗しました"
       render :edit
     end
   end
-  
+
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    @vegetable = Vegetable.find(params[:id])
+    @vegetalbe.destroy
+    redirect_to vegetable_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:vege_name, :body, :image)
+    params.require(:vegetable).permit(:vege_name, :body, :image)
   end
 
   def check_user
-    @post = Post.find(params[:id])
-    unless @post.user == current_user
-      redirect_to posts_path
+    @vegetable = Vegetable.find(params[:id])
+    unless @vegetalbe.user == current_user
+      redirect_to vegetables_path
     end
-  end  
-  
+  end
+
 end

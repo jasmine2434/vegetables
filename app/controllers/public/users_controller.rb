@@ -1,11 +1,15 @@
 class Public::UsersController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
+
   def new
     @user = User.new
   end
 
   def mypage
     @user = current_user
-    @vegetables = current_user.vegetables
+    @vegetables = @user.vegetables
   end
 
   def show
@@ -17,7 +21,7 @@ class Public::UsersController < ApplicationController
     if @user == current_user
       render :edit
     else
-      redirect_to user_path(current_user)
+      redirect_to my_page_path(current_user)
     end
   end
 
@@ -38,8 +42,11 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :profile_image, :image)
   end
 
-  def set_user
-    @user = user.find(params[:id])
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.guest_user?
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
   end
 
 end
