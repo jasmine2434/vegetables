@@ -4,7 +4,7 @@
     margin-top: 10px;
   }
 
- header, h1, h3, h4, nav {
+ header, h1, h2, h3, h4, h5, nav {
   font-family: "Kiwi Maru",;
 
   color: black;
@@ -12,7 +12,7 @@
   font-style: normal;
 }
 
-  footer{
+  footer {
     position: absolute;/*←絶対位置*/
     bottom: 0; /*下に固定*/
 }

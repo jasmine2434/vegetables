@@ -8,10 +8,11 @@ class Public::VegetablesController < ApplicationController
 
   def create
     @vegetable = Vegetable.new(vegetable_params)
+    @genres = Genre.all
     @vegetable.user_id = current_user.id
     if @vegetable.save
         flash[:notice] = "投稿されました"
-        redirect_to my_page_path(@vegetable.id)
+        redirect_to my_page_path
     else
         @user = current_user
         flash[:notice] = "投稿に失敗しました"
@@ -20,9 +21,7 @@ class Public::VegetablesController < ApplicationController
   end
 
   def index
-    @users = User.all
     @vegetables = Vegetable.all
-    @user = current_user
   end
 
   def show
@@ -31,8 +30,9 @@ class Public::VegetablesController < ApplicationController
   end
 
   def edit
-    @vegetable = Vegetable.find(params[:id])
     @genres = Genre.all
+    @vegetable = Vegetable.find(params[:id])
+
   end
 
   def update
@@ -40,7 +40,7 @@ class Public::VegetablesController < ApplicationController
     @vegetable= Vegetable.find(params[:id])
     if @vegetable.update(vegetable_params)
       flash[:notice] = "更新されました"
-      redirect_to vegetable_path(@vegetable)
+      redirect_to vegetable_path
     else
       flash[:notice] = "更新に失敗しました"
       render :edit
@@ -50,7 +50,7 @@ class Public::VegetablesController < ApplicationController
   def destroy
     @vegetable = Vegetable.find(params[:id])
     @vegetable.destroy
-    redirect_to vegetable_path
+    redirect_to my_page_path
   end
 
   private

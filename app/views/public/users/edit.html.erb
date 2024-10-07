@@ -1,34 +1,42 @@
 <%= form_with model: @user do |f| %>
   <div class="container mt-5">
     <div class="row justify-content-center">
-      <!-- プロフィール画像フィールド -->
-      <div class="col-md-3 mt-4 text-center">
+      <!-- プロフィール画像 -->
+      <div class="col-md-5 mt-4 text-center">
         <div class="form-group">
-          <label for="inputImage">プロフィール画像</label>
-          <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "form-control" %></p>
+          <label for="inputImage" class="form-label">プロフィール画像</label>
+          <div class="col-md-12 mt-4 text-center">
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle mx-auto d-block" %>
+          </div>
+          <div class="col-md-12 mt-4">
+            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "form-control" %>
+          </div>
         </div>
       </div>
 
-      <!-- 名前・メールフィールド -->
-      <div class="col-md-6 offset-md-1">
-        <!-- 名前フィールドにmargin-topで間隔を追加 -->
+      <!-- 名前・メール -->
+      <div class="col-md-5 offset-md-1">
         <div class="form-group mt-4">
-          <label for="inputName">名前</label>
-          <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class: "form-control" %></p>
+          <label for="inputName" class="form-label">名前</label>
+          <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "名前", class: "form-control" %>
         </div>
 
-        <div class="form-group">
-          <label for="inputEmail">メールアドレス</label>
-          <p><%= f.text_field :email, id:"inputEmail", placeholder:"メールアドレス", class: "form-control" %></p>
+        <div class="form-group mt-3">
+          <label for="inputEmail" class="form-label">メールアドレス</label>
+          <%= f.text_field :email, id: "inputEmail", placeholder: "メールアドレス", class: "form-control" %>
+        </div>
+        <div class="form-group mt-4">
+          <%= f.submit "更新する", class: "btn btn-success btn-block w-100" %>
+        </div>
+        
         </div>
       </div>
     </div>
-
-    <!-- 更新ボタン -->
-    <div class="row justify-content-center mt-4">
-      <div class="col-md-4 offset-md-2 text-center">
-        <%= f.submit "更新する", class: "btn btn-success btn-block" %>
+    <% end %>
+      
+      <!-- 退会ボタン -->
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-3 text-center">
+          <%= link_to "退会する", user_registration_path(current_user), method: :delete, class: "btn btn-danger btn-block w-100", "data-confirm" => "本当に退会しますか？" %>
+        </div>
       </div>
-    </div>
-  </div>
-<% end %>

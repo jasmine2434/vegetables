@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
       if @user.update(user_params)
         flash[:notice] = "変更を保存しました"
         redirect_to my_page_path
@@ -35,11 +35,12 @@ class Public::UsersController < ApplicationController
         render :edit
       end
   end
-  
+
   def destroy
-    @user = User.find(params[:id])
+    @user = current_user
     @user.destroy
-    redirect_to vegetable_path
+    flash[:notice] = "退会しました"
+    redirect_to new_user_registration_path
   end
 
   private

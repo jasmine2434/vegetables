@@ -2,11 +2,11 @@
       <h1>マイページ</h1>
       <div class="row">
         <div class="col-md-4">
-          <div class="row">
+          <div class="row mt-4">
             <h4 class="col-5">ユーザー名</h4>
             <h4 class="col-4"><%= @user.name %></h4>
           </div>
-            <div><%= image_tag @user.get_profile_image(100,100) %></div>
+            <div class="text-center mt-3"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></div>
               <% unless @user.guest_user? %>
           <div class="row mt-5">
               <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" do%>
@@ -55,7 +55,7 @@
                 <td>
                   <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
                 </td>
-            
+
               <% end %>
               <td>仮コメント数</td>
             </tr>

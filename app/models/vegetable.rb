@@ -7,6 +7,7 @@ class Vegetable < ApplicationRecord
 
   validates :vege_name, presence: true
   validates :body, presence: true
+  #validates :genre_id, presence: true
 
   def get_image(width, height)
     unless image.attached?

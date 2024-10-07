@@ -1,10 +1,20 @@
 <div class="container">
+  <% if @vegetable.errors.any? %>
+  <%= @vegetable.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @vegetable.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
   <div class="row">
     <h2 class="title text-center mt-4">野菜投稿Editページ</h2>
   </div>
+  
 
   <div class="row mt-5">
     <div class="col-md-2 text-center">
+      <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
       <%= form_with model: @vegetable do |f| %>
       <%= f.file_field :image %>
     </div>
@@ -22,7 +32,7 @@
         <div class="col-3"></div>
         <h5 class="col-3">ジャンル</h5>
         <div class="col-4">
-          <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { include_blank: '選択してください' }, class: "form-control fs-4" %>
+          <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name, selected: @vegetable.genre_id), { include_blank: '選択してください' }, class: "form-control fs-4" %>
         </div>
       </div>
 
@@ -46,7 +56,7 @@
       <i class="fa-solid fa-delete-left"></i> 戻る
     <% end %>
   </div>
-  
+
   <div class="col-md-3">
   <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
     <i class="fa-solid fa-arrows-rotate"></i> 更新する
