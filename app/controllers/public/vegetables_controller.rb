@@ -27,7 +27,6 @@ class Public::VegetablesController < ApplicationController
 
   def show
     @user = current_user
-    @user = User.find(params[:id])
     @vegetable = Vegetable.find(params[:id])
   end
 
@@ -37,11 +36,11 @@ class Public::VegetablesController < ApplicationController
   end
 
   def update
+    @genres = Genre.all
     @vegetable= Vegetable.find(params[:id])
-    #@genres = Genre.all
     if @vegetable.update(vegetable_params)
       flash[:notice] = "更新されました"
-      redirect_to vegetalbe_path
+      redirect_to vegetable_path(@vegetable)
     else
       flash[:notice] = "更新に失敗しました"
       render :edit
@@ -50,7 +49,7 @@ class Public::VegetablesController < ApplicationController
 
   def destroy
     @vegetable = Vegetable.find(params[:id])
-    @vegetalbe.destroy
+    @vegetable.destroy
     redirect_to vegetable_path
   end
 

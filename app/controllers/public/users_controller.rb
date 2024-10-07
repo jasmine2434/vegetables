@@ -35,6 +35,12 @@ class Public::UsersController < ApplicationController
         render :edit
       end
   end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to vegetable_path
+  end
 
   private
 

@@ -41,12 +41,11 @@
       <div class="col-3 py-1"><%= f.submit "新規登録", class: "btn btn-success" %></div>
     </div>
   <% end %>
-  <div class="row">
-    <div class="col">
-      <h4>既に登録済みの方</h4>
-      <%= link_to "こちら", new_user_session_path %><%= "からログインしてください。" %>
-    </div>
-    <div class="col"></div>
-    <div class="col"></div>
+
+  <div class="row mt-5">
+    <div class="col-1"></div>
+    <h4 class="col-9">既に会員登録がお済み方は
+    <%= link_to "こちら", new_user_session_path %><%= "から新規登録を行ってください。" %>
+    </h4>
   </div>
 </div>
