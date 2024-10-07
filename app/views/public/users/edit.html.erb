@@ -1,18 +1,34 @@
-    <div class="container">
-    <div class="row">
-      <h2>ユーザー編集</h2>
+<%= form_with model: @user do |f| %>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <!-- プロフィール画像フィールド -->
+      <div class="col-md-3 mt-4 text-center">
+        <div class="form-group">
+          <label for="inputImage">プロフィール画像</label>
+          <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "form-control" %></p>
+        </div>
+      </div>
+
+      <!-- 名前・メールフィールド -->
+      <div class="col-md-6 offset-md-1">
+        <!-- 名前フィールドにmargin-topで間隔を追加 -->
+        <div class="form-group mt-4">
+          <label for="inputName">名前</label>
+          <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class: "form-control" %></p>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail">メールアドレス</label>
+          <p><%= f.text_field :email, id:"inputEmail", placeholder:"メールアドレス", class: "form-control" %></p>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-        <%= form_with model: @user do |f| %>
-        <label for="inputName">名前</label>
-          <p><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></p>
-
-        <label for="inputImage">プロフィール画像</label>
-          <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
-
-        <%= f.submit "更新する", method: :update, class: "btn btn-secondary" %>
-
-      <% end %>
+    <!-- 更新ボタン -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-4 offset-md-2 text-center">
+        <%= f.submit "更新する", class: "btn btn-success btn-block" %>
+      </div>
     </div>
   </div>
+<% end %>

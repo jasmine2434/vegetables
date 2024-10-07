@@ -14,7 +14,7 @@
           <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
         </div>
     </div>
-
+ 
 <div class="col-md-9 offset-md-1">
   <%= form_with model: @vegetable, url: vegetables_path, method: :post do |f| %>
     <div class="row mb-5">
@@ -48,4 +48,6 @@
       </div>
     </div>
   <% end %>
+</div>
+</div>
 </div>
