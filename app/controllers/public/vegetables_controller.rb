@@ -25,8 +25,8 @@ class Public::VegetablesController < ApplicationController
   end
 
   def show
-    @user = current_user
     @vegetable = Vegetable.find(params[:id])
+    #@user = @vegetable.user
   end
 
   def edit
@@ -56,7 +56,11 @@ class Public::VegetablesController < ApplicationController
   private
 
   def vegetable_params
-    params.require(:vegetable).permit(:vege_name, :body, :image, :genre_id)
+    params.require(:vegetable).permit(:name, :body, :image, :genre_id)
+  end
+  
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :image)
   end
 
   def check_user

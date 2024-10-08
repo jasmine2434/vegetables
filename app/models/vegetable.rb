@@ -5,7 +5,7 @@ class Vegetable < ApplicationRecord
   belongs_to :genre
   has_many :favorites, dependent: :destroy
 
-  validates :vege_name, presence: true
+  validates :name, presence: true
   validates :body, presence: true
   #validates :genre_id, presence: true
 

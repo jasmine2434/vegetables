@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2024_10_06_060520) do
 
   create_table "vegetables", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "vege_name", null: false
+    t.string "name", null: false
     t.text "body", null: false
     t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false

@@ -1,14 +1,69 @@
-<div class="container-fluid text-center" style="padding: 0;">
-    <div class="row no-gutters" style="height: 80vh;">
-      <div class="col-md-12" style="display: flex; justify-content: center; align-items: center; background-image: url('<%= asset_path("circle.jpg")%>'); background-size: cover; background-position: center; position: relative;">
-
-      <%#= render 'public/shared/sidebar', genres: #@genres %>
-      <div class="d-flex flex-column justify-content-center align-items-center padding: 20px; border-radius: 10px;">
-
-        <h1 class="row">ようこそ！ゲストユーザーさん</h1>
-        
-        <h3 class="row mt-5">投稿一覧から投稿された野菜を閲覧できます</h3>
+    <div class="container">
+      <div class="row">
+        <h1 class="col-5">その他：ユーザーページ</h1>
+        <h4 class="col-7 mt-2">ユーザー名 "<%= @user.name %>" さん</h4>
       </div>
+      <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-center mt-4"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></div>
+              <% if @user == current_user %>
+          <div class="row mt-5">
+              <%= link_to edit_user_path(@user), class: "btn btn-success form-control" do%>
+              <i class="fa-solid fa-user-gear"></i>プロフィール編集
+              <% end %>
+          </div>
+              <% end %>
+
+            <div class="row mt-5">
+              <%= link_to new_vegetable_path, class: "btn btn-success form-control" do%>
+                <i class="fa-solid fa-pen">新規投稿</i>
+              <% end %>
+            </div>
+
+            <h5 class="row mt-5">仮グループ一覧</h5>
+
+        </div>
+
+      <div class="col-md-8 mt-2 offset-md-1">
+        <h2>投稿一覧</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">画像</th>
+              <th scope="col">名前</th>
+              <th scope="col">ジャンル</th>
+              <th scope="col">いいね</th>
+              <th scope="col">コメント数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @vegetables.each do |vege| %>
+            <tr>
+              <th scope="row"></th>
+              <td><%= image_tag vege.get_image(100, 100) %></td>
+              <td><%= link_to vegetable_path(vege.id) do %>
+                    <%= vege.name %>
+                  <% end %>
+              </td>
+              <td><%= vege.genre.name %></td>
+              <% if vege.favorited_by?(current_user) %>
+                <td class="text-center">
+                  <%= link_to "♥ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" } %>
+                </td>
+              <% else %>
+                <td>
+                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
+                </td>
+
+              <% end %>
+              <td>仮コメント数</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

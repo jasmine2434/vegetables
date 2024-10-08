@@ -1,13 +1,13 @@
     <div class="container">
-      <h1>マイページ</h1>
       <div class="row">
-        <div class="col-md-4">
-          <div class="row mt-4">
-            <h4 class="col-5">ユーザー名</h4>
-            <h4 class="col-4"><%= @user.name %></h4>
-          </div>
-            <div class="text-center mt-3"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></div>
-              <% unless @user.guest_user? %>
+        <h1 class="col-5">マイページ</h1>
+        <h4 class="col-7 mt-2">ユーザー名 "<%= @user.name %>" さん</h4>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-center mt-4"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></div>
+              <% if @user.email != "guest@example.com" %>
           <div class="row mt-5">
               <%= link_to edit_user_path(@user.id), class: "btn btn-success form-control" do%>
               <i class="fa-solid fa-user-gear"></i>プロフィール編集
@@ -25,15 +25,16 @@
 
         </div>
 
-      <div class="col-md-7 offset-md-1">
+      <div class="col-md-8 mt-2 offset-md-1">
         <h2>投稿一覧</h2>
 
         <table class="table">
           <thead>
             <tr>
               <th scope="col"></th>
-              <th scope="col">野菜画像</th>
-              <th scope="col">野菜名</th>
+              <th scope="col">画像</th>
+              <th scope="col">名前</th>
+              <th scope="col">ジャンル</th>
               <th scope="col">いいね</th>
               <th scope="col">コメント数</th>
             </tr>
@@ -44,9 +45,10 @@
               <th scope="row"></th>
               <td><%= image_tag vege.get_image(100, 100) %></td>
               <td><%= link_to vegetable_path(vege.id) do %>
-                  <%= vege.vege_name %>
+                    <%= vege.name %>
                   <% end %>
               </td>
+              <td><%= vege.genre.name %></td>
               <% if vege.favorited_by?(current_user) %>
                 <td class="text-center">
                   <%= link_to "♥ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" } %>

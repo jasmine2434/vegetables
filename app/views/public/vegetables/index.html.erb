@@ -16,12 +16,13 @@
             <% @vegetables.each do |vege| %>
             <tr>
               <th scope="row"></th>
-              <td><%= vege.user.name %></td>
+              <td><%= link_to user_path(vege.user_id) do %>
+                <%= vege.user.name %></td>
+                <% end %>
               <td><%= image_tag vege.get_image(100, 100) %></td>
               <td><%= link_to vegetable_path(vege.id) do %>
-                  <%= vege.vege_name %>
+                  <%= vege.name %>
                   <% end %>
-
               </td>
               <% if vege.favorited_by?(current_user) %>
                 <td class="text-center">
