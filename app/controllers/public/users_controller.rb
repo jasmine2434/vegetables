@@ -52,7 +52,7 @@ class Public::UsersController < ApplicationController
 
   def ensure_guest_user
     if current_user.email == "guest@example.com"
-      redirect_to my_page_path , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to my_page_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 
