@@ -2,29 +2,29 @@
   <div class="row">
     <h2 class="title text-center mt-4">投稿showページ</h2>
   </div>
-  <div class="row mt-4">
+  <div class="row">
     <h4 class="col-2">ユーザー名</h4>
     <h4 class="col-8"><%= link_to user_path(@vegetable.user) do %>
     "<%= @vegetable.user.name %>"さん</h4>
     <% end %>
   </div>
-  <div class="row mt-5">
+  <div class="row">
     <div class="col-md-2 text-center">
       <%= image_tag @vegetable.user.get_profile_image(250, 250), class: "img-fluid" %>
     </div>
     <div class="col-md-10">
-      <div class="row mb-3">
+      <div class="row">
         <div class="col-1"></div>
         <h4 class="col-2">名前</h4>
         <h4 class="col-8">
           <%= @vegetable.name %></h4>
       </div>
-      <div class="row mt-4">
+      <div class="row">
         <div class="col-1"></div>
         <h4 class="col-2">ジャンル</h4>
         <h4 class="col-8"><%= @vegetable.genre.name %></h4>
       </div>
-      <div class="row mt-4">
+      <div class="row">
         <div class="col-1"></div>
         <h4 class="col-2">説明文</h4>
         <h4 class="col-9"><%= @vegetable.body %></h4>

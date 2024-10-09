@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
     get '/users/my_page' => 'users#mypage' ,as: 'my_page'
 
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update, :destroy]
 
     resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
       resource :favorite, only: [:create, :destroy, :update]

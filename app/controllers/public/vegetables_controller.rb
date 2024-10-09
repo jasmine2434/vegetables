@@ -25,8 +25,9 @@ class Public::VegetablesController < ApplicationController
   end
 
   def show
+    #@user = current_user
     @vegetable = Vegetable.find(params[:id])
-    #@user = @vegetable.user
+    @user = @vegetable.user
   end
 
   def edit

@@ -1,5 +1,5 @@
     <div class="container">
-      <div class="row">
+      <div class="row mt-5">
         <h1 class="col-5">マイページ</h1>
         <h4 class="col-7 mt-2">ユーザー名 "<%= @user.name %>" さん</h4>
       </div>
@@ -48,7 +48,7 @@
                 <!-- いいね機能 -->
                     <% if vege.favorited_by?(current_user) %>
                 <td class="text-center">
-                    <%= link_to "♥ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" } %>
+                    <%= link_to "❤ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" } %>
                 </td>
                     <% else %>
                 <td>

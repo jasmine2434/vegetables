@@ -1,18 +1,76 @@
 @use '~bootstrap/scss/bootstrap';
 
- .title-margin {
-    margin-top: 10px;
-  }
-
  header, h1, h2, h3, h4, h5, nav {
   font-family: "Kiwi Maru",;
-
+  height: 85px;
   color: black;
   font-weight: 370;
   font-style: normal;
 }
 
-  footer {
+.custom-container {
+  padding: 0;
+}
 
-    bottom: 0; /*下に固定*/
+.full-height-top {
+  height: 85vh;
+}
+
+.custom-background-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: image-url("/assets/tomato2.jpg"); /* asset_path の結果に相当 */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.custom-content-top {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+  footer {
+  bottom: 0; /*下に固定*/
+  background-color: #3cb371;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;  /* 横方向の中央揃え */
+  align-items: center;      /* 縦方向の中央揃え */
+}
+
+.footer-content {
+  text-align: center;       /* テキストを中央揃え */
+  color: white;
+  margin: 0;  /* 余白をリセット */
+  padding: 0; /* パディングをリセット */
+}
+
+.custom-about {
+  height: 83vh;  /*サイズ指定 */
+}
+
+.custom-background-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: image-url("/assets/jagaimo.jpg");  /* 背景画像のパスを指定 */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.custom-content-about {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.custom-title-about {
+  font-weight: 500;
+}
+
+.custom-text-about {
+  font-weight: 500;
 }

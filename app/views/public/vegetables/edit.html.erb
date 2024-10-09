@@ -4,8 +4,7 @@
     <h2 class="title text-center mt-4">野菜投稿Editページ</h2>
   </div>
 
-
-  <div class="row mt-5">
+  <div class="row">
     <div class="col-md-2 text-center">
       <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
       <%= form_with model: @vegetable do |f| %>
@@ -13,7 +12,7 @@
     </div>
 
     <div class="col-md-10">
-      <div class="row mb-3">
+      <div class="row">
         <div class="col-3"></div>
         <h5 class="col-3">名前</h5>
         <div class="col-4">
@@ -21,7 +20,7 @@
         </div>
       </div>
 
-      <div class="row mb-3">
+      <div class="row">
         <div class="col-3"></div>
         <h5 class="col-3">ジャンル</h5>
         <div class="col-4">
@@ -29,12 +28,12 @@
         </div>
       </div>
 
-      <div class="row mb-4">
+      <div class="row">
         <div class="col-3"></div>
         <h5 class="col-3">説明文</h5>
       </div>
 
-      <div class="row mb-3">
+      <div class="row">
         <div class="col-3"></div>
         <div class="col-md-8">
           <%= f.text_area :body, rows: 10, style: "width: 100%", class: "form-control" %>
