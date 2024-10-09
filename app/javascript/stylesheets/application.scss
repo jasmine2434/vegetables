@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: image-url("/assets/tomato2.jpg"); /* asset_path の結果に相当 */
+  background-image: url("../images/tomato2.jpg"); /* asset_path の結果に相当 */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -56,7 +56,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: image-url("/assets/jagaimo.jpg");  /* 背景画像のパスを指定 */
+  background-image: url("../images/jagaimo.jpg");  /* 背景画像のパスを指定 */
   background-size: cover;
   background-position: center;
   position: relative;
