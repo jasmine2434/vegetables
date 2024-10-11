@@ -1,4 +1,6 @@
 class Public::VegetablesController < ApplicationController
+before_action :authenticate_user!
+before_action :correct_user, only: [:edit, :update]
 
   def new
     @vegetable = Vegetable.new
@@ -12,10 +14,10 @@ class Public::VegetablesController < ApplicationController
     @vegetable.user_id = current_user.id
     if @vegetable.save
         flash[:notice] = "投稿されました"
-        redirect_to my_page_path
+        redirect_to vegetable_path(@vegetable)
     else
         @user = current_user
-        flash[:notice] = "投稿に失敗しました"
+        flash[:alert] = "投稿に失敗しました"
         render :new
     end
   end
@@ -43,15 +45,20 @@ class Public::VegetablesController < ApplicationController
       flash[:notice] = "更新されました"
       redirect_to vegetable_path
     else
-      flash[:notice] = "更新に失敗しました"
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end
   end
 
   def destroy
     @vegetable = Vegetable.find(params[:id])
-    @vegetable.destroy
-    redirect_to my_page_path
+    if @vegetable.destroy
+      flash[:notice] = "削除されました"
+      redirect_to my_page_path
+    else
+      flash[:notice] = "削除に失敗しました"
+      render :edit
+    end
   end
 
   private
@@ -59,15 +66,16 @@ class Public::VegetablesController < ApplicationController
   def vegetable_params
     params.require(:vegetable).permit(:name, :body, :image, :genre_id)
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :profile_image, :image)
   end
 
-  def check_user
+  def correct_user
     @vegetable = Vegetable.find(params[:id])
-    unless @vegetalbe.user == current_user
-      redirect_to vegetables_path
+    unless @vegetable.user == current_user
+      flash[:alert] = "他のユーザーの投稿を編集することはできません"
+      redirect_to vegetables_path # 投稿一覧画面にリダイレクト
     end
   end
 

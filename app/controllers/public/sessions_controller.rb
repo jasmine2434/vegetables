@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  # before_action :user_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -29,27 +29,30 @@ class Public::SessionsController < Devise::SessionsController
     my_page_path
   end
 
+  def after_sign_out_path_for(resource)
+    about_path
+  end
 
   private
 
-  def customer_state
-      customer = User.find_by(email: params[:user][:email])
-      if customer.nil?
-        flash[:alert] = "アカウントが見つかりません。新規会員登録を行ってください。"
-        redirect_to new_user_registration_path and return
-      end
-
-      if user.is_active == false
-        flash[:alert] = "退会済みです。新規会員登録を行ってください"
-        redirect_to new_user_registration_path
+  def user_state
+      user = User.find_by(email: params[:name][:email])
+      if user.nil?
+        flash[:alert] = "アカウントが見つかりません。"
+        redirect_to new_user_session_path and return
       end
   end
 
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.guest_user?
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
     end
-  end  
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email)
+  end
+
 
 end

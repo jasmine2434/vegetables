@@ -2,8 +2,35 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  #before_action :ensure_guest_user, only: [:destroy]
   # before_action :configure_account_update_params, only: [:update]
 
+  def after_sign_up_path_for(resource)
+    my_page_path
+  end
+  
+  def destroy
+    @user = current_user
+    if @user.destroy
+      flash[:notice] = "退会が完了しました"
+      redirect_to new_user_registration_path
+    else
+      flash[:alert] = "退会処理に失敗しました。もう一度お試しください"
+      redirect_to edit_user_registration_path
+    end
+  end
+  
+  protected
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+  
+  #def ensure_guest_user
+    #if current_user.guest_user?
+      #redirect_to user_path(current_user), notice: "ゲストユーザーは退会できません。"
+    #end
+  #end
   
   # GET /resource/sign_up
   # def new
@@ -39,12 +66,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
