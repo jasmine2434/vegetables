@@ -74,3 +74,14 @@
 .custom-text-about {
   font-weight: 500;
 }
+
+.flash-message-wrapper {
+  position: relative;
+  .flash-message {
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    width: 300px;
+    left: 700px;
+  }
+}

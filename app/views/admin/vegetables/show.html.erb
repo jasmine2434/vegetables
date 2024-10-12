@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <h2 class="title text-center mt-4">投稿画面</h2>
+    <h2 class="title text-center mt-4">管理者投稿詳細確認画面</h2>
   </div>
   <!-- ユーザー名表示 -->
   <div class="row mb-3 align-items-center">
     <h4 class="col-md-2">ユーザー名</h4>
     <h4 class="col-md-8">
-      <%= link_to user_path(@vegetable.user) do %>
-        "<%= @vegetable.user.name %>"さん
+      <%= link_to user_path(@user) do %>
+        "<%= @user.name %>"さん
       <% end %>
     </h4>
   </div>
@@ -16,7 +16,7 @@
   <div class="row mb-3">
     <!-- プロフィール画像 -->
     <div class="col-md-2 text-center">
-      <%= image_tag @vegetable.user.get_profile_image(250, 250), class: "img-fluid rounded-circle" %>
+      <%= image_tag @user.get_profile_image(250, 250), class: "img-fluid rounded-circle" %>
     </div>
 
     <!-- 野菜画像 -->
@@ -43,26 +43,18 @@
     </div>
   </div>
 
-
-  <!-- 遷移ボタン -->
+  <!-- ボタン -->
   <div class="row mt-5">
     <div class="col-md-3">
-      <%= link_to vegetables_path, class: "btn btn-success form-control" do %>
-        <i class="fa-regular fa-comment"></i> 投稿一覧
-      <% end %>
-    </div>
-    <% if @user == current_user %>
-    <div class="col-md-3">
-      <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-success form-control" do %>
-        <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
+      <%= link_to admin_vegetables_path, class: "btn btn-success form-control" do %>
+        <i class="fa-regular fa-comment"></i> 管理者投稿一覧画面
       <% end %>
     </div>
     <div class="col-md-3">
-      <%= link_to root_path, class: "btn btn-success form-control" do %>
-        <i class="fa-regular fa-comment"></i> コメント
-      <% end %>
-    </div>
-    <% end %>
+        <%= link_to admin_vegetable_path(@vegetable.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+          <i class="fa-solid fa-trash"></i> 退会させる
+        <% end %>
+      </div>
   </div>
 </div>
 

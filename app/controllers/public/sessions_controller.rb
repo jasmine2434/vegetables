@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :user_state, only: [:create]
+  before_action :user_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -36,10 +36,10 @@ class Public::SessionsController < Devise::SessionsController
   private
 
   def user_state
-      user = User.find_by(email: params[:name][:email])
+      user = User.find_by(email: params[:user][:email])
       if user.nil?
-        flash[:alert] = "アカウントが見つかりません。"
-        redirect_to new_user_session_path and return
+        flash[:danger] = "アカウントが見つかりません"
+        redirect_to new_user_session_path
       end
   end
 

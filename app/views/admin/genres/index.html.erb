@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="mb-4">ジャンル一覧・追加・編集</h2>
+  <h2 class="row mt-5">ジャンル一覧・追加画面</h2>
 
-  <div class="row">
+  <div class="row mt-3">
     <!-- フォームの部分 -->
     <div class="col-md-6">
       <%= form_with model: @genre, url: admin_genres_path, method: :post, local: true do |f| %>
@@ -13,14 +13,11 @@
         </div>
 
         <div class="row mt-3">
-          <div class="col-sm-9 offset-sm-3">
+          <div class="col-sm-6 offset-sm-3">
             <%= f.submit "新規登録", class: "btn btn-success" %>
           </div>
         </div>
       <% end %>
-      
- 
-      
     </div>
 
     <!-- ジャンルテーブルを右側に表示 -->
@@ -37,7 +34,7 @@
             <tr>
               <td class="p-2 text-center"><%= g.name %></td>
               <td class="p-2 text-center">
-                <%= link_to "編集する", admin_genres_path(g), class: "btn btn-primary" %>
+                <%= link_to "編集する", edit_admin_genre_path(g), class: "btn btn-warning" %>
               </td>
             </tr>
           <% end %>

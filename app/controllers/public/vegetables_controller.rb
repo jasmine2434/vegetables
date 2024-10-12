@@ -17,7 +17,7 @@ before_action :correct_user, only: [:edit, :update]
         redirect_to vegetable_path(@vegetable)
     else
         @user = current_user
-        flash[:alert] = "投稿に失敗しました"
+        flash.now[:alert] = "投稿に失敗しました"
         render :new
     end
   end
