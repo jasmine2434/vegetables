@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'vegetables/index'
+    get 'vegetables/show'
+  end
+  namespace :admin do
     get "homes/top"
     resources :vegetables, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :new, :create, :edit, :update]
