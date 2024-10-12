@@ -26,6 +26,36 @@
   position: relative;
 }
 
+.flash-message-wrapper {  /* メッセージ表示位置を固定 */
+  position: relative;
+  .flash-message {
+    position: absolute;
+    top: 25px;
+    z-index: 1;
+    width: 300px;
+    left: 800px;
+  }
+}
+
+.alert {
+  font-weight: 500;
+}
+
+.notice {
+  font-weight: 500;
+}
+
+.flash-message-wrapper {
+  position: relative;
+  .message-name {
+    position: absolute;
+    top: 25px;
+    z-index: 1;
+    width: 300px;
+    left: 300px;
+  }
+}
+
 .custom-content-top {
   padding: 20px;
   border-radius: 10px;
@@ -74,15 +104,4 @@
 
 .custom-text-about {
   font-weight: 500;
-}
-
-.flash-message-wrapper {  /* メッセージ表示位置を固定 */
-  position: relative;
-  .flash-message {
-    position: absolute;
-    top: 10px;
-    z-index: 1;
-    width: 300px;
-    left: 700px;
-  }
 }
