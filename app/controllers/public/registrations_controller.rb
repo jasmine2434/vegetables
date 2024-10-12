@@ -15,7 +15,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
       flash[:info] = "退会が完了しました"
       redirect_to new_user_registration_path
     else
-      flash[:danger] = "退会処理に失敗しました。もう一度お試しください"
+      
+      flash[:danger] = "退会処理に失敗しました"
       redirect_to edit_user_registration_path
     end
   end

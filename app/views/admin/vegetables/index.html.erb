@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col mt-5">管理者投稿一覧確認画面</h2>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 15%;">ユーザー画像</th>
+          <th scope="col" style="width: 20%;">ユーザー名</th>
+          <th scope="col" style="width: 15%;">画像</th>
+          <th scope="col" style="width: 25%;">名前</th>
+          <th scope="col" style="width: 25%;">説明文</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vegetables.each do |vege| %>
+          <tr>
+            <td><%= image_tag vege.user.get_profile_image(100, 100) %></td>
+            <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
+            <td><%= image_tag vege.get_image(100, 100) %></td>
+            <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
+            <td><%= truncate(vege.body, length: 30) %></td> <!-- 文字数制限 -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
