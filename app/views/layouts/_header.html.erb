@@ -51,6 +51,11 @@
     <div class="d-flex justify-content-end align-items-center">
       <ul class="navbar-nav" style="flex-direction: row;">
         <li>
+          <%= link_to admin_homes_top_path, class:"nav-link text-light" do%>
+            <button type="button" class="btn btn-outline-secondary mr-5" style="color: black; font-weight: 600; border-color: #d3d3d3;">管理一覧トップ</button>
+          <% end %>
+        </li>
+        <li>
           <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link text-light" do%>
             <button type="button" class="btn btn-outline-secondary mr-5" style="color: black; font-weight: 600; border-color: #d3d3d3;">ログアウト</button>
           <% end %>

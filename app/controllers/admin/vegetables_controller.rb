@@ -6,7 +6,7 @@ class Admin::VegetablesController < ApplicationController
 
   def show
     @vegetable = Vegetable.find(params[:id])
-
+    @user = @vegetable.user
   end
 
   def destroy
