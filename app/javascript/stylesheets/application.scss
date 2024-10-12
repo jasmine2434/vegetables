@@ -49,16 +49,17 @@
 }
 
 .custom-about {
-  height: 83vh;  /*サイズ指定 */
+  height: 85vh;  /*サイズ指定 */
 }
 
 .custom-background-about {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../assets/images/jagaimo.jpg");  /* 背景画像のパスを指定 */
+  background-image: url("../../assets/images/circle.jpg");  /* 背景画像のパスを指定 */
   background-size: cover;
   background-position: center;
+  background-color: rgba( 0, 0, 0, 0.5); /* 背景色を半透明 */
   position: relative;
 }
 
