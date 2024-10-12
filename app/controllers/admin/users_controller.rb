@@ -8,6 +8,13 @@ class Admin::UsersController < ApplicationController
     @vegetables = @user.vegetables
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "退会させました"
+  end
+
+
   private
 
   def user_params

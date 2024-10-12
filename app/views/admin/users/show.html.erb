@@ -1,2 +1,66 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <!-- ヘッダー行 -->
+  <div class="row mt-5">
+    <h1 class="col-md-5">管理者マイページ確認画面</h1>
+    <h4 class="col-md-7 mt-2 text-md-right">ユーザー名 "<%= @user.name %>" さん</h4>
+  </div>
+
+  <!-- プロフィールと投稿一覧 -->
+  <div class="row">
+    <!-- プロフィール情報 (左側に配置) -->
+    <div class="col-md-3 mt-2 order-md-1">
+      <div class="text-center mt-4">
+        <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
+      </div>
+      <h5 class="mt-5">仮グループ一覧</h5>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">グループ名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>仮のグループ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 投稿一覧 (右側に配置) -->
+    <div class="col-md-8 mt-2 order-md-2">
+      <h2>投稿一覧</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">画像</th>
+            <th scope="col">名前</th>
+            <th scope="col">ジャンル</th>
+            <th scope="col">いいね</th>
+            <th scope="col">コメント数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vegetables.each_with_index do |vege, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= image_tag vege.get_image(100, 100), class: "img-thumbnail" %></td>
+              <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
+              <td><%= vege.genre.name %></td>
+              <td>仮いいね数</td>
+              <td>仮コメント数</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 退会ボタン -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-3 text-center">
+      <%= link_to "退会させる", admin_user_path(@user.id), method: :delete, class: "btn btn-danger btn-block w-100", data: { confirm: "本当に退会させますか？" } %>
+    </div>
+  </div>
+</div>
