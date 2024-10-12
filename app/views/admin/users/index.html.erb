@@ -1,6 +1,6 @@
  <div class="container">
   <div class="row">
-    <h2 class="col mt-5">管理者投稿一覧確認画面</h2>
+    <h2 class="col mt-5">投稿者確認画面</h2>
   </div>
   <div class="row">
     <table class="table table-striped">
@@ -8,9 +8,9 @@
         <tr>
           <th scope="col" style="width: 15%;">ユーザー画像</th>
           <th scope="col" style="width: 20%;">ユーザー名</th>
-          <th scope="col" style="width: 25%;">仮いいね数</th>
-          <th scope="col" style="width: 25%;">仮コメント数</th>
-          <th scope="col" style="width: 15%;">仮グループ</th>
+          <th scope="col" style="width: 25%;">いいね数</th>
+          <th scope="col" style="width: 25%;">コメント数</th>
+          <th scope="col" style="width: 15%;">グループ</th>
         </tr>
       </thead>
       <tbody>
@@ -18,9 +18,9 @@
           <tr>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= link_to user.name, admin_user_path(user.id) %></td>
-             <td>仮いいね数</td>
-            <td>仮コメント数</td>
-            <td>仮グループ数</td>
+             <td>#</td>
+            <td>#</td>
+            <td>#</td>
           </tr>
         <% end %>
       </tbody>
