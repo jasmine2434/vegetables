@@ -7,7 +7,6 @@ class Vegetable < ApplicationRecord
 
   validates :name, presence: true
   validates :body, presence: true
-  #validates :genre_id, presence: true
 
   def get_image(width, height)
     unless image.attached?
@@ -16,8 +15,6 @@ class Vegetable < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-
-  
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

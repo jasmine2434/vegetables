@@ -20,7 +20,6 @@ class Admin::VegetablesController < ApplicationController
     end
   end
 
-
   private
 
   def vegetable_params
@@ -30,7 +29,5 @@ class Admin::VegetablesController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image)
   end
-
-
 
 end

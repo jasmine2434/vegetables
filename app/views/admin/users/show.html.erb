@@ -1,15 +1,14 @@
 <div class="container">
-  <!-- ヘッダー行 -->
   <div class="row mt-5">
     <h1 class="col-md-6">マイページ確認画面</h1>
   </div>
-  <div>
-    <h4 class="col-md-5 mt-2">ユーザー名 "<%= @user.name %>" さん</h4>
+  <div class="row mt-2">
+    <h4 class="col-md-5">ユーザー名 "<%= @user.name %>" さん</h4>
+    <h4 class="col-md-6">メールアドレス：  <%= @user.email %></h4>
   </div>
 
-  <!-- プロフィールと投稿一覧を同じrow内に配置 -->
+  <!-- プロフィール、グループ -->
   <div class="row mt-4">
-    <!-- プロフィール情報 (左側に配置) -->
     <div class="col-md-3 order-md-1">
       <div class="text-center mt-1">
         <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
@@ -29,9 +28,8 @@
       </table>
     </div>
 
-    <!-- 投稿一覧 (右側に配置) -->
+    <!-- 投稿一覧  -->
     <div class="col-md-8 order-md-2 ml-4">
-      <h2>投稿一覧</h2>
       <table class="table table-striped text-center">
         <thead>
           <tr>
@@ -45,12 +43,11 @@
         <tbody>
           <% @vegetables.each_with_index do |vege, index| %>
             <tr>
-              <th scope="row"><%= index + 1 %></th>
               <td><%= image_tag vege.get_image(100, 100), class: "img-thumbnail" %></td>
               <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
               <td><%= vege.genre.name %></td>
-              <td>仮いいね数</td>
-              <td>仮コメント数</td>
+              <td>#</td>
+              <td>#</td>
             </tr>
           <% end %>
         </tbody>

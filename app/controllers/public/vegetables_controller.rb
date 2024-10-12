@@ -13,12 +13,12 @@ before_action :correct_user, only: [:edit, :update]
     @genres = Genre.all
     @vegetable.user_id = current_user.id
     if @vegetable.save
-        flash[:notice] = "投稿されました"
-        redirect_to vegetable_path(@vegetable)
+      flash[:notice] = "投稿されました"
+      redirect_to vegetable_path(@vegetable)
     else
-        @user = current_user
-        flash.now[:alert] = "投稿に失敗しました"
-        render :new
+      @user = current_user
+      flash.now[:alert] = "投稿に失敗しました"
+      render :new
     end
   end
 
@@ -27,7 +27,6 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   def show
-    #@user = current_user
     @vegetable = Vegetable.find(params[:id])
     @user = @vegetable.user
   end
@@ -35,7 +34,6 @@ before_action :correct_user, only: [:edit, :update]
   def edit
     @genres = Genre.all
     @vegetable = Vegetable.find(params[:id])
-
   end
 
   def update
@@ -45,7 +43,7 @@ before_action :correct_user, only: [:edit, :update]
       flash[:notice] = "更新されました"
       redirect_to vegetable_path
     else
-      flash[:alert] = "更新に失敗しました"
+      flash.now[:alert] = "更新に失敗しました"
       render :edit
     end
   end
@@ -56,7 +54,7 @@ before_action :correct_user, only: [:edit, :update]
       flash[:notice] = "削除されました"
       redirect_to my_page_path
     else
-      flash[:notice] = "削除に失敗しました"
+      flash.now[:notice] = "削除に失敗しました"
       render :edit
     end
   end

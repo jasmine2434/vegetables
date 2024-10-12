@@ -76,7 +76,7 @@
   font-weight: 500;
 }
 
-.flash-message-wrapper {
+.flash-message-wrapper {  /* メッセージ表示位置を固定 */
   position: relative;
   .flash-message {
     position: absolute;
