@@ -15,7 +15,7 @@ class Admin::VegetablesController < ApplicationController
       flash[:notice] = "削除されました"
       redirect_to my_page_path
     else
-      flash[:notice] = "削除に失敗しました"
+      flash.now[:notice] = "削除に失敗しました"
       render :edit
     end
   end
