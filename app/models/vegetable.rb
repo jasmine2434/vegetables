@@ -17,6 +17,7 @@ class Vegetable < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
 
+  
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
