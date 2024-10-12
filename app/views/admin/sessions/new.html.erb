@@ -5,18 +5,19 @@
       <h2 class="card-header bg-light text-left">管理者ログイン</h2>
     </div>
     <div class="col-md-9">
-        <div class="form-group row">
+        <h5 class="form-group row">
           <%= f.label :email, "メールアドレス", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-9">
             <%= f.email_field :email, class: "form-control", placeholder: "admin@example.com" %>
           </div>
-        </div>
-        <div class="form-group row">
+        </h5>
+
+        <h5 class="form-group row">
           <%= f.label :password, "パスワード", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-9">
             <%= f.password_field :password, class: "form-control" %>
           </div>
-        </div>
+        </h5>
     </div>
   </div>
     <div class="row justify-content-center">

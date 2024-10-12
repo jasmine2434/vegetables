@@ -1,0 +1,44 @@
+
+<div class="container">
+  <h2 class="row mt-5">管理者一覧画面</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to admin_homes_top_path, class: "btn btn-primary w-100" do %>
+        ユーザー
+        <%= image_tag "nouka_man_hatake.png", size: "250x250", class: "img-fluid" %>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <%= link_to admin_homes_top_path, class: "btn btn-warning w-100" do %>
+        投稿
+        <%= image_tag "food_lettuce.png", size: "250x250", class: "img-fluid" %>
+      <% end %>
+    </div>
+
+    <div class="col-3">
+      <%= link_to admin_homes_top_path, class: "btn btn-success w-100" do %>
+        ジャンル
+        <%= image_tag "vege.png", size: "250x250", class: "img-fluid" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-3">
+      <%= link_to admin_homes_top_path, class: "btn btn-secondary w-100" do %>
+        コメント
+        <%= image_tag "comment.png", size: "250x250", class: "img-fluid" %>
+      <% end %>
+    </div>
+
+    <div class="col-3">
+      <%= link_to admin_homes_top_path, class: "btn btn-danger w-100" do %>
+        グループ
+        <%= image_tag "group.png", size: "250x250", class: "img-fluid" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
