@@ -8,8 +8,6 @@ class Admin::UsersController < ApplicationController
     @vegetables = @user.vegetables
   end
 
-
-
   private
 
   def user_params
