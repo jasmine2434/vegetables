@@ -22,7 +22,7 @@ class Vegetable < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Vegetable.where(title: content)
+      Vegetable.where(name: content)
     else
       Vegetable.where('name LIKE ?', '%' + content + '%')
     end
