@@ -1,10 +1,13 @@
- <div class="container">
+<div style="margin-right: -8px;margin-top: 15px;">
+  <P>ここだよ？</P>
+  <%= render "layouts/search" %>
+</div>
+
+<div class="container">
   <div class="row">
     <h2 class="col mt-5">ユーザー確認画面</h2>
   </div>
-  
-  <%= render "layouts/search" %>
-              
+
   <div class="row text-center">
     <table class="table table-striped">
       <thead>
@@ -22,8 +25,8 @@
             <td><%= user.created_at.strftime("%Y年%m月%d日") %></td>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= link_to user.name, admin_user_path(user.id) %></td>
-             <td>#</td>
-            <td>#</td>
+            <td><%= @vegetable.favorites.count %></td>
+            <td><%= @vegetable.comments.count %></td>
           </tr>
         <% end %>
       </tbody>

@@ -54,7 +54,7 @@
                   <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post, class: "text-muted" %>
                 <% end %>
               </td>
-              <td>仮コメント数</td>
+              <td><%= @vegetable.comments.count %></td>
             </tr>
           <% end %>
         </tbody>

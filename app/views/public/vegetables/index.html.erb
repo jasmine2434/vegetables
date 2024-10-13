@@ -1,17 +1,7 @@
+    <div style="margin-right: -8px;margin-top: 15px;">
+      <%= render "layouts/search" %>
+    </div>
     <div class="container">
-
-
-      <div class="row">
-        <div class="col-12 mt-3">
-        <div class="parent-element mb-2">
-            <div class="child-element">
-              <%= render "layouts/search" %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
       <div class="row">
           <h2 class="col mt-5">投稿一覧</h2>
         <table class="table">
@@ -42,11 +32,11 @@
                   <%= link_to "♥ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete %>
                 </td>
               <% else %>
-                <td>
+                <td class="text-center">
                   <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
                 </td>
               <% end %>
-              <td>仮コメント数</td>
+              <td><%= @vegetable.comments.count %></td>
             </tr>
             <% end %>
           </tbody>

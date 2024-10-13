@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :vegetables, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :new, :create, :edit, :update]
     resources :users, only: [:index, :show, :destroy]
-    resources :comments, only: [:index, :show, :destroy]
+    #resources :comments, only: [:index, :show, :destroy]
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy]
     resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
       resource :favorite, only: [:create, :destroy, :update]
+      resources :comments, only: [:create, :destroy]
     end
 
     resources :profile_image

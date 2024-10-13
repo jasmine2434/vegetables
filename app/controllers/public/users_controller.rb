@@ -11,11 +11,13 @@ class Public::UsersController < ApplicationController
   def mypage
     @user = current_user
     @vegetables = @user.vegetables
+     @vegetable = Vegetable.new
   end
 
   def show
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
+    @vegetable = Vegetable.new
   end
 
   def edit

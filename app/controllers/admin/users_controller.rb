@@ -1,14 +1,16 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :authenticate_admin!, if: :admin_url
+  #before_action :authenticate_admin!, if: :admin_url
 
   def index
     @users = User.all
+    @vegetable = Vegetable.new
   end
 
   def show
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
+    @vegetable = Vegetable.new
   end
 
   def destroy
@@ -19,7 +21,7 @@ class Admin::UsersController < ApplicationController
 
 
   private
-  
+
   def admin_url
     request.fullpath.include?("/admin")
     flash[:alert] = "このページにアクセスできません"
