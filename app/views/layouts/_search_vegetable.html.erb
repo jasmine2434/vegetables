@@ -1,13 +1,6 @@
 <div class="container">
   <div class="row">
-    
-    <%= render "layouts/search" %>
-    
-    </div>
-  </div>
-
-  <div class="row">
-    <h2 class="col mt-5">投稿一覧確認画面</h2>
+    <h2 class="col mt-5">検索投稿一覧画面</h2>
   </div>
   <h5 class="row text-center">
     <table class="table table-striped">
@@ -21,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @vegetables.each do |vege| %>
+        <% vegetables.each do |vege| %>
           <tr>
             <td><%= image_tag vege.user.get_profile_image(80, 80) %></td>
             <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
