@@ -1,4 +1,6 @@
-class Public::SearchesController < ApplicationController
+class Admin::SearchesController < ApplicationController
+
+  before_action :authenticate_admin!, if: :admin_url
 
   def search
     @model = params[:model]
@@ -13,6 +15,15 @@ class Public::SearchesController < ApplicationController
     else
         @records = Vegetable.search_for(@content, @method)
     end
+  end
+
+
+  private
+
+  def admin_url
+    request.fullpath.include?("/admin")
+    flash[:alert] = "このページにアクセスできません"
+    redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
   end
 
 end
