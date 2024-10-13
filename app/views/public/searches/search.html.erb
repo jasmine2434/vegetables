@@ -1,0 +1,11 @@
+<div class="container">
+  <% if @model == 'user' %>
+      <h3 class="mb-4 mt-4">ユーザー検索結果 "<%= @content %>"</h3>
+    <%= render 'layouts/search_user', users: @records %>
+  <% elsif @model == 'vegetable' %>
+      <h3 class="mb-4 mt-4">投稿名の検索結果 "<%= @content %>"</h3>
+    <%= render 'layouts/search_vegetable', vegetables: @records %>
+  <% else %>
+    <h3 class="text-center mt-5">該当するものは見つかりませんでした  "<%= @content %>"</h3>
+  <% end %>
+</div>

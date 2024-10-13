@@ -1,17 +1,19 @@
 class Public::SearchesController < ApplicationController
 
-   before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def search
     @model = params[:model]
     @content = params[:content]
     @method = params[:method]
 
-    # 選択したモデルに応じて検索を実行
-    if @model  == "user"
-      @records = User.search_for(@content, @method)
+    if @content.blank?
+      flash[:alert] = "検索ワードを入力してくだい"
+        redirect_to vegetables_path
+    elsif @model  == "user"
+        @records = User.search_for(@content, @method)
     else
-      @records = Vegerables.search_for(@content, @method)
+        @records = Vegetable.search_for(@content, @method)
     end
   end
 

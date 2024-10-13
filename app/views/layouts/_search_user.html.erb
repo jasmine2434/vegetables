@@ -1,0 +1,29 @@
+ <div class="container">
+  <div class="row">
+    <h2 class="col mt-5">ユーザー検索結果画面</h2>
+  </div>
+  <div class="row text-center">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 15%;">ユーザー画像</th>
+          <th scope="col" style="width: 25%;">ユーザー名</th>
+          <th scope="col" style="width: 15%;">投稿数</th>
+          <th scope="col" style="width: 10%;">いいね数</th>
+          <th scope="col" style="width: 10%;">コメント数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image(100, 100) %></td>
+            <td><%= link_to user.name, user_path(user.id) %></td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
