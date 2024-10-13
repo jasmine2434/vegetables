@@ -26,6 +26,36 @@
   position: relative;
 }
 
+.flash-message-wrapper {  /* メッセージ表示位置を固定 */
+  position: relative;
+  .flash-message {
+    position: absolute;
+    top: 25px;
+    z-index: 1;
+    width: 300px;
+    left: 800px;
+  }
+}
+
+.alert {
+  font-weight: 500;
+}
+
+.notice {
+  font-weight: 500;
+}
+
+.flash-message-wrapper {
+  position: relative;
+  .message-name {
+    position: absolute;
+    top: 25px;
+    z-index: 1;
+    width: 300px;
+    left: 300px;
+  }
+}
+
 .custom-content-top {
   padding: 20px;
   border-radius: 10px;
@@ -49,16 +79,17 @@
 }
 
 .custom-about {
-  height: 83vh;  /*サイズ指定 */
+  height: 85vh;  /*サイズ指定 */
 }
 
 .custom-background-about {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../assets/images/jagaimo.jpg");  /* 背景画像のパスを指定 */
+  background-image: url("../../assets/images/circle.jpg");  /* 背景画像のパスを指定 */
   background-size: cover;
   background-position: center;
+  background-color: rgba( 0, 0, 0, 0.5); /* 背景色を半透明 */
   position: relative;
 }
 
@@ -73,15 +104,4 @@
 
 .custom-text-about {
   font-weight: 500;
-}
-
-.flash-message-wrapper {
-  position: relative;
-  .flash-message {
-    position: absolute;
-    top: 10px;
-    z-index: 1;
-    width: 300px;
-    left: 700px;
-  }
 }

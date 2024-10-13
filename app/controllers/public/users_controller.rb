@@ -20,11 +20,6 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
-    #if @user == current_user
-      #render :edit
-    #else
-      #redirect_to my_page_path(current_user)
-    #end
   end
 
   def update
@@ -33,10 +28,11 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "変更を保存しました"
       redirect_to my_page_path
     else
-      flash[:alert] = "変更が失敗しました"
+      flash.now[:alert] = "変更が失敗しました"
       render :edit
     end
   end
+
 
   private
 

@@ -1,13 +1,4 @@
 <div class="container">
-    <% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @genre.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
-
   <div class="row mt-5">
     <h2 class="title text-center mt-4">ジャンル編集画面</h2>
   </div>

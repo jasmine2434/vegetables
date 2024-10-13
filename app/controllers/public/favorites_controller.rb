@@ -8,10 +8,10 @@ def create
 end
 
 def destroy
-    vegetable = Vegetable.find(params[:vegetable_id])
-    favorite = current_user.favorites.find_by(vegetable_id: vegetable.id)
-    favorite.destroy
-    redirect_to vegetables_path(vegetable.id)
+  vegetable = Vegetable.find(params[:vegetable_id])
+  favorite = current_user.favorites.find_by(vegetable_id: vegetable.id)
+  favorite.destroy
+  redirect_to vegetables_path(vegetable.id)
 end
 
 end

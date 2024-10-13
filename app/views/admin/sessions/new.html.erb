@@ -4,6 +4,7 @@
     <div class="col-md-10 mb-3">
       <h2 class="card-header bg-light text-left">管理者ログイン</h2>
     </div>
+      <!-- メールアドレス -->
     <div class="col-md-9">
         <h5 class="form-group row">
           <%= f.label :email, "メールアドレス", class: "col-sm-3 col-form-label" %>
@@ -11,7 +12,7 @@
             <%= f.email_field :email, class: "form-control", placeholder: "admin@example.com" %>
           </div>
         </h5>
-
+      <!-- パスワード -->
         <h5 class="form-group row">
           <%= f.label :password, "パスワード", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-9">
@@ -20,11 +21,11 @@
         </h5>
     </div>
   </div>
+      <!-- ログインボタン -->
     <div class="row justify-content-center">
       <div class="col-md-3">
         <div class="form-group mt-3">
           <%= f.submit 'ログイン', class: "btn btn-primary btn-block" %>
-
         </div>
       </div>
     </div>

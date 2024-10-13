@@ -54,5 +54,4 @@ class Public::SessionsController < Devise::SessionsController
     params.require(:user).permit(:name, :email)
   end
 
-
 end

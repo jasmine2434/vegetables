@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2 class="title text-center mt-4">投稿画面</h2>
+    <h2 class="title text-center mt-4">投稿詳細画面</h2>
   </div>
   <!-- ユーザー名表示 -->
   <div class="row mb-3 align-items-center">
@@ -20,23 +20,23 @@
     </div>
 
     <!-- 野菜画像 -->
-    <div class="col-md-2 text-center">
-      <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid rounded" %>
+    <div class="col-md-2 ml-5 text-center">
+      <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
     </div>
 
     <!-- 野菜情報 -->
-    <div class="col-md-8">
-      <div class="row mb-2">
+    <div class="col-md-7">
+      <div class="row mb-2 ml-4">
         <h4 class="col-md-3">名前</h4>
         <h4 class="col-md-9"><%= @vegetable.name %></h4>
       </div>
 
-      <div class="row mb-2">
+      <div class="row mb-2 ml-4">
         <h4 class="col-md-3">ジャンル</h4>
         <h4 class="col-md-9"><%= @vegetable.genre.name %></h4>
       </div>
 
-      <div class="row">
+      <div class="row ml-4">
         <h4 class="col-md-3">説明文</h4>
         <h4 class="col-md-9"><%= @vegetable.body %></h4>
       </div>
@@ -53,12 +53,12 @@
     </div>
     <% if @user == current_user %>
     <div class="col-md-3">
-      <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-success form-control" do %>
+      <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
         <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
       <% end %>
     </div>
     <div class="col-md-3">
-      <%= link_to root_path, class: "btn btn-success form-control" do %>
+      <%= link_to root_path, class: "btn btn-info form-control" do %>
         <i class="fa-regular fa-comment"></i> コメント
       <% end %>
     </div>

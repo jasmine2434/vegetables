@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -16,7 +17,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンルが作成されました"
       redirect_to admin_genres_path
     else
-      flash[:alert] = "ジャンルの作成に失敗しました"
+      flash.now[:alert] = "ジャンルの作成に失敗しました"
       render :index
     end
   end
@@ -32,10 +33,11 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンルが更新されました"
       redirect_to admin_genres_path
     else
-      flash[:alert] = "ジャンルの更新に失敗しました"
+      flash.now[:alert] = "ジャンルの更新に失敗しました"
       render :edit
     end
   end
+
 
   private
 
