@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
     get '/users/my_page' => 'users#mypage' ,as: 'my_page'
+    get '/search' => 'searches#search'
 
     resources :users, only: [:show, :edit, :update, :destroy]
-
     resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
       resource :favorite, only: [:create, :destroy, :update]
     end

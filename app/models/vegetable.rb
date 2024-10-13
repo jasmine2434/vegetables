@@ -19,4 +19,12 @@ class Vegetable < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Vegetable.where(title: content)
+    else
+      Vegetable.where('name LIKE ?', '%' + content + '%')
+    end
+  end
 end
