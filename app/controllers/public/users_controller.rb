@@ -11,13 +11,15 @@ class Public::UsersController < ApplicationController
   def mypage
     @user = current_user
     @vegetables = @user.vegetables
-     @vegetable = Vegetable.new
+    @comments = Comment.all
+    #@favorites = Favorite.all
   end
 
   def show
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
-    @vegetable = Vegetable.new
+    @comments = Comment.all
+    
   end
 
   def edit
@@ -34,6 +36,8 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
+  
+  
 
 
   private

@@ -18,9 +18,9 @@
           <tr>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= link_to user.name, user_path(user.id) %></td>
-            <td>#</td>
-            <td>#</td>
-            <td>#</td>
+            <td><%= user.vegetables.count %></td>
+            <td><%= user.favorites.count %></td>
+            <td><%= user.comments.count %></td>
           </tr>
         <% end %>
       </tbody>

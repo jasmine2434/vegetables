@@ -5,12 +5,16 @@ class Admin::UsersController < ApplicationController
   def index
     @users = User.all
     @vegetable = Vegetable.new
+    @comments = Comment.all
+    @favorites = Favorite.all
   end
 
   def show
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
     @vegetable = Vegetable.new
+    @comments = Comment.all
+    @favorites = Favorite.all
   end
 
   def destroy

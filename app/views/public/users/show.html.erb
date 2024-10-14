@@ -25,38 +25,33 @@
 
       <div class="col-md-8 mt-2 offset-md-1">
         <h2>投稿一覧</h2>
-
         <table class="table">
-          <thead>
+          <thead class="thead-light text-center">
             <tr>
-              <th scope="col"></th>
               <th scope="col">画像</th>
               <th scope="col">名前</th>
               <th scope="col">ジャンル</th>
-              <th scope="col">いいね</th>
+              <th scope="col">いいね数</th>
               <th scope="col">コメント数</th>
             </tr>
           </thead>
           <tbody>
             <% @vegetables.each do |vege| %>
             <tr>
-              <th scope="row"></th>
-              <td><%= image_tag vege.get_image(100, 100) %></td>
-              <td><%= link_to vegetable_path(vege.id) do %>
+              <td class="text-center"><%= image_tag vege.get_image(100, 100) %></td>
+              <td class="text-center"><%= link_to vegetable_path(vege.id) do %>
                     <%= vege.name %>
                   <% end %>
               </td>
-              <td><%= vege.genre.name %></td>
-              <% if vege.favorited_by?(current_user) %>
-                <td class="text-center">
-                  <%= link_to "♥ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" } %>
-                </td>
-              <% else %>
-                <td>
-                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
-                </td>
-              <% end %>
-              <td><%= @vegetable.comments.count %></td>
+              <td class="text-center"><%= vege.genre.name %></td>
+              <td class="text-center">
+                <% if vege.favorited_by?(current_user) %>
+                  <%= link_to "❤ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" }, class: "text-danger" %>
+                <% else %>
+                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post, class: "text-muted" %>
+                <% end %>
+              </td>
+              <td class="text-center"><%= vege.comments.count %></td>
             </tr>
             <% end %>
           </tbody>

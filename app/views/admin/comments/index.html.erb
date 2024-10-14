@@ -4,29 +4,31 @@
 
 <div class="container">
   <div class="row">
-    <h2 class="col mt-5">投稿一覧確認画面</h2>
+    <h2 class="col mt-5">コメント一覧確認画面</h2>
   </div>
   <h5 class="row text-center">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col" style="width: 10%;">ユーザー画</th>
           <th scope="col" style="width: 10%;">ユーザー名</th>
           <th scope="col" style="width: 10%;">画像</th>
-          <th scope="col" style="width: 15%;">名前</th>
-          <th scope="col" style="width: 10%;">ジャンル</th>
-          <th scope="col" style="width: 25%;">説明文</th>
+          <th scope="col" style="width: 15%;">投稿名</th>
+          <th scope="col" style="width: 30%;">コメント</th>
+          <th scope="col" style="width: 10%;"></th>
         </tr>
       </thead>
       <tbody>
         <% @vegetables.each do |vege| %>
           <tr>
-            <td><%= image_tag vege.user.get_profile_image(80, 80) %></td>
             <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
             <td><%= image_tag vege.get_image(100, 100) %></td>
             <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
-            <td><%= vege.genre.name %></td>
-            <td><%= truncate(vege.body, length: 30) %></td> <!-- 文字数制限 -->
+            <td><%= truncate(vege.comments.first.body, length: 30) if vege.comments.any? %></td>
+            <td><% if vege.comments.any? %>
+                <%= link_to admin_comment_path(vege.comments.first.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+          <i class="fa-solid fa-trash"></i> 削除
+          <% end %>
+        <% end %></td>
           </tr>
         <% end %>
       </tbody>

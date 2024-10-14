@@ -33,7 +33,7 @@
             <th scope="col">画像</th>
             <th scope="col">名前</th>
             <th scope="col">ジャンル</th>
-            <th scope="col">いいね</th>
+            <th scope="col">いいね数</th>
             <th scope="col">コメント数</th>
           </tr>
         </thead>
@@ -47,14 +47,8 @@
                 <% end %>
               </td>
               <td><%= vege.genre.name %></td>
-              <td class="text-center">
-                <% if vege.favorited_by?(current_user) %>
-                  <%= link_to "❤ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" }, class: "text-danger" %>
-                <% else %>
-                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post, class: "text-muted" %>
-                <% end %>
-              </td>
-              <td><%= @vegetable.comments.count %></td>
+              <td class="text-center"><%= vege.favorites.count %></td>
+              <td class="text-center"><%= vege.comments.count %></td>
             </tr>
           <% end %>
         </tbody>

@@ -46,8 +46,8 @@
               <td><%= image_tag vege.get_image(100, 100), class: "img-thumbnail" %></td>
               <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
               <td><%= vege.genre.name %></td>
-              <td><%= @vegetable.favorites.count %></td>
-              <td><%= @vegetable.comments.count %></td>
+              <td><%= vege.favorites.count %></td>
+              <td><%= vege.comments.count %></td>
             </tr>
           <% end %>
         </tbody>

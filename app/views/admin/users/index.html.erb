@@ -1,5 +1,4 @@
 <div style="margin-right: -8px;margin-top: 15px;">
-  <P>ここだよ？</P>
   <%= render "layouts/search" %>
 </div>
 
@@ -15,6 +14,7 @@
           <th scope="col" style="width: 15%;">登録日</th>  <!-- 新規ユーザー登録日 -->
           <th scope="col" style="width: 15%;">ユーザー画像</th>
           <th scope="col" style="width: 25%;">ユーザー名</th>
+          <th scope="col" style="width: 10%;">投稿数</th>
           <th scope="col" style="width: 10%;">いいね数</th>
           <th scope="col" style="width: 10%;">コメント数</th>
         </tr>
@@ -25,8 +25,9 @@
             <td><%= user.created_at.strftime("%Y年%m月%d日") %></td>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= link_to user.name, admin_user_path(user.id) %></td>
-            <td><%= @vegetable.favorites.count %></td>
-            <td><%= @vegetable.comments.count %></td>
+            <td><%= user.vegetables.count %></td>
+            <td><%= user.favorites.count %></td>
+            <td><%= user.comments.count %></td>
           </tr>
         <% end %>
       </tbody>

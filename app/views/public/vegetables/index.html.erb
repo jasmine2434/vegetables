@@ -4,39 +4,31 @@
     <div class="container">
       <div class="row">
           <h2 class="col mt-5">投稿一覧</h2>
-        <table class="table">
+        <table class="table text-center">
           <thead>
             <tr>
-              <th scope="col"></th>
+              <th scope="col" style="width: 15%;">ユーザー画像</th>
               <th scope="col">ユーザー名</th>
               <th scope="col">画像</th>
               <th scope="col">名前</th>
-              <th scope="col">いいね</th>
+              <th scope="col">いいね数</th>
               <th scope="col">コメント数</th>
             </tr>
           </thead>
           <tbody>
             <% @vegetables.each do |vege| %>
             <tr>
-              <th scope="row"></th>
-              <td><%= link_to user_path(vege.user_id) do %>
+              <td class="text-center"><%= image_tag vege.user.get_profile_image(80, 80) %></td>
+              <td class="text-center"><%= link_to user_path(vege.user_id) do %>
                 <%= vege.user.name %></td>
                 <% end %>
-              <td><%= image_tag vege.get_image(100, 100) %></td>
-              <td><%= link_to vegetable_path(vege.id) do %>
+              <td class="text-center"><%= image_tag vege.get_image(100, 100) %></td>
+              <td class="text-center"><%= link_to vegetable_path(vege.id) do %>
                   <%= vege.name %>
                   <% end %>
               </td>
-              <% if vege.favorited_by?(current_user) %>
-                <td class="text-center">
-                  <%= link_to "♥ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete %>
-                </td>
-              <% else %>
-                <td class="text-center">
-                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
-                </td>
-              <% end %>
-              <td><%= @vegetable.comments.count %></td>
+              <td class="text-center"><%= vege.favorites.count %></td>
+              <td class="text-center"><%= vege.comments.count %></td>
             </tr>
             <% end %>
           </tbody>
