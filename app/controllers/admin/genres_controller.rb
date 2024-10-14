@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
 
-  before_action :authenticate_admin!, if: :admin_url
+  #before_action :authenticate_admin!, if: :admin_url
 
   def index
     @genres = Genre.all

@@ -28,8 +28,6 @@
           </td>
         </tr>
       </table>
-
- 
       <!-- コメントフォーム -->
       <div class="mb-5 mt-3">
         <h5>投稿にコメントを送信</h5>
@@ -66,11 +64,11 @@
           <td><%= @vegetable.body %></td>
         </tr>
       </table>
-      
+
            <!-- 遷移ボタン -->
-      <div class="row">
+      <div class="row d-flex justify-content-end">
         <% if @user == current_user %>
-          <div class="col-md-6 text-right">
+          <div class="col-md-5">
             <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
               <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
             <% end %>
@@ -82,14 +80,14 @@
   </div>
 
   <!-- コメント一覧 -->
-  <div class="row mt-5">
+  <div class="row mt-2">
     <div class="col-12">
       <h3>コメント一覧</h3>
       <table class="table table-bordered mt-2 text-center">
         <thead class="thead-light">
           <tr>
-            <th scope="col">ユーザー</th>
-            <th scope="col">コメント</th>
+            <th scope="col" style="width: 15%;">ユーザー</th>
+            <th scope="col" style="width: 70%;">コメント</th>
             <th scope="col"></th> <!-- 削除ボタン用 -->
           </tr>
         </thead>

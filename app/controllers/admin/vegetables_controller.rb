@@ -16,10 +16,10 @@ class Admin::VegetablesController < ApplicationController
     @vegetable = Vegetable.find(params[:id])
     if @vegetable.destroy
       flash[:notice] = "削除されました"
-      redirect_to my_page_path
+      redirect_to admin_vegetables_path
     else
       flash.now[:notice] = "削除に失敗しました"
-      render :edit
+      render :show
     end
   end
 

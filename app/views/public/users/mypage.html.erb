@@ -12,10 +12,7 @@
           <td class="col-5 text-center">ユーザー名</td>
           <td class="text-center"><%= @user.name %></td>
         </tr>
-        <tr>
-          <td class="text-center">いいね数</td>
-          <td class="text-center"><%= @user.favorites.count %></td> <!-- いいね数 -->
-        </tr>
+
       </table>
 
       <% if @user.email != "guest@example.com" %>

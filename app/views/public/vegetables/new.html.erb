@@ -2,22 +2,27 @@
 
   <%= render 'layouts/error', vegetable: @vegetable %>
 
-  <div class="row mt-3">
-      <h1 class="title">新規投稿画面</h1>
+  <div class="row mt-5">
+      <h2 class="title">新規投稿画面</h2>
   </div>
 
-  <div class="row">
-    <h4 class="col-2">ユーザー名</h4>
-    <h4 class="col-3">"<%= @user.name %>"さん</h4>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-        <div class="ml-3">
-          <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
-        </div>
+ <div class="row">
+    <div class="col-md-4 mt-4">
+      <table class="table table-bordered text-center mt-4">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-4 text-center">ユーザー名</td>
+          <td class="text-center"><%= @user.name %></td>
+        </tr>
+      </table>
     </div>
-
-<div class="col-md-9 offset-md-1">
+    
+  
+<div class="col-md-8">
   <%= form_with model: @vegetable, url: vegetables_path, method: :post do |f| %>
     <div class="row mb-5">
       <div class="col-md-4">
@@ -30,14 +35,14 @@
       </div>
     </div>
 
-    <div class="row mb-4">
+    <div class="row">
       <div class="col-3 fs-4">ジャンル</div>
       <div class="col-5">
         <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { include_blank: '選択してください' }, class: "form-control fs-4" %>
       </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row">
       <div class="col-md-8">
         <%= f.label :body, "説明文" %>
         <%= f.text_area :body, class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>

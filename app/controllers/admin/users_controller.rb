@@ -19,8 +19,13 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "退会させました"
+    if @user.destroy
+      flash[:notice] = "退会させました"
+      redirect_to admin_user_path
+    else
+      flash.now[:alert] = "失敗しました"
+      render :show
+    end
   end
 
 
