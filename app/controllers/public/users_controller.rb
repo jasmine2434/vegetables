@@ -9,6 +9,7 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
+    #@vegetable = Vegetable.find(params[:id])
     @user = current_user
     @vegetables = @user.vegetables
     @comments = Comment.all
@@ -19,7 +20,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
     @comments = Comment.all
-    
+
   end
 
   def edit
@@ -36,8 +37,8 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
-  
+
+
 
 
   private
