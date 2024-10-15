@@ -4,9 +4,9 @@
 
 <div class="container">
   <div class="row">
-    <h2 class="col mt-5">コメント一覧確認画面</h2>
+    <h2 class="col mt-4">コメント一覧確認画面</h2>
   </div>
-  <h5 class="row text-center">
+  <h5 class="row text-center mt-3">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -14,22 +14,24 @@
           <th scope="col" style="width: 10%;">画像</th>
           <th scope="col" style="width: 15%;">投稿名</th>
           <th scope="col" style="width: 30%;">コメント</th>
-          <th scope="col" style="width: 10%;"></th>
+          <th scope="col" style="width: 10%;">削除</th>
         </tr>
       </thead>
       <tbody>
-        <% @vegetables.each do |vege| %>
+
+          <% @vegetables.each do |vege| %>
+           <% if vege.comments.any? %>
           <tr>
             <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
             <td><%= image_tag vege.get_image(100, 100) %></td>
             <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
-            <td><%= truncate(vege.comments.first.body, length: 30) if vege.comments.any? %></td>
-            <td><% if vege.comments.any? %>
-                <%= link_to admin_comment_path(vege.comments.first.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-          <i class="fa-solid fa-trash"></i> 削除
-          <% end %>
-        <% end %></td>
+            <td><%= truncate(vege.comments.first.body, length: 30) %> </td>
+            <td><%= link_to admin_comment_path(vege.comments.first.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                  <i class="fa-solid fa-trash"></i> 削除
+                <% end %>
+            </td>
           </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>
