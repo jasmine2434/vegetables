@@ -17,9 +17,6 @@ ja:
           blank: "を入力してください"  # 空の場合のエラーメッセージ
           too_short: "は%{count}文字以上で入力してください"  # 短すぎる場合のエラーメッセージ
 
-    models:
-      user: ユーザー
-
   devise:
     failure:
       already_authenticated: すでにログインしています。
