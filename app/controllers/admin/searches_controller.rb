@@ -1,6 +1,6 @@
 class Admin::SearchesController < ApplicationController
 
-  before_action :authenticate_admin!, if: :admin_url
+  #before_action :authenticate_admin!
 
   def search
     @model = params[:model]
@@ -20,10 +20,11 @@ class Admin::SearchesController < ApplicationController
 
   private
 
-  def admin_url
-    request.fullpath.include?("/admin")
-    flash[:alert] = "このページにアクセスできません"
-    redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+  def authenticate_admin!
+    unless current_user&.admin?
+      flash[:alert] = "このページにアクセスできません"
+      redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+    end
   end
 
 end

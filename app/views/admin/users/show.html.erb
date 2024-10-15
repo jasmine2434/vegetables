@@ -1,64 +1,59 @@
 <div class="container">
-  <div class="row mt-5">
-    <h1 class="col-md-6">マイページ確認画面</h1>
-  </div>
-  <div class="row mt-2">
-    <h4 class="col-md-5">ユーザー名 "<%= @user.name %>" さん</h4>
-    <h4 class="col-md-6">メールアドレス：  <%= @user.email %></h4>
-  </div>
-
-  <!-- プロフィール、グループ -->
-  <div class="row mt-4">
-    <div class="col-md-3 order-md-1">
-      <div class="text-center mt-1">
-        <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
-      </div>
-      <h5 class="mt-5 text-center">グループ一覧</h5>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col" class="text-center">グループ名</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#</td>
-          </tr>
-        </tbody>
+  <h2 class="row mt-5 text-center">マイページ確認画面</h2>
+    <div class="row">
+ <div class="col-5 mt-2">
+      <!-- プロフィール画像 -->
+      <table class="table table-bordered text-center mt-4">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-4 text-center">ユーザー名</td>
+          <td class="text-center"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="text-center">メールアドレス</td>
+          <td class="text-center"><%= @user.email %></td>
+        </tr>
       </table>
     </div>
-
-    <!-- 投稿一覧  -->
-    <div class="col-md-8 order-md-2 ml-4">
+    <!-- 右半分 (投稿詳細情報) -->
+    <div class="col-md-7 mt-4">
       <table class="table table-striped text-center">
         <thead>
           <tr>
             <th scope="col" style="width: 20%;">画像</th>
             <th scope="col" style="width: 30%;">名前</th>
-            <th scope="col" style="width: 15%;">ジャンル</th>
+            <th scope="col" style="width: 15%;">投稿数</th>
             <th scope="col" style="width: 15%;">いいね</th>
-            <th scope="col" style="width: 15%;">コメント数</th>
+            <th scope="col" style="width: 20%;">コメント数</th>
           </tr>
         </thead>
         <tbody>
-          <% @vegetables.each_with_index do |vege, index| %>
+          <% @vegetables.each_with_index do |vege| %>
             <tr>
               <td><%= image_tag vege.get_image(100, 100), class: "img-thumbnail" %></td>
-              <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
-              <td><%= vege.genre.name %></td>
-              <td>#</td>
-              <td>#</td>
+              <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
+              <td><%= vege.user.vegetables.count %></td>
+              <td><%= vege.favorites.count %></td>
+              <td><%= vege.comments.count %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-
-  <!-- 退会ボタン -->
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-3 text-center">
-      <%= link_to "退会させる", admin_user_path(@user.id), method: :delete, class: "btn btn-danger btn-block w-100", data: { confirm: "本当に退会させますか？" } %>
-    </div>
+       <!-- 退会ボタン -->
+  <div class="row d-flex justify-content-end">
+      <div class="col-md-5">
+        <%= link_to admin_user_path(@user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会させますか？" do %>
+          <i class="fa-regular fa-pen-to-square"></i> このユーザーを退会させる
+        <% end %>
+      </div>
   </div>
 </div>
+
+
+

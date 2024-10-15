@@ -24,11 +24,13 @@ before_action :correct_user, only: [:edit, :update]
 
   def index
     @vegetables = Vegetable.all
+    @vegetable = Vegetable.new
   end
 
   def show
     @vegetable = Vegetable.find(params[:id])
     @user = @vegetable.user
+    @comment = Comment.new
   end
 
   def edit

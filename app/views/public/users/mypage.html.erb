@@ -1,16 +1,20 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-3">
+  <div class="row">
+    <div class="col-md-4 mt-4">
       <h1>マイページ</h1>
-    </div>
-    <div class="col-md-6 text-right">
-      <h4 class="mt-2">ユーザー名 "<%= @user.name %>" さん</h4>
-    </div>
-  </div>
+      <table class="table table-bordered text-center mt-4">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-5 text-center">ユーザー名</td>
+          <td class="text-center"><%= @user.name %></td>
+        </tr>
 
-  <div class="row mt-4">
-    <div class="col-md-3 text-center">
-      <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
+      </table>
+
       <% if @user.email != "guest@example.com" %>
         <div class="mt-4">
           <%= link_to edit_user_path(@user.id), class: "btn btn-warning btn-block" do %>
@@ -18,6 +22,7 @@
           <% end %>
         </div>
       <% end %>
+
       <div class="mt-4">
         <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
           <i class="fa-solid fa-pen"></i> 新規投稿
@@ -25,16 +30,16 @@
       </div>
     </div>
 
-    <div class="col-md-8 offset-md-1">
-      <h2>投稿一覧</h2>
+    <div class="col-md-7 ml-5"> <!-- 投稿一覧 -->
+      <h2 class="text-center mt-4">投稿一覧</h2>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
-            <th scope="col">画像</th>
-            <th scope="col">名前</th>
-            <th scope="col">ジャンル</th>
-            <th scope="col">いいね</th>
-            <th scope="col">コメント数</th>
+            <th scope="col" style="width: 15%;">画像</th>
+            <th scope="col" style="width: 30%;">名前</th>
+            <th scope="col" style="width: 20%;">ジャンル</th>
+            <th scope="col" style="width: 15%;">いいね数</th>
+            <th scope="col" style="width: 25%;">コメント数</th>
           </tr>
         </thead>
         <tbody>
@@ -42,19 +47,11 @@
             <tr>
               <td><%= image_tag vege.get_image(100, 100) %></td>
               <td>
-                <%= link_to vegetable_path(vege.id) do %>
-                  <%= vege.name %>
-                <% end %>
+                <%= link_to vege.name, vegetable_path(vege.id) %>
               </td>
               <td><%= vege.genre.name %></td>
-              <td class="text-center">
-                <% if vege.favorited_by?(current_user) %>
-                  <%= link_to "❤ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" }, class: "text-danger" %>
-                <% else %>
-                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post, class: "text-muted" %>
-                <% end %>
-              </td>
-              <td>仮コメント数</td>
+              <td class="text-center"><%= vege.favorites.count %></td>
+              <td class="text-center"><%= vege.comments.count %></td>
             </tr>
           <% end %>
         </tbody>
