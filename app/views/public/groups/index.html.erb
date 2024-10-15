@@ -1,0 +1,40 @@
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-12 mt-3">
+        <div class="parent-element mb-2">
+            <div class="child-element">
+              <%= render "layouts/search" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+          <h2 class="col mt-5">グループ一覧</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">グループ画像</th>
+              <th scope="col">グループ名</th>
+              <th scope="col">紹介文</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @groups.each do |g| %>
+            <tr>
+              <td><%= image_tag g.get_image(100, 100) %></td>
+              <td><%= g.name %></td>
+              <td><%= g.text %></td>
+              <td><% if @group.owner_id == current_user.id %>
+                  <% link_to "編集する", 
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
