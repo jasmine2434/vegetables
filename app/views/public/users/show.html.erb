@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 mt-4">
-      <h1>マイページ</h1>
+      <h1>ユーザー画面</h1>
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -12,11 +12,11 @@
           <td class="col-5 text-center">ユーザー名</td>
           <td class="text-center"><%= @user.name %></td>
         </tr>
-        
+
       </table>
         <!--ログインしているユーザーのみボタンを表示 -->
       <% if @user == current_user %>
-        <div class="row mt-5">
+        <div class="mt-5">
             <%= link_to edit_user_path(@user), class: "btn btn-success form-control" do%>
             <i class="fa-solid fa-user-gear"></i>プロフィール編集
             <% end %>

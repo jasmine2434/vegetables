@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
       resource :favorite, only: [:create, :destroy, :update]
       resources :comments, only: [:create, :destroy]
-    resources :groups, only: [:new, :create, :index, :show, :edit, :update]
+      resources :groups, only: [:new, :create, :index, :show, :edit, :update]
     end
 
     resources :profile_image
