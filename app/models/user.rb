@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, presence: :true, length: { in: 2..20 }
   validates :email, uniqueness: { message: "このメールアドレスは既に使用されています" }
 
+  def admin?
+    self.admin
+  end
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -30,7 +34,7 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(name: content)

@@ -1,8 +1,8 @@
  <div class="container">
   <div class="row">
-    <h2 class="col mt-5">ユーザー検索結果画面</h2>
+    <h2 class="col mt-4">ユーザー検索結果画面</h2>
   </div>
-  <div class="row text-center">
+  <div class="row text-center mt-4">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -18,9 +18,9 @@
           <tr>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
             <td><%= link_to user.name, user_path(user.id) %></td>
-            <td>#</td>
-            <td>#</td>
-            <td>#</td>
+            <td><%= user.vegetables.count %></td>
+            <td><%= user.favorites.count %></td>
+            <td><%= user.comments.count %></td>
           </tr>
         <% end %>
       </tbody>

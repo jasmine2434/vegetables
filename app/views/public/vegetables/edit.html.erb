@@ -1,13 +1,15 @@
 <div class="container">
   <%= render 'layouts/error', vegetable: @vegetable %>
   <div class="row">
-    <h2 class="title text-center mt-4">野菜投稿Editページ</h2>
+    <h2 class="title text-center mt-5">野菜投稿編集画面</h2>
   </div>
 
   <%= form_with model: @vegetable do |f| %>
     <div class="row">
-      <div class="col-md-2 text-center">
+      <div class="col-md-2 text-center mt-4">
         <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+      <!--</div>-->
+      <!--<div class="col-md-2 mt-4">-->
         <%= f.file_field :image %>
       </div>
 

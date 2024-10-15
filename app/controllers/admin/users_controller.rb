@@ -1,29 +1,41 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :authenticate_admin!, if: :admin_url
+  #before_action :authenticate_admin!
 
   def index
     @users = User.all
+    @vegetable = Vegetable.new
+    @comments = Comment.all
+    @favorites = Favorite.all
   end
 
   def show
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
+    @vegetable = Vegetable.new
+    @comments = Comment.all
+    @favorites = Favorite.all
   end
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "退会させました"
+    if @user.destroy
+      flash[:notice] = "退会させました"
+      redirect_to admin_user_path
+    else
+      flash.now[:alert] = "失敗しました"
+      render :show
+    end
   end
 
 
   private
-  
-  def admin_url
-    request.fullpath.include?("/admin")
-    flash[:alert] = "このページにアクセスできません"
-    redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+
+  def authenticate_admin!
+    unless current_user&.admin?
+      flash[:alert] = "このページにアクセスできません"
+      redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+    end
   end
 
   def user_params

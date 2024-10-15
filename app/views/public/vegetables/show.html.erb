@@ -1,68 +1,115 @@
 <div class="container">
-  <div class="row">
-    <h2 class="title text-center mt-4">投稿詳細画面</h2>
-  </div>
-  <!-- ユーザー名表示 -->
-  <div class="row mb-3 align-items-center">
-    <h4 class="col-md-2">ユーザー名</h4>
-    <h4 class="col-md-8">
-      <%= link_to user_path(@vegetable.user) do %>
-        "<%= @vegetable.user.name %>"さん
-      <% end %>
-    </h4>
-  </div>
-
-  <!-- プロフィール画像と野菜情報 -->
-  <div class="row mb-3">
-    <!-- プロフィール画像 -->
-    <div class="col-md-2 text-center">
-      <%= image_tag @vegetable.user.get_profile_image(250, 250), class: "img-fluid rounded-circle" %>
+  <h2 class="row mt-5 text-center">投稿詳細画面</h2>
+    <div class="row">
+ <div class="col-5 mt-2">
+      <!-- プロフィール画像 -->
+      <table class="table table-bordered text-center mt-4">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @vegetable.user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-4 text-center">ユーザー名</td>
+          <td class="text-center">
+            <%= link_to user_path(@vegetable.user) do %>
+              <%= @vegetable.user.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-center">いいね</td>
+          <td class="text-center">
+            <% if @vegetable.favorited_by?(current_user) %>
+              <%= link_to "❤ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" }, class: "text-danger" %>
+            <% else %>
+              <%= link_to "♡ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :post, class: "text-muted" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <!-- コメントフォーム -->
+      <div class="mb-5 mt-3">
+        <h5>投稿にコメントを送信</h5>
+        <%= form_with model: @comment, url: vegetable_comments_path(@vegetable.id), local: true do |f| %>
+          <%= f.text_area :body, rows: '5', placeholder: "コメント記入", class: "w-100 mb-3" %>
+          <div class="d-flex justify-content-end">
+            <%= button_tag(type: 'submit', class: "btn btn-primary w-95") do %>
+              <i class="fa-solid fa-arrows-rotate"></i> 送信する
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
-    <!-- 野菜画像 -->
-    <div class="col-md-2 ml-5 text-center">
-      <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
-    </div>
+    <!-- 右半分 (投稿詳細情報) -->
+    <div class="col-md-7 mt-4">
 
-    <!-- 野菜情報 -->
-    <div class="col-md-7">
-      <div class="row mb-2 ml-4">
-        <h4 class="col-md-3">名前</h4>
-        <h4 class="col-md-9"><%= @vegetable.name %></h4>
+      <table class="table table-bordered text-center mt-2">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-4 text-center">投稿名</td>
+          <td class="text-center"><%= @vegetable.name %></td>
+        </tr>
+        <tr>
+          <td class="text-center">ジャンル</td>
+          <td class="text-center"><%= @vegetable.genre.name %></td>
+        </tr>
+        <tr>
+          <td class="text-center">説明文</td>
+          <td><%= @vegetable.body %></td>
+        </tr>
+      </table>
+
+           <!-- 遷移ボタン -->
+      <div class="row d-flex justify-content-end">
+        <% if @user == current_user %>
+          <div class="col-md-5">
+            <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
+              <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
+            <% end %>
+          </div>
+        <% end %>
       </div>
 
-      <div class="row mb-2 ml-4">
-        <h4 class="col-md-3">ジャンル</h4>
-        <h4 class="col-md-9"><%= @vegetable.genre.name %></h4>
-      </div>
-
-      <div class="row ml-4">
-        <h4 class="col-md-3">説明文</h4>
-        <h4 class="col-md-9"><%= @vegetable.body %></h4>
-      </div>
     </div>
   </div>
 
-
-  <!-- 遷移ボタン -->
-  <div class="row mt-5">
-    <div class="col-md-3">
-      <%= link_to vegetables_path, class: "btn btn-success form-control" do %>
-        <i class="fa-regular fa-comment"></i> 投稿一覧
-      <% end %>
+  <!-- コメント一覧 -->
+  <div class="row mt-2">
+    <div class="col-12">
+      <h3>コメント一覧</h3>
+      <table class="table table-bordered mt-2 text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" style="width: 15%;">ユーザー</th>
+            <th scope="col" style="width: 70%;">コメント</th>
+            <th scope="col"></th> <!-- 削除ボタン用 -->
+          </tr>
+        </thead>
+        <tbody>
+          <% @vegetable.comments.each do |comment| %>
+            <tr>
+              <td>
+                <%= link_to user_path(comment.user) do %>
+                  <%= image_tag comment.user.get_profile_image(100, 100) %><br>
+                  <%= comment.user.name %>
+                <% end %>
+              </td>
+              <td><%= comment.body %></td>
+              <td>
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", vegetable_comment_path(@vegetable, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <% if @user == current_user %>
-    <div class="col-md-3">
-      <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
-        <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
-      <% end %>
-    </div>
-    <div class="col-md-3">
-      <%= link_to root_path, class: "btn btn-info form-control" do %>
-        <i class="fa-regular fa-comment"></i> コメント
-      <% end %>
-    </div>
-    <% end %>
   </div>
 </div>
-
