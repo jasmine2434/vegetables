@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy]
     resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
       resource :favorite, only: [:create, :destroy, :update]
+    resources :groups, only: [:new, :create, :index, :show, :edit, :update]
     end
 
     resources :profile_image
