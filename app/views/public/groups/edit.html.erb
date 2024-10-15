@@ -1,13 +1,12 @@
 <div class="container">
-  <%= render 'layouts/error', vegetable: @vegetable %>
   <div class="row">
-    <h2 class="title text-center mt-4">野菜投稿Editページ</h2>
+    <h2 class="title text-center mt-4">グループ編集画面</h2>
   </div>
 
-  <%= form_with model: @vegetable do |f| %>
+  <%= form_with model: @group do |f| %>
     <div class="row">
       <div class="col-md-2 text-center">
-        <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+        <%= image_tag @group.get_image(150, 150), class: "img-fluid" %>
         <%= f.file_field :image %>
       </div>
 
@@ -22,21 +21,13 @@
 
         <div class="row">
           <div class="col-3"></div>
-          <h5 class="col-3">ジャンル</h5>
-          <div class="col-4">
-            <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name, selected: @vegetable.genre_id), { include_blank: '選択してください' }, class: "form-control fs-4" %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-3"></div>
-          <h5 class="col-3">説明文</h5>
+          <h5 class="col-3">紹介文</h5>
         </div>
 
         <div class="row">
           <div class="col-3"></div>
           <div class="col-md-8">
-            <%= f.text_area :body, rows: 10, style: "width: 100%", class: "form-control" %>
+            <%= f.text_area :introduction, rows: 10, style: "width: 100%", class: "form-control" %>
           </div>
         </div>
       </div>
@@ -44,7 +35,7 @@
 
     <div class="row mt-5 d-flex justify-content-between">
       <div class="col-md-3">
-        <%= link_to vegetable_path(@vegetable.id), class: "btn btn-success w-100" do %>
+        <%= link_to _path(@group.id), class: "btn btn-success w-100" do %>
           <i class="fa-solid fa-delete-left"></i> 戻る
         <% end %>
       </div>
@@ -55,7 +46,7 @@
         <% end %>
       </div>
       <div class="col-md-3">
-        <%= link_to vegetable_path(@vegetable.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        <%= link_to _path(@group.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
           <i class="fa-solid fa-trash"></i> 削除
         <% end %>
       </div>

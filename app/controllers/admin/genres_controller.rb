@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
 
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @genres = Genre.all
@@ -41,6 +41,13 @@ class Admin::GenresController < ApplicationController
   end
 
   private
+
+  def authenticate_admin!
+    unless admin_signed_in?
+      flash[:alert] = "このページにアクセスできません"
+      redirect_to root_path  #ユーザーのトップページへリダイレクト
+    end
+  end
 
   def genre_params
     params.require(:genre).permit(:name)

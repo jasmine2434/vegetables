@@ -19,6 +19,8 @@ def create
 end
 
 def index
+  @group = Group.new
+  #@group = Group.find(params[:id])
   @groups = Group.all
   @user = User.find(current_user.id)
 end

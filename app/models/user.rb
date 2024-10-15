@@ -9,14 +9,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :groups, dependent: :destroy
-  
 
   validates :name, uniqueness: true, presence: :true, length: { in: 2..20 }
   validates :email, uniqueness: { message: "このメールアドレスは既に使用されています" }
-
-  def admin?
-    self.admin
-  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?

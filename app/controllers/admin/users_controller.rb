@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @users = User.all
@@ -32,9 +32,9 @@ class Admin::UsersController < ApplicationController
   private
 
   def authenticate_admin!
-    unless current_user&.admin?
+    unless admin_signed_in?
       flash[:alert] = "このページにアクセスできません"
-      redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+      redirect_to root_path  #ユーザーのトップページへリダイレクト
     end
   end
 

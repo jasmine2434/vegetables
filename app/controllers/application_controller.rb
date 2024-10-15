@@ -13,13 +13,4 @@ def after_sign_in_path_for(resource)
   end
 end
 
-def authenticate_admin!
-  unless current_user&.admin?
-    flash[:alert] = "このページにアクセスできません"
-    redirect_to root_path  # アクセスできない場合はトップページへリダイレクト
-  end
-end
-
-
-
 end

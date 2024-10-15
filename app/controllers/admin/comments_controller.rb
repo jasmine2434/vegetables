@@ -1,6 +1,6 @@
 class Admin::CommentsController < ApplicationController
 
-#before_action :authenticate_admin!
+before_action :authenticate_admin!
 
 def index
   @vegetables = Vegetable.all
@@ -23,7 +23,7 @@ end
 private
 
 def authenticate_admin!
-  unless current_user&.admin?
+  unless admin_signed_in?
     flash[:alert] = "このページにアクセスできません"
     redirect_to root_path  #ユーザーのトップページへリダイレクト
   end

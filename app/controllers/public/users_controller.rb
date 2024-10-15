@@ -38,9 +38,6 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
-
-
   private
 
   def user_params
@@ -60,6 +57,4 @@ class Public::UsersController < ApplicationController
       redirect_to my_page_path(current_user) # マイページにリダイレクト
     end
   end
-
-
 end

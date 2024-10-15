@@ -1,36 +1,81 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mt-3">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <h2 class="col mt-5">グループ一覧</h2>
-    <table class="table">
-      <thead>
+    <div class="col-md-4 mt-4">
+      <h2>グループ画面</h2>
+      <table class="table table-bordered text-center mt-4">
         <tr>
-          <th scope="col">グループ画像</th>
-          <th scope="col">グループ名</th>
-          <th scope="col">紹介文</th>
-          <th scope="col"></th>
+          <td class="text-center" colspan="2">
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @groups.each do |g| %>
         <tr>
-          <td><%= image_tag g.get_image(100, 100) %></td>
-          <td><%= g.name %></td>
-          <td><%= g.text %></td>
-          <td><% if @group.owner_id == current_user.id %>
+          <td class="col-5 text-center">ユーザー名</td>
+          <td class="text-center"><%= @user.name %></td>
+        </tr>
+      </table>
+      
+      <div class="mb-5 mt-3">
+        <h5>グループ</h5>
+        <%= form_with model: @group, url: vegetable_comments_path, local: true do |f| %>
+        
+   <div class="row mb-5">
+      <div class="col-md-4">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
+      </div>
+      <div class="col-md-5">
+        <%= f.label :image_id, "画像" %>
+        <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+      </div>
+      <div class="col-md-5">
+        <%= f.label :introduction, "紹介文" %>
+        <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+      </div>
+    </div>
+
+          <div class="d-flex justify-content-end">
+            <%= button_tag(type: 'submit', class: "btn btn-primary w-95") do %>
+              <i class="fa-solid fa-arrows-rotate"></i> 作成する
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <% if @user.email != "guest@example.com" %>
+      <div class="mt-4">
+        <%= link_to vegetable_groups_path(@user.id), class: "btn btn-info btn-block" do %>
+          <i class="fa-solid fa-pen"></i> グループ作成
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-7 ml-5"> <!-- 投稿一覧 -->
+      <h2 class="text-center mt-4">グループ一覧</h2>
+      <table class="table table-bordered mt-3 text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" style="width: 20%;">グループ画像</th>
+            <th scope="col" style="width: 25%;">グループ名</th>
+            <th scope="col" style="width: 55%;">紹介文</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr>
+              <td><%= image_tag group.get_image(100, 100) %></td>
+              <td><%= group.name %></td>
+              <td class="text-center"><%= group.text %></td>
+              <td><% if @group.owner_id == current_user.id %>
               <% link_to edit_vegetable_group(g.id), class: "btn btn-success w-100" do %>
               <i class="fa-solid fa-delete-left"></i> 編集する
               <% end %>
               <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
