@@ -1,6 +1,6 @@
 class Admin::CommentsController < ApplicationController
 
-#before_action :authenticate_admin!, if: :admin_url
+#before_action :authenticate_admin!
 
 def index
   @vegetables = Vegetable.all
@@ -22,14 +22,15 @@ end
 
 private
 
-def admin_url
-  request.fullpath.include?("/admin")
-  flash[:alert] = "このページにアクセスできません"
-  redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+def authenticate_admin!
+  unless current_user&.admin?
+    flash[:alert] = "このページにアクセスできません"
+    redirect_to root_path  #ユーザーのトップページへリダイレクト
+  end
 end
 
 def comment_params
-  params.require(:comment).permit(:body, :id)
+  params.require(:comment).permit(:body)
 end
 
 end

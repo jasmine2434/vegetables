@@ -1,0 +1,68 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: パスワード確認送信時刻
+        confirmation_token: パスワード確認用トークン
+        confirmed_at: パスワード確認時刻
+        created_at: 作成日
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        updated_at: 更新日
+        email:  # ここでインデントを修正しました
+          blank: "を入力してください"  # 空の場合のエラーメッセージ
+          invalid: "は不正な値です"  # 無効なメールアドレスの場合のエラーメッセージ
+        name:
+          blank: "を入力してください"  # 空の場合のエラーメッセージ
+          too_short: "は%{count}文字以上で入力してください"  # 短すぎる場合のエラーメッセージ
+
+    models:
+      user: ユーザー
+
+  devise:
+    failure:
+      already_authenticated: すでにログインしています。
+      invalid: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
+      unauthenticated: ログインもしくはアカウント登録してください。
+
+    registrations:
+      destroyed: アカウントを削除しました。またのご利用をお待ちしております。
+      edit:
+        are_you_sure: 本当によろしいですか？
+        cancel_my_account: アカウント削除
+        update: 更新
+        password:
+          blank: "を入力してください"
+          too_short: "は%{count}文字以上で入力してください"
+          confirmation: "と一致しません"
+
+      new:
+        sign_up: アカウント登録
+      signed_up: アカウント登録が完了しました。
+
+    sessions:
+      already_signed_out: 既にログアウト済みです。
+      new:
+        sign_in: ログイン
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
+
+    shared:
+      links:
+        back: 戻る
+        sign_in: ログイン
+        sign_in_with_provider: "%{provider}でログイン"
+        sign_up: アカウント登録
+      minimum_password_length: "（%{count}字以上）"
+
+  errors:
+    messages:
+      already_confirmed: は既に登録済みです。ログインしてください。
+      expired: の有効期限が切れました。新しくリクエストしてください。
+      not_found: は見つかりませんでした。
+      not_saved:
+        one: "%{resource}が保存されませんでした。1件のエラーがあります。"
+        other: "%{resource}が保存されませんでした。%{count}件のエラーがあります。"

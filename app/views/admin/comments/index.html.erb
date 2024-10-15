@@ -18,21 +18,21 @@
         </tr>
       </thead>
       <tbody>
-
+        <!-- コメントがある投稿だけ表示 -->
           <% @vegetables.each do |vege| %>
-           <% if vege.comments.any? %>
-          <tr>
-            <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
-            <td><%= image_tag vege.get_image(100, 100) %></td>
-            <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
-            <td><%= truncate(vege.comments.first.body, length: 30) %> </td>
-            <td><%= link_to admin_comment_path(vege.comments.first.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                  <i class="fa-solid fa-trash"></i> 削除
-                <% end %>
-            </td>
-          </tr>
-        <% end %>
-        <% end %>
+            <% if vege.comments.any? %>
+              <tr>
+                <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
+                <td><%= image_tag vege.get_image(100, 100) %></td>
+                <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
+                <td><%= truncate(vege.comments.first.body, length: 30) %> </td>
+                <td><%= link_to admin_comment_path(vege.comments.first.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                    <i class="fa-solid fa-trash"></i> 削除
+                    <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
       </tbody>
     </table>
   </h5>

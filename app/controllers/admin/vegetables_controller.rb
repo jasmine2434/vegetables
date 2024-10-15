@@ -1,6 +1,6 @@
 class Admin::VegetablesController < ApplicationController
 
-  #before_action :authenticate_admin!, if: :admin_url
+  #before_action :authenticate_admin!
 
   def index
     @vegetables = Vegetable.all
@@ -25,10 +25,11 @@ class Admin::VegetablesController < ApplicationController
 
   private
 
-  def admin_url
-    request.fullpath.include?("/admin")
-    flash[:alert] = "このページにアクセスできません"
-    redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+  def authenticate_admin!
+    unless current_user&.admin?
+      flash[:alert] = "このページにアクセスできません"
+      redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+    end
   end
 
   def vegetable_params
