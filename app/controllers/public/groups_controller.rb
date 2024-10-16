@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
 
 before_action :authenticate_user!
-#before_action :ensure_correct_user, only: [:edit, :update]
+before_action :ensure_correct_user, only: [:edit, :update]
 
 
 def new
@@ -20,14 +20,13 @@ end
 
 def index
   @group = Group.new
-  #@group = Group.find(params[:id])
   @groups = Group.all
   @user = User.find(current_user.id)
 end
 
 def show
   @group = Group.find(params[:id])
-  @user = User.find(params[:id])
+  @user = User.find(current_user.id)
 end
 
 def edit
@@ -38,9 +37,20 @@ def update
   @group = Group.find(params[:id])
   if @group.update(group_params)
     flash[:notice] = "グループが作成されました"
-    redirect_to vegetable_groups_path
+    redirect_to user_groups_path
   else
     flash.now[:alert] = "グループの作成に失敗しました"
+    render :edit
+  end
+end
+
+def destroy
+  @group = Group.find(params[:id])
+  if @group.destroy
+    flash[:notice] = "削除されました"
+    redirect_to user_groups_path
+  else
+    flash.now[:notice] = "削除に失敗しました"
     render :edit
   end
 end
@@ -49,7 +59,7 @@ end
 private
 
 def group_params
-  params.require(:group).permit(:name, :introduction, :group_image)
+  params.require(:group).permit(:name, :introduction, :group_image, :owner_id)
 end
 
 def ensure_correct_user

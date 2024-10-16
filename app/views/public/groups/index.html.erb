@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 mt-4">
-      <h2>グループ画面</h2>
+      <h2>グループ一覧画面</h2>
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -14,9 +14,9 @@
         </tr>
       </table>
       <!-- グループ作成 -->
-      <div class="mb-2 mt-2">
+      <div class="mb-4 mt-2">
         <h5 class="mt-1">グループ作成</h5>
-          <%= form_with model: @group, url: vegetable_groups_path, local: true do |f| %>
+          <%= form_with model: @group, url: user_groups_path, local: true do |f| %>
        <div class="row mb-5">
           <div class="col-md-11">
             <%= f.label :name, "名前" %>
@@ -41,29 +41,25 @@
     </div>
   </div>
     <!-- 投稿一覧 -->
-    <div class="col-md-7 ml-5">
+    <div class="col-md-8">
       <h2 class="text-center mt-4">グループ一覧</h2>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
-            <th scope="col" style="width: 20%;">グループ画像</th>
-            <th scope="col" style="width: 20%;">グループ名</th>
+            <th scope="col" style="width: 15%;">グループ画像</th>
+            <th scope="col" style="width: 25%;">グループ名</th>
             <th scope="col" style="width: 50%;">紹介文</th>
-            <th scope="col" style="width: 20%;">編集ボタン</th>
+            <th scope="col" style="width: 15%;">人数</th>
           </tr>
         </thead>
         <tbody>
           <% @groups.each do |group| %>
             <tr>
               <td><%= image_tag group.get_group_image(100, 100) %></td>
-              <td><%= group.name %></td>
+              <td><%= link_to group.name, user_group_path(group.id, group.owner_id) %></td>
               <td class="text-center"><%= group.introduction %></td>
               <td>
-            <% if group.is_owned_by?(current_user) %>
-              <%= link_to edit_vegetable_group_path(group), class: "btn btn-success w-100" do %>
-                <i class="fa-solid fa-edit"></i> 編集する
-              <% end %>
-            <% end %>
+            
           </td>
 
             </tr>

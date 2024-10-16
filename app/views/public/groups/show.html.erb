@@ -1,62 +1,67 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-3">
+  <div class="row">
+    <div class="col-md-4 mt-4">
       <h2>グループ詳細画面</h2>
-    </div>
-    <div class="col-md-6 text-right">
-      <h4 class="mt-2">ユーザー名 "<%= @user.name %>" さん</h4>
-    </div>
-  </div>
+      
+      <table class="table table-bordered text-center mt-4">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-5 text-center">ユーザー名</td>
+          <td class="text-center"><%= @user.name %></td>
+        </tr>
 
-  <div class="row mt-4">
-    <div class="col-md-3 text-center">
-      <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
-      <% if @user.email != "guest@example.com" %>
+      </table>
+
         <div class="mt-4">
-          <%= link_to edit_user_path(@user.id), class: "btn btn-warning btn-block" do %>
-            <i class="fa-solid fa-user-gear"></i> プロフィール編集
-          <% end %>
+          <% if @group.is_owned_by?(current_user) %>
+              <%= link_to edit_user_group_path(current_user.id, @group.id), class: "btn btn-success w-100" do %>
+                <i class="fa-solid fa-edit"></i> 編集する
+              <% end %>
+            
+          
         </div>
-      <% end %>
+
+
       <div class="mt-4">
         <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
           <i class="fa-solid fa-pen"></i> 新規投稿
         <% end %>
       </div>
+
+      <div class="mt-4">
+        <%= link_to user_groups_path(@user.id), class: "btn btn-secondary btn-block" do %>
+          <i class="fa-solid fa-user-group"></i> グループ
+        <% end %>
+      </div>
+      <% end %>
     </div>
 
-    <div class="col-md-8 offset-md-1">
-      <h2>投稿一覧</h2>
+    <div class="col-md-7 offset-md-1 mt-5">
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
             <th scope="col">画像</th>
-            <th scope="col">名前</th>
-            <th scope="col">ジャンル</th>
-            <th scope="col">いいね</th>
-            <th scope="col">コメント数</th>
+            <th scope="col">グループ名</th>
+            <th scope="col">紹介文</th>
+            <th scope="col">グループ人数</th>
           </tr>
         </thead>
         <tbody>
-          <% @vegetables.each do |vege| %>
             <tr>
-              <td><%= image_tag vege.get_image(100, 100) %></td>
+              <td><%= image_tag @group.get_group_image(100, 100) %></td>
               <td>
-                <%= link_to vegetable_path(vege.id) do %>
-                  <%= vege.name %>
-                <% end %>
+  
+                  <%= @group.name %>
+                
               </td>
-              <td><%= vege.genre.name %></td>
-              <td class="text-center">
-                <% if vege.favorited_by?(current_user) %>
-                  <%= link_to "❤ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" }, class: "text-danger" %>
-                <% else %>
-                  <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post, class: "text-muted" %>
-                <% end %>
-              </td>
-              <td>仮コメント数</td>
+              <td><%= @group.introduction %></td>
+              <td>数</td>
             </tr>
-          <% end %>
+  
         </tbody>
       </table>
     </div>
