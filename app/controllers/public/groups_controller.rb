@@ -5,6 +5,7 @@ before_action :ensure_correct_user, only: [:edit, :update]
 
 
 def new
+  @user = User.find(current_user.id)
   @group = Group.new
 end
 
@@ -13,18 +14,16 @@ def create
   @group = Group.new(group_params)
   @group.owner_id = current_user.id
   if @group.save
-    redirect_to vegetable_groups_path
+    flash[:notice] = "作成されました"
+    redirect_to group_path(@group)
   else
-    @groups = Group.all
-    @user = User.find(current_user.id)
-    render :index
+     flash.now[:alert] = "作成に失敗しました"
+    render :new
   end
 end
 
 def index
-  @group = Group.new
   @groups = Group.all
-  @user = User.find(current_user.id)
 end
 
 def show
@@ -39,10 +38,10 @@ end
 def update
   @group = Group.find(params[:id])
   if @group.update(group_params)
-    flash[:notice] = "グループが作成されました"
-    redirect_to user_groups_path
+    flash[:notice] = "更新されました"
+    redirect_to groups_path
   else
-    flash.now[:alert] = "グループの作成に失敗しました"
+    flash.now[:alert] = "更新に失敗しました"
     render :edit
   end
 end
@@ -51,7 +50,7 @@ def destroy
   @group = Group.find(params[:id])
   if @group.destroy
     flash[:notice] = "削除されました"
-    redirect_to user_groups_path
+    redirect_to groups_path
   else
     flash.now[:notice] = "削除に失敗しました"
     render :edit

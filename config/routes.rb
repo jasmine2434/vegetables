@@ -29,17 +29,18 @@ Rails.application.routes.draw do
     get '/search' => 'searches#search'
 
 
-
-    resources :users, only: [:show, :edit, :update, :destroy] do
-      resources :groups, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :groups do
+      resource :group_users, only: [:create, :destroy]
     end
 
-    resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
+    resources :users, only: [:show, :edit, :update, :destroy]
+
+    resources :vegetables do
       resource :favorite, only: [:create, :destroy, :update]
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :profile_image
+    # resources :profile_image
 
 
   end

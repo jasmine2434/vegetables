@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 mt-4">
-      <h1>ユーザー画面</h1>
+      <h2>ユーザー画面</h2>
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -28,6 +28,11 @@
           <% end %>
         </div>
       <% end %>
+        <div class="mt-4">
+        <%= link_to groups_path(@user), class: "btn btn-secondary btn-block" do %>
+          <i class="fa-solid fa-user-group"></i> グループ
+        <% end %>
+      </div>
     </div>
      <!-- 投稿一覧 -->
     <div class="col-md-7 ml-5">

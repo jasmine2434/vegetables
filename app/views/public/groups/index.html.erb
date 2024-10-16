@@ -1,64 +1,25 @@
 <div class="container">
   <h2 class="row mt-5 text-center">グループ一覧画面</h2>
-    <div class="row">
-    <div class="col-4 mt-2">
-      <table class="table table-bordered text-center mt-4">
-        <tr>
-          <td class="text-center" colspan="2">
-            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-5 text-center">ユーザー名</td>
-          <td class="text-center"><%= @user.name %></td>
-        </tr>
-      </table>
-      <!-- グループ作成 -->
-      <div class="mb-4 mt-2">
-        <h5 class="mt-1">グループ作成</h5>
-          <%= form_with model: @group, url: user_groups_path, local: true do |f| %>
-       <div class="row mb-5">
-          <div class="col-md-11">
-            <%= f.label :name, "名前" %>
-            <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
-          </div>
-          <div class="col-md-11 mt-2">
-            <%= f.label :image_id, "グループ画像" %>
-            <%= f.file_field :image_id, accept: "image/*", class: "form-control-file" %>
-          </div>
-          <div class="col-md-11 mt-2">
-            <%= f.label :introduction, "紹介文" %>
-            <%= f.text_area :introduction, class: "form-control", autofocus: true, autocomplete: "name" %>
-          </div>
-          <!-- グループ作成ボタン-->
-          <div class="col-md-11 d-flex justify-content-end mt-3">
-            <%= button_tag(type: 'submit', class: "btn btn-primary w-95") do %>
-              <i class="fa-solid fa-arrows-rotate"></i> 作成する
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+
     <!-- 投稿一覧 -->
-    <div class="col-md-8 mt-4">
+    <div class="col-md-10 mt-4">
       <table class="table table-bordered mt-2 text-center">
         <thead class="thead-light">
           <tr>
-            <th scope="col" style="width: 15%;">グループ画像</th>
+            <th scope="col" style="width: 20%;">グループ画像</th>
             <th scope="col" style="width: 25%;">グループ名</th>
             <th scope="col" style="width: 50%;">紹介文</th>
-            <th scope="col" style="width: 10%;">人数</th>
+            <th scope="col" style="width: 15%;">人数</th>
           </tr>
         </thead>
         <tbody>
           <% @groups.each do |group| %>
             <tr>
               <td><%= image_tag group.get_group_image(100, 100) %></td>
-              <td><%= link_to group.name, user_group_path(group.id) %></td>
+              <td><%= link_to group.name, group_path(group.id) %></td>
               <td class="text-center"><%= group.introduction %></td>
               <td>
-                <%= group.owner_id %>
+                <%= group.group_users.count %>
 
               </td>
             </tr>

@@ -12,7 +12,6 @@
           <td class="col-5 text-center">ユーザー名</td>
           <td class="text-center"><%= @user.name %></td>
         </tr>
-
       </table>
 
       <% if @user.email != "guest@example.com" %>
@@ -22,7 +21,6 @@
           <% end %>
         </div>
 
-
       <div class="mt-4">
         <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
           <i class="fa-solid fa-pen"></i> 新規投稿
@@ -30,8 +28,14 @@
       </div>
 
       <div class="mt-4">
-        <%= link_to user_groups_path(@user.id), class: "btn btn-secondary btn-block" do %>
-          <i class="fa-solid fa-user-group"></i> グループ
+        <%= link_to group_path(@group), class: "btn btn-primary btn-block" do %>
+          <i class="fa-solid fa-pen"></i> Myグループ
+        <% end %>
+      </div>
+
+      <div class="mt-4">
+        <%= link_to new_group_path, class: "btn btn-secondary btn-block" do %>
+          <i class="fa-solid fa-user-group"></i> グループを作る
         <% end %>
       </div>
       <% end %>

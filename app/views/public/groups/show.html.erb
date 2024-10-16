@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 mt-4">
       <h2>グループ詳細画面</h2>
-      
+      </div>
+
+    <div class="row">
+
+ <div class="col-md-3 mt-4">
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -15,49 +18,69 @@
         </tr>
       </table>
 
-        <div class="mt-4">
-          <% if @group.is_owned_by?(current_user) %>
-              <%= link_to edit_user_group_path(current_user.id, @group.id), class: "btn btn-success w-100" do %>
-                <i class="fa-solid fa-edit"></i> 編集する
-              <% end %>
-        </div>
-
       <div class="mt-4">
-        <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
-          <i class="fa-solid fa-pen"></i> 新規投稿
+        <% if @group.is_owned_by?(current_user) %>
+          <%= link_to group_path(@group.id), class: "btn btn-secondary btn-block" do %>
+            <i class="fa-solid fa-user-group"></i> グループ
+          <% end %>
         <% end %>
       </div>
-
-      <div class="mt-4">
-        <%= link_to user_groups_path(@user.id), class: "btn btn-secondary btn-block" do %>
-          <i class="fa-solid fa-user-group"></i> グループ
-        <% end %>
-      </div>
-      <% end %>
     </div>
 
-    <div class="col-md-7 offset-md-1 mt-5">
+    <div class="col-md-7 mt-5">
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
-            <th scope="col">画像</th>
+            <th scope="col">グループ画像</th>
             <th scope="col">グループ名</th>
             <th scope="col">紹介文</th>
             <th scope="col">グループ人数</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><%= image_tag @group.get_group_image(100, 100) %></td>
+            <td><%= @group.name %></td>
+            <td><%= @group.introduction %></td>
+            <td><%= @group.group_users.count %></td>
+            <td>
+               <% if @group.is_owned_by?(current_user) %>
+                  <%= link_to "編集", edit_group_path(@group), class: "btn btn-sm btn-success" %>
+
+                <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-bordered mt-3 text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ユーザー画像</th>
+            <th scope="col">ユーザー名</th>
+            <th scope="col">ボタン</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @group.users.each do |user| %>
             <tr>
-              <td><%= image_tag @group.get_group_image(100, 100) %></td>
+              <td><%= image_tag user.get_profile_image(100, 100) %></td>
+              <td><%= user.name %></td>
               <td>
-                  <%= @group.name %>
+                <% if @group.is_owned_by?(current_user) %>
+                  <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+                <% elsif @group.users.include?(current_user) %>
+                  <%= link_to '不参加', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% else %>
+                  <%= link_to '参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
+                <% end %>
               </td>
-              <td><%= @group.introduction %></td>
-              <td>数</td>
             </tr>
-  
+          <% end %>
         </tbody>
       </table>
     </div>
+
   </div>
 </div>

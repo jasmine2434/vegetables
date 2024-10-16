@@ -3,7 +3,7 @@
     <h2 class="title text-center mt-4">グループ編集画面</h2>
   </div>
 
-  <%= form_with model: @group, url: user_group_path, local: true  do |f| %>
+  <%= form_with model: @group, url: group_path, local: true  do |f| %>
     <div class="row">
       <div class="col-md-2 text-center">
         <%= image_tag @group.get_group_image(150, 150), class: "img-fluid" %>
@@ -35,18 +35,18 @@
 
     <div class="row mt-5 d-flex justify-content-between">
       <div class="col-md-3">
-        <%= link_to user_group_path(@group.id), class: "btn btn-success w-100" do %>
+        <%= link_to group_path(@group.id), class: "btn btn-success w-100" do %>
           <i class="fa-solid fa-delete-left"></i> 戻る
         <% end %>
       </div>
 
       <div class="col-md-3">
-        <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
-          <i class="fa-solid fa-arrows-rotate"></i> 更新する
+        <%= f.submit "更新する", class: "btn btn-primary w-100" do %>
+          <i class="fa-solid fa-arrows-rotate"></i>
         <% end %>
       </div>
       <div class="col-md-3">
-        <%= link_to user_group_path(@group.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        <%= link_to group_path(@group.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
           <i class="fa-solid fa-trash"></i> 削除
         <% end %>
       </div>

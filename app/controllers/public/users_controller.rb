@@ -9,8 +9,10 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
-    #@vegetable = Vegetable.find(params[:id])
     @user = current_user
+    @group = @user.groups
+    #@vegetable = Vegetable.find(params[:id])
+
     @vegetables = @user.vegetables
     @comments = Comment.all
     #@favorites = Favorite.all
