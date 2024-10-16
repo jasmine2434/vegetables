@@ -13,7 +13,6 @@
           <td class="col-5 text-center">ユーザー名</td>
           <td class="text-center"><%= @user.name %></td>
         </tr>
-
       </table>
 
         <div class="mt-4">
@@ -21,10 +20,7 @@
               <%= link_to edit_user_group_path(current_user.id, @group.id), class: "btn btn-success w-100" do %>
                 <i class="fa-solid fa-edit"></i> 編集する
               <% end %>
-            
-          
         </div>
-
 
       <div class="mt-4">
         <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
@@ -54,9 +50,7 @@
             <tr>
               <td><%= image_tag @group.get_group_image(100, 100) %></td>
               <td>
-  
                   <%= @group.name %>
-                
               </td>
               <td><%= @group.introduction %></td>
               <td>数</td>

@@ -9,12 +9,15 @@ def new
 end
 
 def create
+  @user = current_user
   @group = Group.new(group_params)
   @group.owner_id = current_user.id
   if @group.save
     redirect_to vegetable_groups_path
   else
-    render :new
+    @groups = Group.all
+    @user = User.find(current_user.id)
+    render :index
   end
 end
 
@@ -59,7 +62,7 @@ end
 private
 
 def group_params
-  params.require(:group).permit(:name, :introduction, :group_image, :owner_id)
+  params.require(:group).permit(:name, :introduction, :group_image)
 end
 
 def ensure_correct_user
