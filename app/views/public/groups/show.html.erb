@@ -1,11 +1,10 @@
 <div class="container">
+ <div class="row mt-3">
+   <h2>グループ詳細画面</h2>
+  </div>
+
   <div class="row">
-      <h2>グループ詳細画面</h2>
-      </div>
-
-    <div class="row">
-
- <div class="col-md-3 mt-4">
+    <div class="col-md-3 mt-4">
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -20,14 +19,21 @@
 
       <div class="mt-4">
         <% if @group.is_owned_by?(current_user) %>
-          <%= link_to group_path(@group.id), class: "btn btn-secondary btn-block" do %>
-            <i class="fa-solid fa-user-group"></i> グループ
-          <% end %>
+          <%= link_to "グループを編集する", edit_group_path(@group), class: "btn btn-sm btn-warning btn-block" %>
+        <% end %>
+      </div>
+
+      <div class="mt-4">
+        <% if @group.users.include?(current_user) %>
+          <%= link_to '参加済み', '#', class: "btn btn-sm btn-secondary btn-block", disabled: true %>
+        <% else %>
+          <%= link_to 'グループに参加する', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-primary btn-block" %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-7 mt-5">
+    <div class="col-md-8">
+      <h3 class="text-center mt-4">グループ概要</h3>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
@@ -35,7 +41,6 @@
             <th scope="col">グループ名</th>
             <th scope="col">紹介文</th>
             <th scope="col">グループ人数</th>
-            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -44,16 +49,11 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td><%= @group.group_users.count %></td>
-            <td>
-               <% if @group.is_owned_by?(current_user) %>
-                  <%= link_to "編集", edit_group_path(@group), class: "btn btn-sm btn-success" %>
-
-                <% end %>
-            </td>
           </tr>
         </tbody>
       </table>
 
+      <h3 class="text-center mt-4">グループメンバー</h3>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
@@ -69,8 +69,7 @@
               <td><%= user.name %></td>
               <td>
                 <% if @group.is_owned_by?(current_user) %>
-                  <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-                <% elsif @group.users.include?(current_user) %>
+                  
                   <%= link_to '不参加', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
                 <% else %>
                   <%= link_to '参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
@@ -81,6 +80,5 @@
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
