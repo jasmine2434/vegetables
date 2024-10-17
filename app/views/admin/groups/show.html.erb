@@ -8,26 +8,26 @@
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
-            <%= "ログインユーザー" %>
+            <%= image_tag @group.owner.name %>
           </td>
         </tr>
         <tr>
           <td class="text-center" colspan="2">
-            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+            <%= image_tag @group.owner.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
           </td>
         </tr>
         <tr>
-          <td class="col-5 text-center">ユーザー名</td>
-          <td class="text-center"><%= @user.name %></td>
+          <td class="col-5 text-center">リーダー名</td>
+          <td class="text-center"><%= @group.owner.name %></td>
         </tr>
         <tr>
           <td class="col-5 text-center">紹介文</td>
-          <td class="text-center"><%= @user.introduction %></td>
+          <td class="text-center"><%= @group.owner.introduction %></td>
         </tr>
       </table>
 
       <div class="mt-4">
-        <% if @group.is_owned_by?(current_user) %>
+        <% if admin_signed_in? %>
           <%= link_to "グループを編集する", edit_group_path(@group), class: "btn btn-sm btn-warning btn-block" %>
         <% end %>
       </div>

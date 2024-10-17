@@ -1,18 +1,20 @@
-class Admin::CommentsController < ApplicationController
+class Admin::GroupsController < ApplicationController
 
 before_action :authenticate_admin!
 
 def index
-  @comments = Comment.all
+  @groups = Group.all
 end
 
-
+def show
+  @group = Group.find(params[:id])
+end
 
 def destroy
-  comment = Comment.find(params[:id])
-  if comment.destroy
+  group = Group.find(params[:id])
+  if group.destroy
     flash[:notice] = "コメントを削除しました"
-    redirect_to admin_comments_path(comment.vegetable)
+    redirect_to admin_groups_path
   else
     flash.now[:notice] = "コメント削除に失敗しました"
     render :index
@@ -29,8 +31,9 @@ def authenticate_admin!
   end
 end
 
-def comment_params
-  params.require(:comment).permit(:body)
+def group_params
+  params.require(:group).permit(:name, :introduction)
 end
+
 
 end

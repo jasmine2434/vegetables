@@ -1,31 +1,26 @@
 <div class="container">
-  <h2 class="row mt-5 text-center">グループ一覧画面</h2>
-
-    <!-- 投稿一覧 -->
-    <div class="col-md-10 mt-4">
-      <table class="table table-bordered mt-2 text-center">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col" style="width: 20%;">グループ画像</th>
-            <th scope="col" style="width: 25%;">グループ名</th>
-            <th scope="col" style="width: 50%;">紹介文</th>
-            <th scope="col" style="width: 15%;">人数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @groups.each do |group| %>
-            <tr>
-              <td><%= image_tag group.get_group_image(100, 100) %></td>
-              <td><%= link_to group.name, group_path(group.id) %></td>
-              <td class="text-center"><%= group.introduction %></td>
-              <td>
-                <%= group.group_users.count %>
-
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+  <div class="row mt-5">
+      <h2 class="title">グループ一覧画面</h2>
   </div>
+  <!-- 投稿一覧 -->
+  <table class="table table-bordered mt-4 text-center">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" style="width: 15%;">グループ画像</th>
+        <th scope="col" style="width: 35%;">グループ名</th>
+        <th scope="col" style="width: 40%;">紹介文</th>
+        <th scope="col" style="width: 10%;">人数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td><%= image_tag group.get_group_image(80, 80) %></td>
+          <td><%= link_to group.name, group_path(group.id) %></td>
+          <td class="text-center"><%= group.introduction %></td>
+          <td><%= group.group_users.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

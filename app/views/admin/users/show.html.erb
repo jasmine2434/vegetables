@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="row mt-5 text-center">マイページ確認画面</h2>
-    <div class="row">
- <div class="col-5 mt-2">
-      <!-- プロフィール画像 -->
+  <h2 class="row mt-5 text-center">ユーザー確認画面</h2>
+
+     <div class="row">
+    <div class="col-md-4 mt-3">
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -10,8 +10,12 @@
           </td>
         </tr>
         <tr>
-          <td class="col-4 text-center">ユーザー名</td>
+          <td class="col-5 text-center">ユーザー名</td>
           <td class="text-center"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="col-5 text-center">紹介文</td>
+          <td class="text-center"><%= @user.introduction %></td>
         </tr>
         <tr>
           <td class="text-center">メールアドレス</td>
@@ -19,14 +23,13 @@
         </tr>
       </table>
     </div>
-    <!-- 右半分 (投稿詳細情報) -->
-    <div class="col-md-7 mt-4">
+    <!-- 投稿詳細情報 -->
+    <div class="col-md-7 mt-5">
       <table class="table table-striped text-center">
         <thead>
           <tr>
             <th scope="col" style="width: 20%;">画像</th>
             <th scope="col" style="width: 30%;">名前</th>
-            <th scope="col" style="width: 15%;">投稿数</th>
             <th scope="col" style="width: 15%;">いいね</th>
             <th scope="col" style="width: 20%;">コメント数</th>
           </tr>
@@ -36,7 +39,6 @@
             <tr>
               <td><%= image_tag vege.get_image(100, 100), class: "img-thumbnail" %></td>
               <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
-              <td><%= vege.user.vegetables.count %></td>
               <td><%= vege.favorites.count %></td>
               <td><%= vege.comments.count %></td>
             </tr>

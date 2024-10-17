@@ -1,7 +1,10 @@
 <div class="container">
+  <div class="row mt-5">
+    <h2 class="title">ユーザー画面</h2>
+  </div>
+
   <div class="row">
-    <div class="col-md-4 mt-4">
-      <h2>ユーザー画面</h2>
+    <div class="col-md-3 mt-4">
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
@@ -12,7 +15,10 @@
           <td class="col-5 text-center">ユーザー名</td>
           <td class="text-center"><%= @user.name %></td>
         </tr>
-
+        <tr>
+          <td class="col-5 text-center">紹介文</td>
+          <td class="text-center"><%= @user.introduction %></td>
+        </tr>
       </table>
         <!--ログインしているユーザーのみボタンを表示 -->
       <% if @user == current_user %>
@@ -35,22 +41,22 @@
       </div>
     </div>
      <!-- 投稿一覧 -->
-    <div class="col-md-7 ml-5">
-      <h2 class="text-center mt-4">投稿一覧</h2>
+    <div class="col-md-8 ml-5">
+      <h3 class="text-center mt-4">投稿一覧</h3>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
             <th scope="col" style="width: 15%;">画像</th>
-            <th scope="col" style="width: 30%;">名前</th>
+            <th scope="col" style="width: 35%;">名前</th>
             <th scope="col" style="width: 20%;">ジャンル</th>
             <th scope="col" style="width: 15%;">いいね数</th>
-            <th scope="col" style="width: 25%;">コメント数</th>
+            <th scope="col" style="width: 15%;">コメント数</th>
           </tr>
         </thead>
         <tbody>
           <% @vegetables.each do |vege| %>
             <tr>
-              <td><%= image_tag vege.get_image(100, 100) %></td>
+              <td><%= image_tag vege.get_image(80, 80) %></td>
               <td>
                 <%= link_to vege.name, vegetable_path(vege.id) %>
               </td>

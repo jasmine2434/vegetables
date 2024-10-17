@@ -1,67 +1,64 @@
 <div class="container">
-
   <%= render 'layouts/error', vegetable: @vegetable %>
-
   <div class="row mt-5">
       <h2 class="title">新規投稿画面</h2>
   </div>
 
- <div class="row">
-    <div class="col-md-4 mt-4">
-      <table class="table table-bordered text-center mt-4">
-        <tr>
-          <td class="text-center" colspan="2">
-            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-4 text-center">ユーザー名</td>
-          <td class="text-center"><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td class="col-5 text-center">紹介文</td>
-          <td class="text-center"><%= @user.introduction %></td>
-        </tr>
-      </table>
+   <div class="row">
+      <div class="col-md-4 mt-4">
+        <table class="table table-bordered text-center mt-4">
+          <tr>
+            <td class="text-center" colspan="2">
+              <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-4 text-center">ユーザー名</td>
+            <td class="text-center"><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td class="col-5 text-center">紹介文</td>
+            <td class="text-center"><%= @user.introduction %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-md-8 mt-5">
+        <%= form_with model: @vegetable, url: vegetables_path, method: :post do |f| %>
+          <div class="row">
+            <div class="col-5">
+              <%= f.label :name, "名前" %>
+              <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
+            </div>
+            </div>
+
+            <div class="row mt-3">
+            <div class="col-md-5">
+              <%= f.label :image, "画像" %>
+              <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-3">ジャンル</div>
+            <div class="col-5">
+              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { include_blank: '選択してください' }, class: "form-control fs-4" %>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-8">
+              <%= f.label :body, "説明文" %>
+              <%= f.text_area :body, class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-8 text-center">
+              <%= f.submit "投稿する", class: "btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-
-<div class="col-md-8 mt-5">
-  <%= form_with model: @vegetable, url: vegetables_path, method: :post do |f| %>
-    <div class="row">
-      <div class="col-5">
-        <%= f.label :name, "名前" %>
-        <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
-      </div>
-      </div>
-
-      <div class="row mt-3">
-      <div class="col-md-5">
-        <%= f.label :image, "画像" %>
-        <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
-      </div>
-    </div>
-
-    <div class="row mt-4">
-      <div class="col-3">ジャンル</div>
-      <div class="col-5">
-        <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { include_blank: '選択してください' }, class: "form-control fs-4" %>
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-md-8">
-        <%= f.label :body, "説明文" %>
-        <%= f.text_area :body, class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-md-8 text-center">
-        <%= f.submit "投稿する", class: "btn btn-success" %>
-      </div>
-    </div>
-  <% end %>
-</div>
-</div>
-</div>
+  </div>

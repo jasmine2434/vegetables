@@ -5,8 +5,13 @@
     <!-- 左側のプロフィールセクション -->
     <div class="row">
     <div class="col-md-4 ml-md-1 mt-4">
-     
+
       <table class="table table-bordered text-center mt-4">
+         <tr>
+          <td class="text-center" colspan="2">
+            <%= "ログインユーザー" %>
+          </td>
+        </tr>
         <tr>
           <td class="text-center" colspan="2">
             <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
@@ -62,7 +67,7 @@
         <tbody>
           <% @vegetables.each do |vege| %>
             <tr>
-              <td><%= image_tag vege.get_image(100, 100) %></td>
+              <td><%= image_tag vege.get_image(80, 80) %></td>
               <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
               <td><%= vege.favorites.count %></td>
               <td><%= vege.comments.count %></td>
@@ -90,7 +95,7 @@
               <td><%= image_tag group.get_group_image(100, 100) %></td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.group_users.count %></td>
-              <td><%= link_to '不参加', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-danger" %></td>
+              <td><%= link_to 'やめる', group_group_users_path(group), method: :delete, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
         </tbody>

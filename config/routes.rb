@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get "homes/top" => 'homes#top', as: 'admin/top'
     get '/search' => 'searches#search'
+    resources :users, only: [:index, :show, :destroy]
     resources :vegetables, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :new, :create, :edit, :update]
-    resources :users, only: [:index, :show, :destroy]
+    resources :groups, only: [:index, :show, :destroy]
     resources :comments, only: [:index, :destroy]
   end
 
@@ -39,9 +40,6 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy, :update]
       resources :comments, only: [:create, :destroy]
     end
-
-    # resources :profile_image
-
 
   end
 
