@@ -28,21 +28,15 @@
       </div>
 
       <div class="mt-4">
-        <%= link_to group_path(@group), class: "btn btn-primary btn-block" do %>
-          <i class="fa-solid fa-pen"></i> Myグループ
-        <% end %>
-      </div>
-
-      <div class="mt-4">
         <%= link_to new_group_path, class: "btn btn-secondary btn-block" do %>
           <i class="fa-solid fa-user-group"></i> グループを作る
         <% end %>
       </div>
       <% end %>
     </div>
-
-    <div class="col-md-7 ml-5"> <!-- 投稿一覧 -->
-      <h2 class="text-center mt-4">投稿一覧</h2>
+     <!-- 投稿一覧 -->
+    <div class="col-md-7 ml-5">
+      <h3 class="text-center mt-4">投稿一覧</h3>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
@@ -67,6 +61,37 @@
           <% end %>
         </tbody>
       </table>
+
+            <h3 class="text-center mt-4">グループ</h3>
+      <table class="table table-bordered mt-3 text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">グループ画像</th>
+            <th scope="col">グループ名</th>
+            <th scope="col">グループ人数</th>
+            <th scope="col">ステータス</th>
+          </tr>
+        </thead>
+
+      <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= image_tag group.get_group_image(100, 100) %></td>
+ 
+        <td>
+          <%= link_to group.name, group_path(group) %>
+          
+        </td>
+        <td><%= group.group_users.count %></td>
+        <td>
+          <%= link_to '不参加', group_group_users_path(group), method: :delete, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
     </div>
   </div>
 </div>

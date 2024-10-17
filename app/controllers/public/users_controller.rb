@@ -10,15 +10,16 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @group = @user.groups
+    @groups = @user.groups
     #@vegetable = Vegetable.find(params[:id])
-
+  
     @vegetables = @user.vegetables
     @comments = Comment.all
     #@favorites = Favorite.all
   end
 
   def show
+   
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
     @comments = Comment.all

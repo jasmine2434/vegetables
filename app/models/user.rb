@@ -5,11 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+  has_many :group_users
+  has_many :groups, through: :group_users, dependent: :destroy
   has_many :vegetables, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :groups, dependent: :destroy
-  has_many :group_users
+  
+  
 
   validates :name, uniqueness: true, presence: :true, length: { in: 2..20 }
   validates :email, uniqueness: { message: "このメールアドレスは既に使用されています" }

@@ -59,7 +59,7 @@
           <tr>
             <th scope="col">ユーザー画像</th>
             <th scope="col">ユーザー名</th>
-            <th scope="col">ボタン</th>
+            <th scope="col">ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -69,10 +69,13 @@
               <td><%= user.name %></td>
               <td>
                 <% if @group.is_owned_by?(current_user) %>
-                  
                   <%= link_to '不参加', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% else %>
+                <% elsif current_user == user && @group.includesUser?(current_user) %>
+                  <%= link_to '不参加', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% elsif current_user == user && !@group.includesUser?(current_user) %>
                   <%= link_to '参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
+                <% else %>
+                  <button class="btn btn-sm btn-info">参加中</button>
                 <% end %>
               </td>
             </tr>
