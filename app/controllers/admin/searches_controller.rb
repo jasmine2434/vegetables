@@ -15,6 +15,7 @@ class Admin::SearchesController < ApplicationController
     else
         @records = Vegetable.search_for(@content, @method)
     end
+    render 'public/searches/search'
   end
 
 
