@@ -8,18 +8,21 @@
 
 tomato = User.find_or_create_by!(email: "tomato@example.com") do |user|
   user.name = "tomato"
+  user.introduction = "トマトが好きです"
   user.password = "tomato"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/character_tomato.png"), filename:"character_tomato.png")
 end
 
 jagaimo = User.find_or_create_by!(email: "jagaimo@example.com") do |user|
   user.name = "jagaimo"
+  user.introduction = "じゃがいもが好きです"
   user.password = "jagaimo"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/jagaimo_hori.png"), filename:"jagaimo_hori.png")
 end
 
 retasu = User.find_or_create_by!(email: "retasu@example.com") do |user|
   user.name = "retasu"
+  user.introduction = "レタスが好きです"
   user.password = "retasu"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/character_lettuce.png"), filename:"character_lettuce.png")
 end

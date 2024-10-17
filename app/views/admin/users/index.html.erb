@@ -17,6 +17,7 @@
           <th scope="col" style="width: 10%;">投稿数</th>
           <th scope="col" style="width: 10%;">いいね数</th>
           <th scope="col" style="width: 10%;">コメント数</th>
+          <th scope="col" style="width: 10%;">削除</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,10 @@
             <td><%= user.vegetables.count %></td>
             <td><%= user.favorites.count %></td>
             <td><%= user.comments.count %></td>
+            <td><%= link_to admin_user_path(user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                  <i class="fa-solid fa-trash"></i> 削除
+                  <% end %>
+              </td>
           </tr>
         <% end %>
       </tbody>

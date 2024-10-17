@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get "homes/top" => 'homes#top', as: 'admin/top'
     get '/search' => 'searches#search'
+    resources :users, only: [:index, :show, :destroy]
     resources :vegetables, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :new, :create, :edit, :update]
-    resources :users, only: [:index, :show, :destroy]
+    resources :groups, only: [:index, :show, :destroy]
     resources :comments, only: [:index, :destroy]
   end
 
@@ -28,14 +29,17 @@ Rails.application.routes.draw do
     get '/users/my_page' => 'users#mypage' ,as: 'my_page'
     get '/search' => 'searches#search'
 
+
+    resources :groups do
+      resource :group_users, only: [:create, :destroy]
+    end
+
     resources :users, only: [:show, :edit, :update, :destroy]
-    resources :vegetables, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
+
+    resources :vegetables do
       resource :favorite, only: [:create, :destroy, :update]
       resources :comments, only: [:create, :destroy]
     end
-
-    resources :profile_image
-
 
   end
 

@@ -17,7 +17,13 @@
         <% users.each do |user| %>
           <tr>
             <td><%= image_tag user.get_profile_image(100, 100) %></td>
-            <td><%= link_to user.name, user_path(user.id) %></td>
+            <td>
+              <% if current_admin %>
+                <%= link_to user.name, admin_user_path(user.id) %>
+              <% else %>
+                <%= link_to user.name, user_path(user.id) %>
+              <% end %>
+            </td>
             <td><%= user.vegetables.count %></td>
             <td><%= user.favorites.count %></td>
             <td><%= user.comments.count %></td>

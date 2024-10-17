@@ -9,14 +9,17 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
-    #@vegetable = Vegetable.find(params[:id])
     @user = current_user
+    @groups = @user.groups
+    #@vegetable = Vegetable.find(params[:id])
+  
     @vegetables = @user.vegetables
     @comments = Comment.all
     #@favorites = Favorite.all
   end
 
   def show
+   
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
     @comments = Comment.all
@@ -38,13 +41,10 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
-
-
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :image)
   end
 
   def ensure_guest_user
@@ -60,5 +60,4 @@ class Public::UsersController < ApplicationController
       redirect_to my_page_path(current_user) # マイページにリダイレクト
     end
   end
-
 end

@@ -1,20 +1,14 @@
 class Admin::UsersController < ApplicationController
 
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @users = User.all
-    @vegetable = Vegetable.new
-    @comments = Comment.all
-    @favorites = Favorite.all
   end
 
   def show
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
-    @vegetable = Vegetable.new
-    @comments = Comment.all
-    @favorites = Favorite.all
   end
 
   def destroy
@@ -32,9 +26,9 @@ class Admin::UsersController < ApplicationController
   private
 
   def authenticate_admin!
-    unless current_user&.admin?
+    unless admin_signed_in?
       flash[:alert] = "このページにアクセスできません"
-      redirect_to root_path  # アクセスできない場合は、トップページへリダイレクト
+      redirect_to root_path  #ユーザーのトップページへリダイレクト
     end
   end
 

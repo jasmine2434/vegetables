@@ -17,9 +17,21 @@
         <% vegetables.each do |vege| %>
           <tr>
             <td><%= image_tag vege.user.get_profile_image(80, 80) %></td>
-            <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
+            <td>
+              <% if current_admin %>
+                <%= link_to vege.user.name, admin_user_path(vege.user_id) %>
+              <% else %>
+                <%= link_to vege.user.name, user_path(vege.user_id) %>
+              <% end %>
+            </td>
             <td><%= image_tag vege.get_image(100, 100) %></td>
-            <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
+            <td>
+              <% if current_admin %>
+                <%= link_to vege.name, admin_vegetable_path(vege.id) %>
+              <% else %>
+                <%= link_to vege.name, vegetable_path(vege.id) %>
+              <% end %>
+            </td>
             <td><%= vege.genre.name %></td>
             <td><%= truncate(vege.body, length: 30) %></td> <!-- 文字数制限 -->
           </tr>
