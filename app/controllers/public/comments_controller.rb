@@ -1,7 +1,7 @@
 class Public::CommentsController < ApplicationController
 
 def create
-  #@vegetable = Vegetable.find(params[:vegetable_id])
+  @vegetable = Vegetable.find(params[:vegetable_id])
   @comment = current_user.comments.new(comment_params)
   @comment.vegetable_id = @vegetable.id
   if @comment.save

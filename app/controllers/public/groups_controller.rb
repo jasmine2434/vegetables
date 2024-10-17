@@ -39,7 +39,7 @@ def update
   @group = Group.find(params[:id])
   if @group.update(group_params)
     flash[:notice] = "更新されました"
-    redirect_to groups_path
+    redirect_to group_path(@group)
   else
     flash.now[:alert] = "更新に失敗しました"
     render :edit
