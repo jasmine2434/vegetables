@@ -9,7 +9,7 @@
       <%= render "public/users/profile", user: @user %>
       <!-- コメントフォーム -->
       <div class="mb-5 mt-3">
-        <h5>投稿にコメントを送信</h5>
+        <h5>投稿にコメントを送る</h5>
         <%= form_with model: @comment, url: vegetable_comments_path(@vegetable.id), local: true do |f| %>
           <%= f.text_area :body, rows: '5', placeholder: "コメント記入", class: "w-100 mb-3" %>
           <div class="d-flex justify-content-end">
@@ -43,11 +43,9 @@
         </tr>
         <tr>
           <td class="text-center">いいね</td>
-          <td class="text-center">
-
-          <%= render "public/favorites/favorite_btn", vegetable: @vegetable %>
-
+          <td id="favorite_btn_<%= @vegetable.id %>">
             
+        <%= render "public/favorites/favorite_btn", vegetable: @vegetable %>
           </td>
         </tr>
       </table>
@@ -78,24 +76,13 @@
             <th scope="col"></th> <!-- 削除ボタン用 -->
           </tr>
         </thead>
-        <tbody>
-          <% @vegetable.comments.each do |comment| %>
-            <tr>
-              <td>
-                <%= link_to user_path(comment.user) do %>
-                  <%= image_tag comment.user.get_profile_image(100, 100) %><br>
-                  <%= comment.user.name %>
-                <% end %>
-              </td>
-              <td><%= comment.body %></td>
-              <td>
-                <% if comment.user == current_user %>
-                  <%= link_to "削除", vegetable_comment_path(@vegetable, comment), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
+
+
+
+
+        <%= render "public/comments/comment", vegetable: @vegetable %>
+
+
       </table>
     </div>
   </div>
