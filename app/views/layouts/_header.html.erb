@@ -1,38 +1,39 @@
 <header>
   <nav class="flash-message-wrapper">
-    <div class="flash-message">
-      <% flash.each do |message_type, message| %>
-        <% if message_type == "danger" %>
-         <div class="alert <%= message_type %>">
-            <span class="text-danger"><%= message %></span>
-         </div>
-        <% else %>
-          <div class="notice <%= message_type %>">
-            <span class="text-dark"><%= message %></span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+    <!--<div class="flash-message">-->
+    <!--  <%# flash.each do |message_type, message| %>-->
+    <!--    <%# if message_type == "danger" %>-->
+    <!--     <div class="alert <%#= message_type %>">-->
+    <!--        <span class="text-dark"><%#= message %></span>-->
+    <!--     </div>-->
+    <!--    <%# else %>-->
+    <!--      <div class="notice <%#= message_type %>">-->
+    <!--        <span class="text-dark"><%#= message %></span>-->
+    <!--      </div>-->
+    <!--    <%# end %>-->
+    <!--  <%# end %>-->
+    <!--</div>-->
 
     <nav class="navbar" style="background-color: #3cb371;">
       <span class="navbar-brand mb-0 h1">野菜と健康</span>
 
-    <div class="welcome-name">
-    <% if user_signed_in? %>
-      <div class="message-name" style="font-weight: 500;">
-          こんにちは、<%= current_user.name %>さん
-      </div>
-    </div>
-
-    <!--<div class="d-flex justify-content-center" style="font-weight: 400; text-align: left;">-->
-    <!--  <div class="me-3">-->
-    <!--    <p class="notice mb-0"><%#= notice %></p>-->
-    <!--  </div>-->
-    <!--  <div>-->
-    <!--    <p class="alert mb-0"><%#= alert %></p>-->
+    <!--<div class="welcome-name">-->
+    <!--<%# if user_signed_in? %>-->
+    <!--  <div class="message-name" style="font-weight: 500;">-->
+    <!--      こんにちは、<%#= current_user.name %>さん-->
     <!--  </div>-->
     <!--</div>-->
 
+    <div class="d-flex justify-content-center" style="font-weight: 400; text-align: left;">
+      <div class="me-3">
+        <p class="notice mb-0"><%= notice %></p>
+      </div>
+      <div>
+        <p class="alert mb-0"><%= alert %></p>
+      </div>
+    </div>
+    
+    <% if user_signed_in? %>
     <div class="d-flex justify-content-end align-items-center" style="height: 60px">
       <ul class="navbar-nav" style="flex-direction: row;">
         <li>
