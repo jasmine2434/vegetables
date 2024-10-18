@@ -18,27 +18,21 @@
       </tr>
     </thead>
     <tbody>
-      <% @vegetables.each do |vege| %>
+      <% @vegetables.each do |vegetable| %>
       <tr>
-        <td class="text-center"><%= image_tag vege.user.get_profile_image(80, 80) %></td>
-        <td class="text-center"><%= link_to user_path(vege.user_id) do %>
-          <%= vege.user.name %></td>
+        <td class="text-center"><%= image_tag vegetable.user.get_profile_image(80, 80) %></td>
+        <td class="text-center"><%= link_to user_path(vegetable.user_id) do %>
+          <%= vegetable.user.name %></td>
           <% end %>
-        <td class="text-center"><%= image_tag vege.get_image(80, 80) %></td>
-        <td class="text-center"><%= link_to vegetable_path(vege.id) do %>
-            <%= vege.name %>
+        <td class="text-center"><%= image_tag vegetable.get_image(80, 80) %></td>
+        <td class="text-center"><%= link_to vegetable_path(vegetable.id) do %>
+            <%= vegetable.name %>
             <% end %>
         </td>
-        <td class="text-center">
-          
-          <% if vege.favorited_by?(current_user) %>
-            <%= link_to "❤ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :delete %>
-          <% else %>
-            <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
-          <% end %>
-          
+        <td id="favorite_btn_<%= vegetable.id %>">
+          <%= render "public/favorites/favorite_btn", vegetable: vegetable %>
         </td>
-        <td class="text-center"><%= vege.comments.count %></td>
+        <td class="text-center"><%= vegetable.comments.count %></td>
       </tr>
       <% end %>
     </tbody>
