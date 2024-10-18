@@ -45,12 +45,9 @@
           <td class="text-center">いいね</td>
           <td class="text-center">
 
+          <%= render "public/favorites/favorite_btn", vegetable: @vegetable %>
 
-            <% if @vegetable.favorited_by?(current_user) %>
-              <%= link_to "❤ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :delete %>
-            <% else %>
-              <%= link_to "♡ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :post %>
-            <% end %>
+            
           </td>
         </tr>
       </table>
