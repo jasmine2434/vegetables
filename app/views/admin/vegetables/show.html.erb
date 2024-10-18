@@ -1,28 +1,10 @@
 <div class="container">
   <h2 class="row mt-5 text-center">投稿詳細確認画面</h2>
     <div class="row">
- <div class="col-5 mt-2">
+      <div class="col-5 mt-2">
       <!-- プロフィール画像 -->
-      <table class="table table-bordered text-center mt-4">
-        <tr>
-          <td class="text-center" colspan="2">
-            <%= image_tag @vegetable.user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-4 text-center">ユーザー名</td>
-          <td class="text-center">
-            <%= link_to admin_user_path(@vegetable.user) do %>
-              <%= @vegetable.user.name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">いいね</td>
-          <td class="text-center"><%= @vegetable.favorites.count %></td>
-        </tr>
-      </table>
-    </div>
+       <%= render "public/users/profile", user: @user %>
+      </div>
 
     <!-- 右半分 (投稿詳細情報) -->
     <div class="col-md-7 mt-4">
@@ -44,6 +26,10 @@
         <tr>
           <td class="text-center">説明文</td>
           <td><%= @vegetable.body %></td>
+        </tr>
+        <tr>
+          <td class="text-center">いいね</td>
+          <td class="text-center"><%= @vegetable.favorites.count %></td>
         </tr>
       </table>
 
