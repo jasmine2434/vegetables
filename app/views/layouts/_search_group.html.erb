@@ -1,0 +1,32 @@
+ <div class="container">
+  <div class="row">
+    <h2 class="col mt-4">グループ検索結果画面</h2>
+  </div>
+  <div class="row text-center mt-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 15%;">グループ画像</th>
+          <th scope="col" style="width: 25%;">グループ名</th>
+          <th scope="col" style="width: 15%;">紹介文</th>
+          <th scope="col" style="width: 10%;">人数</th>
+      </thead>
+      <tbody>
+        <% groups.each do |group| %>
+          <tr>
+            <td><%= image_tag group.get_group_image(100, 100) %></td>
+            <td>
+              <% if current_admin %>
+                <%= link_to group.name, admin_group_path(group.id) %>
+              <% else %>
+                <%= link_to group.name, group_path(group.id) %>
+              <% end %>
+            </td>
+            <td><%= group.introduction %></td>
+            <td><%= group.group_users.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

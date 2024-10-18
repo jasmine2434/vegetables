@@ -10,8 +10,10 @@ class Public::SearchesController < ApplicationController
         redirect_to vegetables_path
     elsif @model  == "user"
         @records = User.search_for(@content, @method)
-    else
+    elsif @model == "vegetable"
         @records = Vegetable.search_for(@content, @method)
+    else
+        @records = Group.search_for(@content, @method)
     end
   end
 

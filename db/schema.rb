@@ -53,16 +53,16 @@ ActiveRecord::Schema.define(version: 2024_10_15_070809) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.integer "user_id"
-    t.integer "vegetable_id"
+    t.text "body", null: false
+    t.integer "user_id", null: false
+    t.integer "vegetable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "vegetable_id"
+    t.integer "user_id", null: false
+    t.integer "vegetable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2024_10_15_070809) do
   end
 
   create_table "group_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_group_users_on_group_id"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2024_10_15_070809) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.text "introduction"
+    t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2024_10_15_070809) do
     t.integer "user_id", null: false
     t.string "name", null: false
     t.text "body", null: false
-    t.integer "genre_id"
+    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -2,25 +2,11 @@
   <div class="row mt-5">
       <h2 class="title">投稿詳細画面</h2>
   </div>
-  
+
   <div class="row">
     <!-- ユーザー情報 -->
     <div class="col-md-4 mt-4">
-      <table class="table table-bordered text-center mt-4">
-        <tr>
-          <td class="text-center" colspan="2">
-            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-5 text-center">ユーザー名</td>
-          <td class="text-center"><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td class="col-5 text-center">紹介文</td>
-          <td class="text-center"><%= @user.introduction %></td>
-        </tr>
-      </table>
+      <%= render "public/users/profile", user: @user %>
       <!-- コメントフォーム -->
       <div class="mb-5 mt-3">
         <h5>投稿にコメントを送信</h5>
@@ -58,10 +44,12 @@
         <tr>
           <td class="text-center">いいね</td>
           <td class="text-center">
+
+
             <% if @vegetable.favorited_by?(current_user) %>
-              <%= link_to "❤ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :delete, data: { confirm: "この野菜のいいねを外しますか？" }, class: "text-danger" %>
+              <%= link_to "❤ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :delete %>
             <% else %>
-              <%= link_to "♡ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :post, class: "text-muted" %>
+              <%= link_to "♡ #{@vegetable.favorites.count}", vegetable_favorite_path(@vegetable), method: :post %>
             <% end %>
           </td>
         </tr>

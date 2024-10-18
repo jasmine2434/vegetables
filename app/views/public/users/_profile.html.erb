@@ -1,0 +1,20 @@
+<table class="table table-bordered text-center mt-4">
+   <tr>
+    <td class="text-center" colspan="2">
+      <%= "ログインユーザー" %>
+    </td>
+  </tr>
+  <tr>
+    <td class="text-center" colspan="2">
+      <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-5 text-center">ユーザー名</td>
+    <td class="text-center"><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td class="col-5 text-center">紹介文</td>
+    <td class="text-center"><%= @user.introduction %></td>
+  </tr>
+</table>

@@ -5,26 +5,7 @@
 
   <div class="row">
     <div class="col-md-3 mt-4">
-      <table class="table table-bordered text-center mt-4">
-        <tr>
-          <td class="text-center" colspan="2">
-            <%= "ログインユーザー" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center" colspan="2">
-            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-5 text-center">ユーザー名</td>
-          <td class="text-center"><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td class="col-5 text-center">紹介文</td>
-          <td class="text-center"><%= @user.introduction %></td>
-        </tr>
-      </table>
+      <%= render "public/users/profile", user: @user %>
 
       <div class="mt-4">
         <% if @group.is_owned_by?(current_user) %>
@@ -78,13 +59,11 @@
               <td><%= user.name %></td>
               <td>
                 <% if @group.is_owned_by?(current_user) %>
-                  <%= link_to '辞めさせる', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% elsif current_user == user #&& @group.includesUser?(current_user) %>
+                  <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% elsif current_user == user %>
                   <%= link_to 'やめる', group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-                <%# elsif current_user == user && !@group.includesUser?(current_user) %>
-                  <%#= link_to '参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
                 <% else %>
-                  <div class="btn btn-sm btn-info">参加中</div>
+                  <div class="text-primary">参加中</div>
                 <% end %>
               </td>
             </tr>
