@@ -36,6 +36,7 @@
           <% else %>
             <%= link_to "♡ #{vege.favorites.count}", vegetable_favorite_path(vege), method: :post %>
           <% end %>
+          
         </td>
         <td class="text-center"><%= vege.comments.count %></td>
       </tr>
