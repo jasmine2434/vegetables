@@ -21,7 +21,8 @@
       <tbody>
         <% @vegetables.each do |vege| %>
           <tr>
-            <td><%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
+            <td>
+              <%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
             <td><%= image_tag vege.get_image(80, 80) %></td>
             <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
             <td><%= vege.genre.name %></td>

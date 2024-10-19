@@ -23,6 +23,7 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   def index
+    
     @vegetables = Vegetable.all
     @vegetable = Vegetable.new
   end

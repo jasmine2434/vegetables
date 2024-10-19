@@ -21,9 +21,13 @@
       <% @vegetables.each do |vegetable| %>
       <tr>
         <td class="text-center"><%= image_tag vegetable.user.get_profile_image(80, 80) %></td>
-        <td class="text-center"><%= link_to user_path(vegetable.user_id) do %>
-          <%= vegetable.user.name %></td>
+        <td class="text-center">
+          <% if vegetable.user == current_user %>
+            <%= link_to vegetable.user.name, my_page_path(vegetable.user_id) %>
+          <% else %>
+            <%= link_to vegetable.user.name, user_path(vegetable.user_id) %>
           <% end %>
+        </td>
         <td class="text-center"><%= image_tag vegetable.get_image(80, 80) %></td>
         <td class="text-center"><%= link_to vegetable_path(vegetable.id) do %>
             <%= vegetable.name %>

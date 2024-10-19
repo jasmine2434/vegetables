@@ -10,7 +10,7 @@
       <td><%= comment.body %></td>
       <td>
         <% if comment.user == current_user %>
-          <%= link_to "削除", vegetable_comment_path(vegetable, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+          <%= link_to "削除", vegetable_comment_path(vegetable, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
         <% end %>
       </td>
     </tr>

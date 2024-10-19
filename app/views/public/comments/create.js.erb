@@ -1,0 +1,3 @@
+$('#comment_count').html("<%= j(render 'public/comments/count', vegetable: @vegetable) %>");
+$('#comment_index').html("<%= j(render 'public/comments/index', vegetable: @vegetable) %>");
+$('#comment_textarea').val("");

@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-md-3 mt-4">
-      <%= render "public/users/profile", user: @user %>
+      <%= render "layouts/profile", user: @user %>
         <!--ログインしているユーザーのみボタンを表示 -->
       <% if @user == current_user %>
         <div class="mt-5">
