@@ -78,7 +78,6 @@
           </div>
         <% end %>
       </div>
-
     </div>
   </div>
 
@@ -94,13 +93,9 @@
             <th scope="col"></th> <!-- 削除ボタン用 -->
           </tr>
         </thead>
-
-
-
-
-        <%= render "public/comments/index", vegetable: @vegetable %>
-
-
+        <tbody id="comment_index">
+          <%= render "public/comments/index", vegetable: @vegetable %>
+        </tbody>
       </table>
     </div>
   </div>
