@@ -6,18 +6,32 @@
   <div class="row">
     <!-- ユーザー情報 -->
     <div class="col-md-4 mt-4">
-      <%= render "public/users/profile", user: @user %>
+      <table class="table table-bordered text-center mt-4">
+       <tr>
+        <td class="text-center" colspan="2">
+          <%= "投稿ユーザー" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-center" colspan="2">
+          <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-5 text-center">ユーザー名</td>
+        <td class="text-center"><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td class="col-5 text-center">紹介文</td>
+        <td class="text-center"><%= @user.introduction %></td>
+      </tr>
+    </table>
       <!-- コメントフォーム -->
       <div class="mb-5 mt-3">
         <h5>投稿にコメントを送る</h5>
-        <%= form_with model: @comment, url: vegetable_comments_path(@vegetable.id), local: true do |f| %>
-          <%= f.text_area :body, rows: '5', placeholder: "コメント記入", class: "w-100 mb-3" %>
-          <div class="d-flex justify-content-end">
-            <%= button_tag(type: 'submit', class: "btn btn-primary w-95") do %>
-              <i class="fa-solid fa-arrows-rotate"></i> 送信する
-            <% end %>
-          </div>
-        <% end %>
+      <div id="comment-form">
+        <%= render "public/comments/form", vegetable: @vegetable, comment: @comment %>
+      </div>
       </div>
     </div>
 
@@ -47,6 +61,11 @@
             <%= render "public/favorites/favorite_btn", vegetable: @vegetable %>
           </td>
         </tr>
+        <tr>
+          <td class="text-center">コメント数</td>
+          <td id="comment_count">
+             <%= render "public/comments/count", vegetable: @vegetable %>
+        </tr>
       </table>
 
            <!-- 遷移ボタン -->
@@ -59,7 +78,6 @@
           </div>
         <% end %>
       </div>
-
     </div>
   </div>
 
@@ -70,18 +88,14 @@
       <table class="table table-bordered mt-2 text-center">
         <thead class="thead-light">
           <tr>
-            <th scope="col" style="width: 15%;">ユーザー</th>
+            <th scope="col" style="width: 15%;">コメントユーザー</th>
             <th scope="col" style="width: 70%;">コメント</th>
             <th scope="col"></th> <!-- 削除ボタン用 -->
           </tr>
         </thead>
-
-
-
-
-        <%= render "public/comments/comment", vegetable: @vegetable %>
-
-
+        <tbody id="comment_index">
+          <%= render "public/comments/index", vegetable: @vegetable %>
+        </tbody>
       </table>
     </div>
   </div>
