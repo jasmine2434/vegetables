@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :vegetables, only: [:index, :show, :destroy]
     resources :genres, only: [:index, :new, :create, :edit, :update]
     resources :groups, only: [:index, :show, :destroy]
-    resources :comments, only: [:index, :destroy]
+    resources :comments, only: [:index, :show, :destroy]
   end
 
   devise_for :users, skip: [:passwords], controllers: {

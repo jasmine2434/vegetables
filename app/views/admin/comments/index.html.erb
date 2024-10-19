@@ -17,13 +17,14 @@
         <% @comments.each do |comment| %>
         <tr>
           <td>
-            <%= link_to my_page_path(comment.user) do %>
             <%= image_tag comment.user.get_profile_image(50, 50) %><br>
             <%= comment.user.name %>
-            <% end %>
           </td>
-          <td><%= link_to comment.vegetable.name, admin_vegetable_path(comment.vegetable_id) %></td>
-          <td><%= truncate(comment.body, length: 30) %></td>
+          <td><%= comment.vegetable.name %></td>
+          <td> <%= link_to truncate(comment.body, length: 30), admin_comment_path(comment.vegetable_id) %>
+            
+            
+            <%#= truncate(comment.body, length: 30) %></td>
           <td>
             <%= link_to admin_comment_path(comment.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
               <i class="fa-solid fa-trash"></i> 削除
