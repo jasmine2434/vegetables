@@ -1,6 +1,3 @@
-<div style="margin-right: -8px;margin-top: 15px;">
-  <%= render "layouts/search" %>
-</div>
 
 <div class="container">
   <div class="row">
@@ -10,7 +7,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col" style="width: 10%;">ユーザー名</th>
+          <th scope="col" style="width: 10%;">コメントユーザー</th>
           <th scope="col" style="width: 15%;">投稿名</th>
           <th scope="col" style="width: 30%;">コメント</th>
           <th scope="col" style="width: 10%;">削除</th>
@@ -19,7 +16,12 @@
       <tbody>
         <% @comments.each do |comment| %>
         <tr>
-          <td><%= link_to comment.user.name, admin_user_path(comment.user_id) %></td>
+          <td>
+            <%= link_to my_page_path(comment.user) do %>
+            <%= image_tag comment.user.get_profile_image(50, 50) %><br>
+            <%= comment.user.name %>
+            <% end %>
+          </td>
           <td><%= link_to comment.vegetable.name, admin_vegetable_path(comment.vegetable_id) %></td>
           <td><%= truncate(comment.body, length: 30) %></td>
           <td>

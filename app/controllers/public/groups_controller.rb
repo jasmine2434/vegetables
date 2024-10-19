@@ -50,7 +50,7 @@ def destroy
   @group = Group.find(params[:id])
   if @group.destroy
     flash[:notice] = "削除されました"
-    redirect_to groups_path
+    redirect_to my_page_path
   else
     flash.now[:notice] = "削除に失敗しました"
     render :edit

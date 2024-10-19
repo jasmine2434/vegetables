@@ -24,7 +24,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= user.created_at.strftime("%Y年%m月%d日") %></td>
-            <td><%= image_tag user.get_profile_image(100, 100) %></td>
+            <td><%= image_tag user.get_profile_image(50, 50) %></td>
             <td><%= link_to user.name, admin_user_path(user.id) %></td>
             <td><%= user.vegetables.count %></td>
             <td><%= user.favorites.count %></td>

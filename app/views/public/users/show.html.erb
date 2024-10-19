@@ -44,11 +44,11 @@
             <tr>
               <td><%= image_tag vegetable.get_image(80, 80) %></td>
               <td>
-                <%= link_to vegetable.name, vegetable_path(vege.id) %>
+                <%= link_to vegetable.name, vegetable_path(vegetable.id) %>
               </td>
-              <td><%= vege.genre.name %></td>
-              <td class="text-center"><%= vege.favorites.count %></td>
-              <td class="text-center"><%= vege.comments.count %></td>
+              <td><%= vegetable.genre.name %></td>
+              <td class="text-center"><%= vegetable.favorites.count %></td>
+              <td class="text-center"><%= vegetable.comments.count %></td>
             </tr>
           <% end %>
         </tbody>

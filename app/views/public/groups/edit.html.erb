@@ -33,7 +33,9 @@
       </div>
 
       <div class="col-md-3">
-        <%= f.submit "更新する", class: "btn btn-primary w-100" %>
+        <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block w-100') do %>
+          <i class="fa-solid fa-arrows-rotate"></i> 更新する
+        <% end %>
       </div>
 
       <div class="col-md-3">
