@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 mt-4">
+    <div class="col-md-4 mt-4">
       <%= render "layouts/profile", user: @user %>
         <!--ログインしているユーザーのみボタンを表示 -->
       <% if @user == current_user %>
@@ -27,7 +27,7 @@
       </div>
     </div>
      <!-- 投稿一覧 -->
-    <div class="col-md-8 ml-5">
+    <div class="col-md-7 ml-5">
       <h3 class="text-center mt-4">投稿一覧</h3>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
@@ -40,11 +40,11 @@
           </tr>
         </thead>
         <tbody>
-          <% @vegetables.each do |vege| %>
+          <% @vegetables.each do |vegetable| %>
             <tr>
-              <td><%= image_tag vege.get_image(80, 80) %></td>
+              <td><%= image_tag vegetable.get_image(80, 80) %></td>
               <td>
-                <%= link_to vege.name, vegetable_path(vege.id) %>
+                <%= link_to vegetable.name, vegetable_path(vege.id) %>
               </td>
               <td><%= vege.genre.name %></td>
               <td class="text-center"><%= vege.favorites.count %></td>

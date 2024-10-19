@@ -2,9 +2,16 @@
   <% vegetable.comments.each do |comment| %>
     <tr>
       <td>
-        <%= link_to user_path(comment.user) do %>
+        <% if comment.user == current_user %>
+          <%= link_to my_page_path(comment.user) do %>
           <%= image_tag comment.user.get_profile_image(100, 100) %><br>
           <%= comment.user.name %>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(comment.user) do %>
+            <%= image_tag comment.user.get_profile_image(100, 100) %><br>
+            <%= comment.user.name %>
+          <% end %>
         <% end %>
       </td>
       <td><%= comment.body %></td>
