@@ -7,7 +7,7 @@
       <h3 class="mb-4 mt-4">投稿名の検索結果 "<%= @content %>"</h3>
       <%= render 'layouts/search_vegetable', vegetables: @records %>
     <% elsif @model == 'group' %>
-      <h3 class="mb-4 mt-4">投稿名の検索結果 "<%= @content %>"</h3>
+      <h3 class="mb-4 mt-4">グループ名の検索結果 "<%= @content %>"</h3>
       <%= render 'layouts/search_group', groups: @records %>
     <% end %>
   <% else %>

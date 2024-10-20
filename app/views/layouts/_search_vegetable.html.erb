@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <h2 class="col mt-5">検索投稿一覧画面</h2>
+    <h2 class="col mt-5">投稿検索結果画面</h2>
   </div>
   <h5 class="row text-center">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col" style="width: 10%;" colspan="2" class="text-center">ユーザー</th>  <!-- セル結合 -->
+          <th scope="col" style="width: 10%;">ユーザー</th>  <!-- セル結合 -->
           <th scope="col" style="width: 10%;">画像</th>
           <th scope="col" style="width: 15%;">名前</th>
           <th scope="col" style="width: 10%;">ジャンル</th>
@@ -16,15 +16,14 @@
       <tbody>
         <% vegetables.each do |vege| %>
           <tr>
-            <td><%= image_tag vege.user.get_profile_image(80, 80) %></td>
-            <td>
+            <td><%= image_tag vege.user.get_profile_image(80, 80) %></br>
               <% if current_admin %>
                 <%= link_to vege.user.name, admin_user_path(vege.user_id) %>
               <% else %>
                 <%= link_to vege.user.name, user_path(vege.user_id) %>
               <% end %>
             </td>
-            <td><%= image_tag vege.get_image(100, 100) %></td>
+            <td><%= image_tag vege.get_image(80, 80) %></td>
             <td>
               <% if current_admin %>
                 <%= link_to vege.name, admin_vegetable_path(vege.id) %>

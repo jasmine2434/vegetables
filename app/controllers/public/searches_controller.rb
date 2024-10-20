@@ -7,13 +7,13 @@ class Public::SearchesController < ApplicationController
 
     if @content.blank?
       flash[:alert] = "検索ワードを入力してくだい"
-        redirect_to vegetables_path
+      redirect_to request.referer and return
     elsif @model  == "user"
-        @records = User.search_for(@content, @method)
+      @records = User.search_for(@content, @method)
     elsif @model == "vegetable"
-        @records = Vegetable.search_for(@content, @method)
+      @records = Vegetable.search_for(@content, @method)
     else
-        @records = Group.search_for(@content, @method)
+      @records = Group.search_for(@content, @method)
     end
   end
 

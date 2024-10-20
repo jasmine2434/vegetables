@@ -15,7 +15,7 @@ class Group < ApplicationRecord
     end
       group_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       Group.where(name: content)
@@ -24,9 +24,9 @@ class Group < ApplicationRecord
     end
   end
 
-  def is_owned_by?(user)
-    owner.id == user.id
-  end
+  # def is_owned_by?(user)
+  #   owner.id == user.id
+  # end
 
   def includesUser?(user)
     group_users.exists?(user_id: user.id)

@@ -1,29 +1,31 @@
 <div style="margin-right: -8px;margin-top: 15px;">
   <%= render "layouts/search", url: search_path if user_signed_in? %>
 </div>
-<div class="container">
-  <div class="row mt-5">
-      <h2 class="title">グループ一覧画面</h2>
-  </div>
-  <!-- 投稿一覧 -->
-  <table class="table table-bordered mt-4 text-center">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col" style="width: 15%;">グループ画像</th>
-        <th scope="col" style="width: 35%;">グループ名</th>
-        <th scope="col" style="width: 40%;">紹介文</th>
-        <th scope="col" style="width: 10%;">人数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @groups.each do |group| %>
+<div class="main-bg custom-background h-100">
+  <div class="container">
+    <div class="row mt-5">
+        <h2 class="title">グループ一覧画面</h2>
+    </div>
+    <!-- 投稿一覧 -->
+    <table class="table table-bordered mt-4 text-center">
+      <thead class="thead-light">
         <tr>
-          <td><%= image_tag group.get_group_image(50, 50) %></td>
-          <td><%= link_to group.name, group_path(group.id) %></td>
-          <td class="text-center"><%= group.introduction %></td>
-          <td><%= group.group_users.count %></td>
+          <th scope="col" style="width: 15%;">グループ画像</th>
+          <th scope="col" style="width: 35%;">グループ名</th>
+          <th scope="col" style="width: 40%;">紹介文</th>
+          <th scope="col" style="width: 10%;">人数</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= image_tag group.get_group_image(50, 50) %></td>
+            <td><%= link_to group.name, group_path(group.id) %></td>
+            <td class="text-center"><%= group.introduction %></td>
+            <td><%= group.group_users.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

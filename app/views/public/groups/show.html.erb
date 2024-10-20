@@ -1,75 +1,78 @@
-<div class="container">
-  <div class="row mt-5">
-    <h2 class="title">グループ詳細画面</h2>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4 mt-4">
-      <%= render "public/users/profile", user: @user %>
-
-      <div class="mt-4">
-        <% if @group.is_owned_by?(current_user) %>
-          <%= link_to "グループの編集・削除", edit_group_path(@group), class: "btn btn-sm btn-warning btn-block" %>
-        <% end %>
-      </div>
-
-      <div class="mt-4">
-        <% if @group.users.include?(current_user) %>
-          <%= link_to '参加済み', '#', class: "btn btn-sm btn-secondary btn-block", disabled: true %>
-        <% else %>
-          <%= link_to 'グループに参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-primary btn-block" %>
-        <% end %>
-      </div>
+<div class="main-bg custom-background h-100">
+  <div class="container">
+    <div class="row mt-5">
+      <h2 class="title">グループ詳細画面</h2>
     </div>
 
-    <div class="col-md-8">
-      <h3 class="text-center mt-4">グループ概要</h3>
-      <table class="table table-bordered mt-3 text-center">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col" style="width: 15%;">グループ画像</th>
-            <th scope="col" style="width: 25%;">グループ名</th>
-            <th scope="col" style="width: 50%;">紹介文</th>
-            <th scope="col" style="width: 15%;">人数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= image_tag @group.get_group_image(80, 80) %></td>
-            <td><%= @group.name %></td>
-            <td><%= @group.introduction %></td>
-            <td><%= @group.group_users.count %></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row">
+      <div class="col-md-4 mt-4">
+        <%= render "public/users/profile", user: @user %>
 
-      <h3 class="text-center mt-4">グループメンバー</h3>
-      <table class="table table-bordered mt-3 text-center">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col" style="width: 15%;">ユーザー画像</th>
-            <th scope="col" style="width: 55%;">ユーザー名</th>
-            <th scope="col" style="width: 15%;">ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @group.users.each do |user| %>
-            <tr>
-              <td><%= image_tag user.get_profile_image(80, 80) %></td>
-              <td><%= user.name %></td>
-              <td>
-                <% if @group.is_owned_by?(current_user) %>
-                  <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% elsif current_user == user %>
-                  <%= link_to 'やめる', group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% else %>
-                  <div class="text-primary">参加中</div>
-                <% end %>
-              </td>
-            </tr>
+        <div class="mt-4">
+          <% if @group.owner == current_user %>
+            <%= link_to "グループの編集・削除", edit_group_path(@group), class: "btn btn-sm btn-warning btn-block" %>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+
+        <div class="mt-4">
+          <% if @group.users.include?(current_user) %>
+            <%= link_to '参加済み', '#', class: "btn btn-sm btn-secondary btn-block", disabled: true %>
+          <% else %>
+            <%= link_to 'グループに参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-primary btn-block" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <h3 class="text-center mt-4">グループ概要</h3>
+        <table class="table table-bordered mt-3 text-center">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 15%;">グループ画像</th>
+              <th scope="col" style="width: 25%;">グループ名</th>
+              <th scope="col" style="width: 50%;">紹介文</th>
+              <th scope="col" style="width: 15%;">人数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= image_tag @group.get_group_image(80, 80) %></td>
+              <td><%= @group.name %></td>
+              <td><%= @group.introduction %></td>
+              <td><%= @group.group_users.count %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="text-center mt-4">グループメンバー</h3>
+        <table class="table table-bordered mt-3 text-center">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 15%;">ユーザー画像</th>
+              <th scope="col" style="width: 55%;">ユーザー名</th>
+              <th scope="col" style="width: 15%;">ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @group.users.each do |user| %>
+              <tr>
+                <td><%= image_tag user.get_profile_image(80, 80) %></td>
+                <td><%= user.name %></td>
+                <td><% if @group.owner == current_user %> 
+                  <%# if user.id == owner.id %>
+                  <%# if @group.is_owned_by?(current_user) %>
+                    <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <% elsif current_user == user %>
+                    <%= link_to 'やめる', group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <% else %>
+                    <div class="text-primary">参加中</div>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
