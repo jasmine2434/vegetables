@@ -16,11 +16,11 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 20 }
 
   def get_profile_image(width, height)
-    if profile_image.attached?
-      profile_image.variant(resize_to_limit: [width, height]).processed
-    else
-      ActionController::Base.helpers.asset_path('no_image.jpg')
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
+      profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
   GUEST_USER_EMAIL = "guest@example.com"
