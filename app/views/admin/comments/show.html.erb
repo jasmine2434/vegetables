@@ -58,7 +58,7 @@
                 <% end %>
               </td>
               <td><%= comment.body %></td>
-              <td><%= link_to "削除", admin_comment_path(@vegetable, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              <td><%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %>
               </td>
             </tr>
             <% end %>

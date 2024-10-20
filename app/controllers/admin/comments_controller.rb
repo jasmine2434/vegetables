@@ -8,7 +8,6 @@ end
 
 def show
   @vegetable = Vegetable.find(params[:id])
-  @comment = @vegetable.comments
   @user = @vegetable.user
 end
 
@@ -16,7 +15,7 @@ def destroy
   @comment = Comment.find(params[:id])
   if @comment.destroy
     flash[:notice] = "コメントを削除しました"
-    redirect_to admin_comments_path(comment.vegetable)
+    redirect_to admin_comments_path
   else
     flash.now[:notice] = "コメント削除に失敗しました"
     render :index
