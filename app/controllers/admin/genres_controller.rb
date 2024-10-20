@@ -9,7 +9,6 @@ class Admin::GenresController < ApplicationController
 
   def new
     @genre = Genre.new
-    @genres = Genre.all
   end
 
   def create
