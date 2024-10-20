@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-5 mt-2">
       <!-- プロフィール画像 -->
-       <%= render "public/users/profile", user: @user %>
+       <%= render "layouts/profile", user: @user %>
       </div>
 
     <!-- 右半分 (投稿詳細情報) -->
@@ -12,7 +12,7 @@
       <table class="table table-bordered text-center mt-2">
         <tr>
           <td class="text-center" colspan="2">
-            <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+            <%= image_tag @vegetable.get_image(80, 80), class: "img-fluid" %>
           </td>
         </tr>
         <tr>

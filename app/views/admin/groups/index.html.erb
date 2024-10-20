@@ -1,5 +1,5 @@
 <div style="margin-right: -8px;margin-top: 15px;">
-  <%= render "layouts/search" %>
+  <%= render "layouts/search", url: admin_search_path %>
 </div>
 
 <div class="container">
@@ -20,7 +20,7 @@
       <tbody>
           <% @groups.each do |group| %>
             <tr>
-              <td><%= image_tag group.get_group_image(80, 80) %></td>
+              <td><%= image_tag group.get_group_image(50, 50) %></td>
               <td><%= link_to group.name, admin_group_path(group) %></td>
               <td><%= truncate(group.introduction, length: 15) %></td> <!-- 文字数制限 -->
               <td><%= group.group_users.count %></td>

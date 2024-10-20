@@ -6,6 +6,11 @@
       <table class="table table-bordered text-center mt-4">
         <tr>
           <td class="text-center" colspan="2">
+            <%= "投稿ユーザー" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-center" colspan="2">
             <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
           </td>
         </tr>
@@ -37,7 +42,7 @@
         <tbody>
           <% @vegetables.each_with_index do |vege| %>
             <tr>
-              <td><%= image_tag vege.get_image(100, 100), class: "img-thumbnail" %></td>
+              <td><%= image_tag vege.get_image(80, 80), class: "img-thumbnail" %></td>
               <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
               <td><%= vege.favorites.count %></td>
               <td><%= vege.comments.count %></td>

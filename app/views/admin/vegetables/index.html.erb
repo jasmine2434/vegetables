@@ -6,7 +6,7 @@
   <div class="row">
     <h2 class="col mt-4">投稿一覧確認画面</h2>
   </div>
-  <h5 class="row text-center mt-3">
+  <div class="row text-center mt-3">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -23,7 +23,7 @@
           <tr>
             <td>
               <%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
-            <td><%= image_tag vege.get_image(80, 80) %></td>
+            <td><%= image_tag vege.get_image(50, 50) %></td>
             <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
             <td><%= vege.genre.name %></td>
             <td><%= truncate(vege.body, length: 20) %></td> <!-- 文字数制限 -->
@@ -35,5 +35,5 @@
         <% end %>
       </tbody>
     </table>
-  </h5>
+  </div>
 </div>

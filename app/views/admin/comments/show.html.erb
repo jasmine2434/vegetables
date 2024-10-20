@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12" >
+      <h2 class="title">投稿コメント詳細画面</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 mt-4">
+      <%= render "layouts/profile", user: @user %>
+    </div>
+
+    <div class="col-md-7 mt-5">
+      <table class="table table-bordered text-center mt-2">
+        <tr>
+          <td class="text-center" colspan="2">
+            <%= image_tag @vegetable.get_image(80, 80), class: "img-fluid" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-4 text-center">投稿名</td>
+          <td class="text-center"><%= @vegetable.name %></td>
+        </tr>
+        <tr>
+          <td class="text-center">ジャンル</td>
+          <td class="text-center"><%= @vegetable.genre.name %></td>
+        </tr>
+        <tr>
+          <td class="text-center">説明文</td>
+          <td><%= @vegetable.body %></td>
+        </tr>
+        <tr>
+          <td class="text-center">いいね</td>
+          <td class="text-center"><%= @vegetable.favorites.count %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <h3 class="text-center mb-3">コメント一覧</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 20%;">コメントユーザー</th>
+              <th scope="col" style="width: 65%;">コメント</th>
+              <th scope="col" style="width: 15%;">操作</th> <!-- 削除ボタン用 -->
+            </tr>
+          </thead>
+          <tbody>
+           <% @vegetable.comments.each do |comment| %>
+            <tr>
+              <td><%= link_to admin_user_path(comment.user) do %>
+                <%= image_tag comment.user.get_profile_image(100, 100) %><br>
+                <%= comment.user.name %>
+                <% end %>
+              </td>
+              <td><%= comment.body %></td>
+              <td><%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
