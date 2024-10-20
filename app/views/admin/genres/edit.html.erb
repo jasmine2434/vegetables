@@ -4,23 +4,27 @@
   </div>
 
   <%= form_with model: [:admin, @genre] do |f| %>
-    <div class="row">
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-3"></div>
-          <h5 class="col-3">名前</h5>
-          <div class="col-4">
+    <div class="row mt-4">
+      <div class="col-md-6 offset-md-3">
+        <div class="row mb-3">
+          <h4 class="col-md-3 text-end">名前</h4>
+          <div class="col-md-9">
             <%= f.text_field :name %>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-3"></div>
-      <div class="col-md-3">
+    <div class="row mt-4">
+      <div class="col-md-3 offset-md-4">
         <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
           <i class="fa-solid fa-arrows-rotate"></i> 更新する
+        <% end %>
+      </div>
+
+      <div class="col-md-3 offset-md-1">
+        <%= link_to admin_genre_path(@genre.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+          <i class="fa-solid fa-trash"></i> 削除
         <% end %>
       </div>
     </div>

@@ -4,7 +4,6 @@ class Admin::VegetablesController < ApplicationController
 
   def index
     @vegetables = Vegetable.all
-    @vegetable = Vegetable.new
   end
 
   def show
@@ -34,10 +33,6 @@ class Admin::VegetablesController < ApplicationController
 
   def vegetable_params
     params.require(:vegetable).permit(:name, :body, :image, :genre_id)
-  end
-
-  def user_params
-    params.require(:user).permit(:name, :profile_image)
   end
 
 end

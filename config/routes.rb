@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/search' => 'searches#search'
     resources :users, only: [:index, :show, :destroy]
     resources :vegetables, only: [:index, :show, :destroy]
-    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :genres, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :groups, only: [:index, :show, :destroy]
     resources :comments, only: [:index, :show, :destroy]
   end
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       resource :group_users, only: [:create, :destroy]
     end
 
-    resources :users, only: [:show, :edit, :update, :destroy]
+    resources :users, only: [:show, :edit, :update]
 
     resources :vegetables do
       resource :favorite, only: [:create, :destroy, :update]

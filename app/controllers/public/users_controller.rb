@@ -4,26 +4,15 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   before_action :correct_user, only: [:edit, :update]
 
-  def new
-    @user = User.new
-  end
-
   def mypage
     @user = current_user
     @groups = @user.groups
-    #@vegetable = Vegetable.find(params[:id])
-  
     @vegetables = @user.vegetables
-    @comments = Comment.all
-    #@favorites = Favorite.all
   end
 
   def show
-   
     @user = User.find(params[:id])
     @vegetables = @user.vegetables
-    @comments = Comment.all
-
   end
 
   def edit

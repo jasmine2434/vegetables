@@ -9,7 +9,6 @@ class Admin::GenresController < ApplicationController
 
   def new
     @genre = Genre.new
-    @genres = Genre.all
   end
 
   def create
@@ -39,6 +38,18 @@ class Admin::GenresController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @genre = Genre.find(params[:id])
+    if @genre.destroy
+      flash[:notice] = "ジャンルが削除されました"
+      redirect_to admin_genres_path
+    else
+      flash.now[:alert] = "ジャンルの削除に失敗しました"
+      render :edit
+    end
+  end
+
 
   private
 
