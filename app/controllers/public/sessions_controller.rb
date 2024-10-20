@@ -38,7 +38,7 @@ class Public::SessionsController < Devise::SessionsController
   def user_state
       user = User.find_by(email: params[:user][:email])
       if user.nil?
-        flash[:danger] = "アカウントが見つかりません"
+        flash[:alert] = "アカウントが見つかりません"
         redirect_to new_user_session_path
       end
   end

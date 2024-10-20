@@ -30,6 +30,17 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user
+    if @user.destroy
+      flash[:notice] = "退会が完了しました"
+      redirect_to new_user_registration_path
+    else
+      flash.now[:alert] = "退会に失敗しました"
+      render :edit
+    end
+  end
+
   private
 
   def user_params
