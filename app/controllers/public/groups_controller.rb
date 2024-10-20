@@ -52,7 +52,7 @@ def destroy
     flash[:notice] = "削除されました"
     redirect_to my_page_path
   else
-    flash.now[:notice] = "削除に失敗しました"
+    flash.now[:alert] = "削除に失敗しました"
     render :edit
   end
 end

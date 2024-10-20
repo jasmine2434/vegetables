@@ -9,17 +9,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
     my_page_path
   end
 
-  def destroy
-    @user = current_user
-    if @user.destroy
-      flash[:info] = "退会が完了しました"
-      redirect_to new_user_registration_path
-    else
-      flash.now[:danger] = "退会に失敗しました"
-      render :edit
-    end
-  end
-
   protected
 
   def configure_sign_up_params

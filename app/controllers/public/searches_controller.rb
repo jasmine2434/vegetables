@@ -6,7 +6,7 @@ class Public::SearchesController < ApplicationController
     @method = params[:method]
 
     if @content.blank?
-      flash[:danger] = "検索ワードを入力してくだい"
+      flash[:alert] = "検索ワードを入力してくだい"
         redirect_to vegetables_path
     elsif @model  == "user"
         @records = User.search_for(@content, @method)
