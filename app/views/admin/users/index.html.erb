@@ -22,6 +22,7 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
+          <% if user.email != "guest@example.com" %>
           <tr>
             <td><%= user.created_at.strftime("%Y年%m月%d日") %></td>
             <td><%= image_tag user.get_profile_image(50, 50) %></td>
@@ -31,9 +32,10 @@
             <td><%= user.comments.count %></td>
             <td><%= link_to admin_user_path(user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
                   <i class="fa-solid fa-trash"></i> 削除
-                  <% end %>
-              </td>
+                <% end %>
+            </td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

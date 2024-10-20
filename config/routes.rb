@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/search' => 'searches#search'
     resources :users, only: [:index, :show, :destroy]
     resources :vegetables, only: [:index, :show, :destroy]
-    resources :genres, only: [:index, :new, :create, :edit, :update]
+    resources :genres, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :groups, only: [:index, :show, :destroy]
     resources :comments, only: [:index, :show, :destroy]
   end
