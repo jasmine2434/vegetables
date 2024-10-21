@@ -58,7 +58,7 @@
               <tr>
                 <td><%= image_tag user.get_profile_image(80, 80) %></td>
                 <td><%= user.name %></td>
-                <td class="table-info"><% if @group.owner == current_user %>
+                <td><% if @group.owner == current_user %>
                   <%# if user.id == owner.id %>
                   <%# if @group.is_owned_by?(current_user) %>
                     <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
@@ -73,6 +73,11 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="pagetop">
+      <a href="#" class="pagetop__link">
+        <span class="pagetop__text">TOP</span>
+      </a>
     </div>
   </div>
 </div>

@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: :true, uniqueness: true, length: { in: 2..10 }
-  validates :email, presence: :true, uniqueness: true
   validates :introduction, length: { maximum: 20 }
 
   def get_profile_image(width, height)

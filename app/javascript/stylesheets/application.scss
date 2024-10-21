@@ -106,3 +106,70 @@ header, nav {
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   // background-color: #fff;
 }
+
+ table > tbody > tr > td {
+    background-color: white !important;
+  }
+
+  .custom-title-about > p,
+  .custom-text-about {
+    line-height: 2.5rem;
+    letter-spacing: .3rem;
+  }
+
+
+
+.pagetop {
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  bottom: 8%;
+  right: 4%;
+  transition: opacity .3s ease, visibility .3s ease;
+  // opacity: 0; /* デフォルトでは表示を消します */
+  // visibility: hidden; /* デフォルトでは表示を消します */
+}
+
+.pagetop__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #33CCFF;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 27px;
+  font-size: bold;
+  line-height: 1.3;
+  color: #333;
+  text-decoration: none;
+}
+
+.pagetop__text {
+  position: relative;
+}
+
+// .pagetop__text::before {
+//   content: "〈";
+//   display: inline-block;
+//   position: absolute;
+//   top: -13px;
+//   left: 50%;
+//   transform: translateX(-50%) rotate(90deg);
+// }
+
+// .pagetop__text::after {
+//   content: "〈";
+//   display: inline-block;
+//   position: absolute;
+//   top: -7px;
+//   left: 50%;
+//   transform: translateX(-50%) rotate(90deg);
+// }
+
+// /* TOPボタン出現後のスタイル */
+// .pagetop.fadeIn {
+//   opacity: 1; /* フェードインアニメーション */
+//   visibility: visible; /* ボタンを表示 */
+// }
