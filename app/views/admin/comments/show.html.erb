@@ -46,14 +46,14 @@
             <tr>
               <th scope="col" style="width: 20%;">コメントユーザー</th>
               <th scope="col" style="width: 65%;">コメント</th>
-              <th scope="col" style="width: 15%;">操作</th> <!-- 削除ボタン用 -->
+              <th scope="col" style="width: 15%;">削除</th> <!-- 削除ボタン用 -->
             </tr>
           </thead>
           <tbody>
            <% @vegetable.comments.each do |comment| %>
             <tr>
               <td><%= link_to admin_user_path(comment.user) do %>
-                <%= image_tag comment.user.get_profile_image(100, 100) %><br>
+                <%= image_tag comment.user.get_profile_image(80, 80) %><br>
                 <%= comment.user.name %>
                 <% end %>
               </td>

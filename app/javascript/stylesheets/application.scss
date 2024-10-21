@@ -8,7 +8,7 @@ header, nav {
   font-style: normal;
 }
 
- h1, h2, h3, h4, h5, h6, {
+ h1, h2, h3, h4, h5, h6 {
   font-family: "Kiwi Maru",;
   height: 40px;
   color: black;
@@ -18,20 +18,6 @@ header, nav {
 
 .custom-container {
   padding: 0;
-}
-
-.full-height-top {
-  height: 85vh;
-}
-
-.custom-background-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../../assets/images/tomato2.jpg"); /* asset_path の結果に相当 */
-  background-size: cover;
-  background-position: center;
-  position: relative;
 }
 
 .flash-message-wrapper {  /* メッセージ表示位置を固定 */
@@ -45,11 +31,8 @@ header, nav {
   }
 }
 
+.notice,
 .alert {
-  font-weight: 500;
-}
-
-.notice {
   font-weight: 500;
 }
 
@@ -62,11 +45,6 @@ header, nav {
     width: 300px;
     left: 200px;
   }
-}
-
-.custom-content-top {
-  padding: 20px;
-  border-radius: 10px;
 }
 
   footer {
@@ -86,29 +64,45 @@ header, nav {
   padding: 0; /* パディングをリセット */
 }
 
+.custom-top,
 .custom-about {
-  height: 85vh;  /*サイズ指定 */
+  height: 80vh;  /*サイズ指定 */
 }
 
-.custom-background-about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../../assets/images/circle.jpg");  /* 背景画像のパスを指定 */
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.custom-content-about {
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.custom-title-about {
-  font-weight: 500;
-}
-
+.custom-title-about,
 .custom-text-about {
   font-weight: 500;
+}
+
+.top-bg {
+  /* 画像ファイルの指定 */
+  background-image: url(../images/tomato2.jpg);
+}
+
+.main-bg {
+  /* 画像ファイルの指定 */
+  background-image: url(../images/back3.jpg);
+}
+
+.about-bg {
+  background-image: url("../../assets/images/circle.jpg");
+}
+
+.custom-background {
+  background-blend-mode: soft-light;
+  background-color: rgba(255, 255, 255, .3);
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  // background-color: #fff;
 }

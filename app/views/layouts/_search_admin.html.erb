@@ -5,7 +5,7 @@
       <%= f.text_field :content, class: "form-control", placeholder: "検索ワードを入力" %>
       </div>
       <div class="col-2">
-      <%= f.select :model, options_for_select({"ユーザー" => "user", "投稿" => "vegetable", "グループ" => "group"}), { class: "form-select" } %>
+      <%= f.select :model, options_for_select({"ユーザー" => "user", "投稿" => "vegetable", "グループ" => "group", "コメント" => "comment"}), { class: "form-select" } %>
       </div>
       <div class="col-2">
       <%= f.select :method, options_for_select({"完全一致" => "perfect", "部分一致" => "partial"}), { class: "form-select" } %>

@@ -4,8 +4,14 @@
       <h3 class="mb-4 mt-4">ユーザー検索結果 "<%= @content %>"</h3>
       <%= render 'layouts/search_user', users: @records %>
     <% elsif @model == 'vegetable' %>
-      <h3 class="mb-4 mt-4">投稿名の検索結果 "<%= @content %>"</h3>
+      <h3 class="mb-4 mt-4">投稿の検索結果 "<%= @content %>"</h3>
       <%= render 'layouts/search_vegetable', vegetables: @records %>
+    <% elsif @model == 'group' %>
+      <h3 class="mb-4 mt-4">グループの検索結果 "<%= @content %>"</h3>
+      <%= render 'layouts/search_group', groups: @records %>
+    <% elsif @model == 'comment' %>
+      <h3 class="mb-4 mt-4">コメントの検索結果 "<%= @content %>"</h3>
+      <%= render 'layouts/search_comment', comments: @records %>
     <% end %>
   <% else %>
     <% if @model == 'user' %>
@@ -14,6 +20,12 @@
     <% elsif @model == 'vegetable' %>
       <h3 class="text-center mt-5">該当する投稿は見つかりませんでした</h3>
        <%= image_tag "ojigi_kuma.png", size: "250x250", class: "img-fluid text-center mx-auto d-block" %>
+    <% elsif @model == 'group' %>
+      <h3 class="text-center mt-5">該当するグループは見つかりませんでした</h3>
+       <%= image_tag "ojigi_inu.png", size: "250x250", class: "img-fluid text-center mx-auto d-block" %>
+    <% elsif @model == 'comment' %>
+      <h3 class="text-center mt-5">該当するコメントは見つかりませんでした</h3>
+       <%= image_tag "ojigi_inu.png", size: "250x250", class: "img-fluid text-center mx-auto d-block" %>
     <% end %>
   <% end %>
 </div>

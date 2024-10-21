@@ -1,101 +1,103 @@
-<div class="container">
-  <div class="row mt-5">
-      <h2 class="title">投稿詳細画面</h2>
-  </div>
-
-  <div class="row">
-    <!-- ユーザー情報 -->
-    <div class="col-md-4 mt-4">
-      <table class="table table-bordered text-center mt-4">
-       <tr>
-        <td class="text-center" colspan="2">
-          <%= "投稿ユーザー" %>
-        </td>
-      </tr>
-      <tr>
-        <td class="text-center" colspan="2">
-          <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
-        </td>
-      </tr>
-      <tr>
-        <td class="col-5 text-center">ユーザー名</td>
-        <td class="text-center"><%= @user.name %></td>
-      </tr>
-      <tr>
-        <td class="col-5 text-center">紹介文</td>
-        <td class="text-center"><%= @user.introduction %></td>
-      </tr>
-    </table>
-      <!-- コメントフォーム -->
-      <div class="mb-5 mt-3">
-        <h5>投稿にコメントを送る</h5>
-      <div id="comment-form">
-        <%= render "public/comments/form", vegetable: @vegetable, comment: @comment %>
-      </div>
-      </div>
+<div class="main-bg custom-background h-100">
+  <div class="container">
+    <div class="row mt-5">
+        <h2 class="title">投稿詳細画面</h2>
     </div>
 
-    <!-- 右半分 (投稿詳細情報) -->
-    <div class="col-md-7 mt-5">
-      <table class="table table-bordered text-center mt-2">
+    <div class="row">
+      <!-- ユーザー情報 -->
+      <div class="col-md-4 mt-4">
+        <table class="table table-bordered text-center mt-4">
+         <tr>
+          <td class="text-center" colspan="2">
+            <%= "投稿ユーザー" %>
+          </td>
+        </tr>
         <tr>
           <td class="text-center" colspan="2">
-            <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+            <%= image_tag @user.get_profile_image(150, 150), class: "img-fluid rounded-circle" %>
           </td>
         </tr>
         <tr>
-          <td class="col-4 text-center">投稿名</td>
-          <td class="text-center"><%= @vegetable.name %></td>
+          <td class="col-5 text-center">ユーザー名</td>
+          <td class="text-center"><%= @user.name %></td>
         </tr>
         <tr>
-          <td class="text-center">ジャンル</td>
-          <td class="text-center"><%= @vegetable.genre.name %></td>
-        </tr>
-        <tr>
-          <td class="text-center">説明文</td>
-          <td><%= @vegetable.body %></td>
-        </tr>
-        <tr>
-          <td class="text-center">いいね</td>
-          <td id="favorite_btn_<%= @vegetable.id %>">
-            <%= render "public/favorites/favorite_btn", vegetable: @vegetable %>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">コメント数</td>
-          <td id="comment_count">
-             <%= render "public/comments/count", vegetable: @vegetable %>
+          <td class="col-5 text-center">紹介文</td>
+          <td class="text-center"><%= @user.introduction %></td>
         </tr>
       </table>
+        <!-- コメントフォーム -->
+        <div class="mb-5 mt-3">
+          <h5>投稿にコメントを送る</h5>
+        <div id="comment-form">
+          <%= render "public/comments/form", vegetable: @vegetable, comment: @comment %>
+        </div>
+        </div>
+      </div>
 
-           <!-- 遷移ボタン -->
-      <div class="row d-flex justify-content-end">
-        <% if @user == current_user %>
-          <div class="col-md-5">
-            <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
-              <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
-            <% end %>
-          </div>
-        <% end %>
+      <!-- 右半分 (投稿詳細情報) -->
+      <div class="col-md-7 mt-5">
+        <table class="table table-bordered text-center mt-2">
+          <tr>
+            <td class="text-center" colspan="2">
+              <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-4 text-center">投稿名</td>
+            <td class="text-center"><%= @vegetable.name %></td>
+          </tr>
+          <tr>
+            <td class="text-center">ジャンル</td>
+            <td class="text-center"><%= @vegetable.genre.name %></td>
+          </tr>
+          <tr>
+            <td class="text-center">説明文</td>
+            <td><%= @vegetable.body %></td>
+          </tr>
+          <tr>
+            <td class="text-center">いいね</td>
+            <td id="favorite_btn_<%= @vegetable.id %>">
+              <%= render "public/favorites/favorite_btn", vegetable: @vegetable %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">コメント数</td>
+            <td id="comment_count">
+               <%= render "public/comments/count", vegetable: @vegetable %>
+          </tr>
+        </table>
+
+             <!-- 遷移ボタン -->
+        <div class="row d-flex justify-content-end">
+          <% if @user == current_user %>
+            <div class="col-md-5">
+              <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
+                <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- コメント一覧 -->
-  <div class="row mt-2">
-    <div class="col-12">
-      <h3>コメント一覧</h3>
-      <table class="table table-bordered mt-2 text-center">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col" style="width: 15%;">コメントユーザー</th>
-            <th scope="col" style="width: 70%;">コメント</th>
-            <th scope="col"></th> <!-- 削除ボタン用 -->
-          </tr>
-        </thead>
-        <tbody id="comment_index">
-          <%= render "public/comments/index", vegetable: @vegetable %>
-        </tbody>
-      </table>
+    <!-- コメント一覧 -->
+    <div class="row mt-2">
+      <div class="col-12">
+        <h3>コメント一覧</h3>
+        <table class="table table-bordered mt-2 text-center">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 15%;">コメントユーザー</th>
+              <th scope="col" style="width: 70%;">コメント</th>
+              <th scope="col"></th> <!-- 削除ボタン用 -->
+            </tr>
+          </thead>
+          <tbody id="comment_index">
+            <%= render "public/comments/index", vegetable: @vegetable %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -1,76 +1,73 @@
-<div class="container">
-  <div class="row mt-5">
-     <h2>マイページ</h2>
-     </div>
-    <!-- 左側のプロフィールセクション -->
-    <div class="row">
-    <div class="col-md-5">
-      <%= render "public/users/profile", user: @user %>
-
-      <% if @user.email != "guest@example.com" %>
-        <div class="mt-4">
-          <%= link_to edit_user_path(@user.id), class: "btn btn-warning btn-block" do %>
-            <i class="fa-solid fa-user-gear"></i> プロフィール編集・退会
-          <% end %>
-        </div>
-        <div class="mt-4">
-          <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
-            <i class="fa-solid fa-pen"></i> 新規投稿
-          <% end %>
-        </div>
-        <div class="mt-4">
-          <%= link_to new_group_path, class: "btn btn-secondary btn-block" do %>
-            <i class="fa-solid fa-user-group"></i> グループ作成
-          <% end %>
-        </div>
-      <% end %>
-
-
-       <h3 class="text-center mt-4">グループ一覧</h3>
-      <table class="table table-bordered mt-3 text-center">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col" style="width: 20%;">画像</th>
-            <th scope="col" style="width: 60%;">グループ名</th>
-            <th scope="col" style="width: 20%;">人数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @groups.each do |group| %>
-            <tr>
-              <td><%= image_tag group.get_group_image(80, 80) %></td>
-              <td><%= link_to group.name, group_path(group) %></td>
-              <td><%= group.group_users.count %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="main-bg custom-background h-100">
+  <div class="container">
+    <div class="row pt-5">
+       <h2>マイページ</h2>
     </div>
+    <div class="row">
+      <div class="col-md-5">
+        <%= render "public/users/profile", user: @user %>
+        <% if @user.email != "guest@example.com" %>
+          <div class="mt-4">
+            <%= link_to edit_user_path(@user.id), class: "btn btn-warning btn-block" do %>
+              <i class="fa-solid fa-user-gear"></i> プロフィール編集・退会
+            <% end %>
+          </div>
+          <div class="mt-4">
+            <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
+              <i class="fa-solid fa-pen"></i> 新規投稿
+            <% end %>
+          </div>
+          <div class="mt-4">
+            <%= link_to new_group_path, class: "btn btn-secondary btn-block" do %>
+              <i class="fa-solid fa-user-group"></i> グループ作成
+            <% end %>
+          </div>
+        <% end %>
 
+         <h3 class="text-center mt-4">グループ一覧</h3>
+          <table class="table table-bordered mt-3 text-center">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" style="width: 20%;">画像</th>
+                <th scope="col" style="width: 60%;">グループ名</th>
+                <th scope="col" style="width: 20%;">人数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @groups.each do |group| %>
+                <tr>
+                  <td><%= image_tag group.get_group_image(80, 80) %></td>
+                  <td><%= link_to group.name, group_path(group) %></td>
+                  <td><%= group.group_users.count %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
   <!-- 投稿一覧 -->
-
-    <div class="col-md-7">
-      <h3 class="text-center">投稿一覧</h3>
-      <table class="table table-bordered mt-3 text-center">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col" style="width: 10%;">画像</th>
-            <th scope="col" style="width: 30%;">名前</th>
-            <th scope="col" style="width: 11%;">いいね数</th>
-            <th scope="col" style="width: 11%;">コメント数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @vegetables.each do |vege| %>
+      <div class="col-md-7">
+        <h3 class="text-center">投稿一覧</h3>
+        <table class="table table-bordered mt-3 text-center">
+          <thead class="thead-light">
             <tr>
-              <td><%= image_tag vege.get_image(80, 80) %></td>
-              <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
-              <td><%= vege.favorites.count %></td>
-              <td><%= vege.comments.count %></td>
+              <th scope="col" style="width: 10%;">画像</th>
+              <th scope="col" style="width: 30%;">名前</th>
+              <th scope="col" style="width: 11%;">いいね数</th>
+              <th scope="col" style="width: 11%;">コメント数</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @vegetables.each do |vege| %>
+              <tr>
+                <td><%= image_tag vege.get_image(80, 80) %></td>
+                <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
+                <td><%= vege.favorites.count %></td>
+                <td><%= vege.comments.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

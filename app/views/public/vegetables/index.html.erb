@@ -1,6 +1,7 @@
 <div style="margin-right: -8px;margin-top: 15px;">
   <%= render "layouts/search", url: search_path if user_signed_in? %>
 </div>
+<div class="main-bg custom-background h-100">
   <div class="container">
     <div class="row mt-5">
     <h2 class="title">投稿一覧画面</h2>
@@ -41,4 +42,5 @@
       <% end %>
     </tbody>
   </table>
+</div>
 </div>

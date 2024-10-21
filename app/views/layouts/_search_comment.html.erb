@@ -1,0 +1,32 @@
+ <div class="container">
+  <div class="row">
+    <h2 class="col mt-4">コメント検索結果画面</h2>
+  </div>
+  <div class="row text-center mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col" style="width: 20%;">コメントユーザー</th>
+              <th scope="col" style="width: 65%;">コメント</th>
+              <th scope="col" style="width: 15%;">削除</th>
+            </tr>
+          </thead>
+          <tbody>
+           <% comments.each do |comment| %>
+            <tr>
+              <td><%= link_to admin_user_path(comment.user) do %>
+                <%= image_tag comment.user.get_profile_image(80, 80) %><br>
+                <%= comment.user.name %>
+                <% end %>
+              </td>
+              <td><%= comment.body %></td>
+              <td><%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
