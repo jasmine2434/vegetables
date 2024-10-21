@@ -7,44 +7,55 @@
             <h2>新規登録</h2>
           </div>
         </div>
-        <div class="row">
-          <div class="col-1"></div>
-          <div class="col-3"><%= f.label :name, "名前" %></div>
-          <div class="col-3"><%= f.text_field :name %></div>
-          <div class="col-3"></div>
+        <div class="row mt-4">
+          <div class="col-3 offset-3 text-end">
+            <%= f.label :name, "名前" %>
+          </div>
+          <div class="col-3">
+            <%= f.text_field :name %>
+          </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-1"></div>
-          <div class="col-3"><%= f.label :email, "メールアドレス" %></div>
-          <div class="col-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
-          <div class="col-3"></div>
+
+        <div class="row mt-3">
+          <div class="col-3 offset-3 text-end">
+            <%= f.label :email, "メールアドレス" %>
+          </div>
+          <div class="col-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-1"></div>
-          <div class="col-3"><%= f.label :password, "パスワード(6文字以上)" %></div>
+
+        <div class="row mt-3">
+          <div class="col-3 offset-3 text-end">
+            <%= f.label :password, "パスワード(6文字以上)" %>
+          </div>
           <div class="col-3">
             <%= f.password_field :password, autocomplete: "new-password" %>
           </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-1"></div>
-          <div class="col-3"><%= f.label :password_confirmation, "パスワード（確認用）" %></div>
-          <div class="col-3"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
-          <div class="col-3"></div>
+
+        <div class="row mt-3">
+          <div class="col-3 offset-3 text-end">
+            <%= f.label :password_confirmation, "パスワード（確認用）" %>
+          </div>
+          <div class="col-3">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-1"></div>
-          <div class="col-3"></div>
-          <div class="col-3"><%= f.submit "新規登録", class: "btn btn-success" %></div>
-          <div class="col-3"></div>
+
+        <div class="row mt-4">
+          <div class="col-3 offset-4">
+            <%= f.submit "新規登録", class: "btn btn-success w-100" %>
+          </div>
         </div>
       <% end %>
 
       <div class="row mt-5">
-        <div class="col-1"></div>
-        <h4 class="col-9">既に会員登録がお済み方は
-        <%= link_to "こちら", new_user_session_path %><%= "から新規登録を行ってください。" %>
+        <div class="col-12 text-center">
+        <h4>既に会員登録がお済み方は
+          <%= link_to "こちら", new_user_session_path %><%= "から新規登録を行ってください。" %>
         </h4>
       </div>
     </div>
   </div>
+</div>
