@@ -34,9 +34,11 @@
 .notice,
 .alert {
   font-weight: 500;
+  font-size: 18px;
+  margin-top: 15px;
 }
 
-.flash-message-wrapper {
+.flash-message {
   position: relative;
   .message-name {
     position: absolute;
@@ -50,7 +52,7 @@
   footer {
   font-size: 20px;
   bottom: 0; /*下に固定*/
-  background: linear-gradient(to left, #99CC99, #00CC99);
+  background: linear-gradient(to left, #339933, #99CC00, #339933);
   width: 100%;
   height: 80px;
   display: flex;
@@ -184,7 +186,7 @@ h2 {
 }
 
 html, body {
-  color: #FFFFFF;
+  // color: #FFFFFF;
   margin: 0;
   height: 100%;
 }
@@ -194,7 +196,7 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
-    
+
 
 * {
   font-family: "Kiwi Maru",;
@@ -209,7 +211,7 @@ a {
   align-items: center;
   justify-content: space-between;
   // background-color: #00BAF0;
-  background: linear-gradient(to left, #99CC99, #00CC99);
+  background: linear-gradient(to left, #339933, #99CC00, #339933);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #FFFFFF;
   height: 80px;

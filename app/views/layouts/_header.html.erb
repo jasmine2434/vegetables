@@ -3,6 +3,22 @@
     <div>
       野菜と健康
     </div>
+
+    <div class="flash-message">
+     <% flash.each do |message_type, message| %>
+    <% if message_type == "danger" %>
+    <div class="alert <%= message_type %>">
+    <span class="text-dark"><%= message %></span>
+    </div>
+    <% else %>
+    <div class="notice <%= message_type %>">
+    <span class="text-dark"><%= message %></span>
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+
+
     <input id="menu-toggle" type="checkbox" />
       <label class='menu-button-container' for="menu-toggle">
         <div class='menu-button'></div>
