@@ -11,7 +11,6 @@ def create
   end
 end
 
-
 def destroy
   @vegetable = Vegetable.find(params[:vegetable_id])
   @comment = @vegetable.comments.find(params[:id])
