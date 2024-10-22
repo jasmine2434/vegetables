@@ -13,9 +13,9 @@
         </div>
 
         <div class="col-md-10">
-          <div class="row">
+          <div class="row pt-3">
             <div class="col-3"></div>
-            <h5 class="col-3">名前</h5>
+            <h5 class="col-3">投稿名</h5>
             <div class="col-4">
               <%= f.text_field :name %>
             </div>
@@ -44,18 +44,18 @@
       </div>
 
       <div class="row mt-5 d-flex justify-content-between">
-        <div class="col-md-3">
+        <div class="col-md-3 pt-4">
           <%= link_to vegetable_path(@vegetable.id), class: "btn btn-success w-100" do %>
             <i class="fa-solid fa-delete-left"></i> 戻る
           <% end %>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 pt-4">
           <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
             <i class="fa-solid fa-arrows-rotate"></i> 更新する
           <% end %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 pt-4">
           <%= link_to vegetable_path(@vegetable.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
             <i class="fa-solid fa-trash"></i> 削除
           <% end %>

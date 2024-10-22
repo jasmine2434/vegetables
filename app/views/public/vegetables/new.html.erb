@@ -14,7 +14,7 @@
         <%= form_with model: @vegetable, url: vegetables_path, method: :post do |f| %>
           <div class="row">
             <div class="col-5">
-              <%= f.label :name, "名前" %>
+              <%= f.label :name, "投稿名" %>
               <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
             </div>
             </div>

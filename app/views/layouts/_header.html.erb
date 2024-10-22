@@ -29,7 +29,7 @@
         <li><%= link_to "ご案内", about_path %></li>
         <li><%= link_to "マイページ", my_page_path %></li>
         <li><%= link_to "投稿一覧", vegetables_path %></li>
-        <li><%= link_to "グルール一覧", groups_path %></li>
+        <li><%= link_to "グループ一覧", groups_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       </ul>
     <% elsif admin_signed_in? %>
@@ -42,7 +42,7 @@
         <li><%= link_to "トップ", root_path %></li>
         <li><%= link_to "ご案内", about_path %></li>
         <li><%= link_to "ゲストログイン", user_session_path %></li>
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
+        <li><%= link_to "会員登録", new_user_registration_path %></li>
         <li><%= link_to "ログイン", user_session_path %></li>
       </ul>
     <% end %>
