@@ -1,6 +1,6 @@
 <div class="main-bg custom-background h-100">
   <div class="container">
-    <div class="row mt-5">
+    <div class="row pt-5">
       <h2 class="title">グループ詳細画面</h2>
     </div>
 
@@ -10,15 +10,15 @@
 
         <div class="mt-4">
           <% if @group.owner == current_user %>
-            <%= link_to "グループの編集・削除", edit_group_path(@group), class: "btn btn-sm btn-warning btn-block" %>
+            <%= link_to "グループの編集・削除", edit_group_path(@group), class: "btn btn-warning btn-block" %>
           <% end %>
         </div>
 
         <div class="mt-4">
           <% if @group.users.include?(current_user) %>
-            <%= link_to '参加済み', '#', class: "btn btn-sm btn-secondary btn-block", disabled: true %>
+            <%= link_to '参加済み', '#', class: "btn btn-secondary btn-block", disabled: true %>
           <% else %>
-            <%= link_to 'グループに参加', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-primary btn-block" %>
+            <%= link_to 'グループに参加', group_group_users_path(@group), method: :post, class: "btn btn-primary btn-block" %>
           <% end %>
         </div>
       </div>
@@ -58,7 +58,7 @@
               <tr>
                 <td><%= image_tag user.get_profile_image(80, 80) %></td>
                 <td><%= user.name %></td>
-                <td><% if @group.owner == current_user %> 
+                <td><% if @group.owner == current_user %>
                   <%# if user.id == owner.id %>
                   <%# if @group.is_owned_by?(current_user) %>
                     <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
@@ -73,6 +73,11 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="pagetop">
+      <a href="#" class="pagetop__link">
+        <span class="pagetop__text">TOP</span>
+      </a>
     </div>
   </div>
 </div>

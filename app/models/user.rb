@@ -11,8 +11,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :name, uniqueness: true, presence: :true, length: { in: 2..10 }
-  validates :email, uniqueness: { message: "このメールアドレスは既に使用されています" }
+  validates :name, presence: :true, uniqueness: true, length: { in: 2..10 }
   validates :introduction, length: { maximum: 20 }
 
   def get_profile_image(width, height)

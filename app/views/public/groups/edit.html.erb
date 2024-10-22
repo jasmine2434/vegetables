@@ -1,6 +1,14 @@
 <div class="main-bg custom-background h-100">
   <div class="container">
-    <div class="row mt-5">
+    <% if @group.errors.any? %>
+      <%= @group.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="row pt-5">
       <h2 class="title">グループ編集画面</h2>
     </div>
 
