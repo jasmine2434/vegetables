@@ -19,15 +19,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @vegetables.each do |vege| %>
+        <% @vegetables.each do |vegetable| %>
           <tr>
             <td>
-              <%= link_to vege.user.name, admin_user_path(vege.user_id) %></td>
-            <td><%= image_tag vege.get_image(50, 50) %></td>
-            <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
-            <td><%= vege.genre.name %></td>
-            <td><%= truncate(vege.body, length: 20) %></td> <!-- 文字数制限 -->
-            <td><%= link_to admin_vegetable_path(vege), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+              <%= link_to vegetable.user.name, admin_user_path(vegetable.user_id) %></td>
+            <td><%= image_tag vegetable.get_image(50, 50) %></td>
+            <td><%= link_to vegetable.name, admin_vegetable_path(vegetable.id) %></td>
+            <td><%= vegetable.genre.name %></td>
+            <td><%= truncate(vegetable.body, length: 20) %></td> <!-- 文字数制限 -->
+            <td><%= link_to admin_vegetable_path(vegetable), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
                   <i class="fa-solid fa-trash"></i> 削除
                   <% end %>
               </td>

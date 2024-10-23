@@ -41,11 +41,12 @@ ja:
       user:
         name: "名前"
         email: メールアドレス
+        password: パスワード
       group:
-        name: "名前"
+        name: "グループ名"
         introduction: "紹介文"
       vegetable:
-        name: "名前"
+        name: "投稿名"
         genre: "ジャンル"
         body: "説明文"
     errors:
@@ -150,7 +151,7 @@ ja:
           confirmation: "と一致しません"
       new:
         sign_up: アカウント登録
-      signed_up: アカウント登録が完了しました。
+      signed_up: アカウント登録が完了しました
       signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
       signed_up_but_locked: アカウントがロックされているためログインできません。
       signed_up_but_unconfirmed: 本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。

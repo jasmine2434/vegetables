@@ -24,8 +24,8 @@
 }
 
 
-body > main > div > div > div:nth-child(7) > div > a {
-  padding-bottom: 15px;
+  body > main > div > div > div:nth-child(7) > div > a {
+  margin-bottom: 30px;
 }
 
 
@@ -35,7 +35,7 @@ body > main > div > div > div:nth-child(7) > div > a {
 }
 
 
-body > header > section > div.flash-message > div > h5 {
+  body > header > section > div.flash-message > div > h5 {
   color: #000000;
   margin: 20px;
 }
@@ -131,10 +131,10 @@ body > header > section > div.flash-message > div > h5 {
 
 
 @import url(https://fonts.googleapis.com/css?family=Raleway);
-h2 {
-  vertical-align: center;
-  text-align: center;
-}
+  h2 {
+    vertical-align: center;
+    text-align: center;
+  }
 
 html, body {
   margin: 0;

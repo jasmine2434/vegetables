@@ -21,7 +21,7 @@
         <%= form_with model: @group, url: groups_path, local: true do |f| %>
           <div class="row">
             <div class="col-5">
-            <%= f.label :name, "名前" %>
+            <%= f.label :name, "グループ名" %>
             <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
             </div>
           </div>
