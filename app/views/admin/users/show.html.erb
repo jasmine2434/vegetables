@@ -40,12 +40,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @vegetables.each_with_index do |vege| %>
+          <% @vegetables.each_with_index do |vegetable| %>
             <tr>
-              <td><%= image_tag vege.get_image(80, 80), class: "img-thumbnail" %></td>
-              <td><%= link_to vege.name, admin_vegetable_path(vege.id) %></td>
-              <td><%= vege.favorites.count %></td>
-              <td><%= vege.comments.count %></td>
+              <td><%= image_tag vegetable.get_image(80, 80), class: "img-thumbnail" %></td>
+              <td><%= link_to vegetable.name, admin_vegetable_path(vegetable.id) %></td>
+              <td><%= vegetable.favorites.count %></td>
+              <td><%= vegetable.comments.count %></td>
             </tr>
           <% end %>
         </tbody>
@@ -55,7 +55,7 @@
        <!-- 退会ボタン -->
   <div class="row d-flex justify-content-end">
       <div class="col-md-5">
-        <%= link_to admin_user_path(@user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会させますか？" do %>
+        <%= link_to admin_user_path(@user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会させますか？" do %>
           <i class="fa-regular fa-pen-to-square"></i> ユーザーを退会させる
         <% end %>
       </div>

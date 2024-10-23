@@ -57,22 +57,17 @@
             </tr>
           </thead>
           <tbody>
-            <% @vegetables.each do |vege| %>
+            <% @vegetables.each do |vegetable| %>
               <tr>
-                <td><%= image_tag vege.get_image(80, 80) %></td>
-                <td><%= link_to vege.name, vegetable_path(vege.id) %></td>
-                <td><%= vege.favorites.count %></td>
-                <td><%= vege.comments.count %></td>
+                <td><%= image_tag vegetable.get_image(80, 80) %></td>
+                <td><%= link_to vegetable.name, vegetable_path(vegetable.id) %></td>
+                <td><%= vegetable.favorites.count %></td>
+                <td><%= vegetable.comments.count %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="pagetop">
-      <a href="#" class="pagetop__link">
-        <span class="pagetop__text">TOP</span>
-      </a>
     </div>
   </div>
 </div>

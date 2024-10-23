@@ -15,10 +15,10 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:notice] = "退会させました"
-      redirect_to admin_user_path
+      redirect_to admin_users_path
     else
-      flash.now[:alert] = "失敗しました"
-      render :show
+      flash[:alert] = "失敗しました"
+      redirect_to request.referer
     end
   end
 
@@ -33,7 +33,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :image)
+    params.require(:user).permit(:name, :email, :introduction, :profile_image)
   end
 
 end
