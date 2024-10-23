@@ -2,7 +2,7 @@
   <div class="container">
     <%= render 'layouts/error', vegetable: @vegetable %>
     <div class="row">
-      <h2 class="title text-center pt-5">投稿編集画面</h2>
+      <h2 class="title pt-5 mb-5">投稿編集画面</h2>
     </div>
 
     <%= form_with model: @vegetable do |f| %>
@@ -12,38 +12,31 @@
           <%= f.file_field :image %>
         </div>
 
-        <div class="col-md-10">
-          <div class="row pt-3">
-            <div class="col-3"></div>
+        <div class="col-md-8 offset-2">
+          <div class="row mb-3">
             <h5 class="col-3">投稿名</h5>
-            <div class="col-4">
-              <%= f.text_field :name %>
+            <div class="col-5">
+              <%= f.text_field :name, class: "form-control" %>
             </div>
           </div>
-
           <div class="row">
-            <div class="col-3"></div>
             <h5 class="col-3">ジャンル</h5>
             <div class="col-4">
               <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name, selected: @vegetable.genre_id), { include_blank: '選択してください' }, class: "form-control fs-4" %>
             </div>
           </div>
-
           <div class="row">
-            <div class="col-3"></div>
             <h5 class="col-3">説明文</h5>
           </div>
-
           <div class="row">
-            <div class="col-3"></div>
-            <div class="col-md-8">
+            <div class="col-md-12">
               <%= f.text_area :body, rows: 10, style: "width: 100%", class: "form-control" %>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row mt-5 d-flex justify-content-between">
+      <div class="row mt-5 mb-5 d-flex justify-content-between">
         <div class="col-md-3 pt-4">
           <%= link_to vegetable_path(@vegetable.id), class: "btn btn-success w-100" do %>
             <i class="fa-solid fa-delete-left"></i> 戻る
