@@ -59,14 +59,12 @@
                 <td><%= image_tag user.get_profile_image(80, 80) %></td>
                 <td><%= user.name %></td>
                 <td><% if @group.owner == current_user %>
-                  <%# if user.id == owner.id %>
-                  <%# if @group.is_owned_by?(current_user) %>
-                    <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-                  <% elsif current_user == user %>
-                    <%= link_to 'やめる', group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-                  <% else %>
-                    <div class="text-primary">参加中</div>
-                  <% end %>
+                      <%= link_to '抜ける', group_group_users_path(@group, user_id: user.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                    <% elsif current_user == user %>
+                      <%= link_to 'やめる', group_group_users_path(@group, user_id: current_user.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                    <% else %>
+                      <div class="text-center">参加中</div>
+                    <% end %>
                 </td>
               </tr>
             <% end %>
