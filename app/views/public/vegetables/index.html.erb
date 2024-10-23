@@ -4,44 +4,44 @@
 <div class="main-bg custom-background h-100">
   <div class="container">
     <div class="row pt-5">
-    <h2 class="title">投稿一覧画面</h2>
-  </div>
+      <h2 class="title">投稿一覧画面</h2>
+    </div>
 
     <table class="table table-bordered mt-4 text-center">
-     <thead class="thead-light">
-      <tr>
-        <th scope="col" style="width: 15%;">ユーザー画像</th>
-        <th scope="col" style="width: 25%;">ユーザー名</th>
-        <th scope="col" style="width: 15%;">画像</th>
-        <th scope="col" style="width: 25%;">投稿名</th>
-        <th scope="col" style="width: 10%;">いいね数</th>
-        <th scope="col" style="width: 10%;">コメント数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @vegetables.each do |vegetable| %>
-      <tr>
-        <td class="text-center"><%= image_tag vegetable.user.get_profile_image(80, 80) %></td>
-        <td class="text-center">
-          <% if vegetable.user == current_user %>
-            <%= link_to vegetable.user.name, my_page_path(vegetable.user_id) %>
-          <% else %>
-            <%= link_to vegetable.user.name, user_path(vegetable.user_id) %>
-          <% end %>
-        </td>
-        <td class="text-center"><%= image_tag vegetable.get_image(80, 80) %></td>
-        <td class="text-center"><%= link_to vegetable_path(vegetable.id) do %>
-            <%= vegetable.name %>
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" style="width: 15%;">ユーザー画像</th>
+          <th scope="col" style="width: 25%;">ユーザー名</th>
+          <th scope="col" style="width: 15%;">画像</th>
+          <th scope="col" style="width: 25%;">投稿名</th>
+          <th scope="col" style="width: 10%;">いいね数</th>
+          <th scope="col" style="width: 10%;">コメント数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vegetables.each do |vegetable| %>
+        <tr>
+          <td class="text-center"><%= image_tag vegetable.user.get_profile_image(80, 80) %></td>
+          <td class="text-center">
+            <% if vegetable.user == current_user %>
+              <%= link_to vegetable.user.name, my_page_path(vegetable.user_id) %>
+            <% else %>
+              <%= link_to vegetable.user.name, user_path(vegetable.user_id) %>
             <% end %>
-        </td>
-        <td id="favorite_btn_<%= vegetable.id %>">
-          <%= render "public/favorites/favorite_btn", vegetable: vegetable %>
-        </td>
-        <td class="text-center"><%= vegetable.comments.count %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+          </td>
+          <td class="text-center"><%= image_tag vegetable.get_image(80, 80) %></td>
+          <td class="text-center"><%= link_to vegetable_path(vegetable.id) do %>
+              <%= vegetable.name %>
+              <% end %>
+          </td>
+          <td id="favorite_btn_<%= vegetable.id %>">
+            <%= render "public/favorites/favorite_btn", vegetable: vegetable %>
+          </td>
+          <td class="text-center"><%= vegetable.comments.count %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
     <div class="pagetop">
       <a href="#" class="pagetop__link">
         <span class="pagetop__text">TOP</span>

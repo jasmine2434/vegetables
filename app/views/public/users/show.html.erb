@@ -10,9 +10,9 @@
           <!--ログインしているユーザーのみボタンを表示 -->
         <% if @user == current_user %>
           <div class="mt-5">
-              <%= link_to edit_user_path(@user), class: "btn btn-success form-control" do%>
+            <%= link_to edit_user_path(@user), class: "btn btn-success form-control" do%>
               <i class="fa-solid fa-user-gear"></i>プロフィール編集
-              <% end %>
+            <% end %>
           </div>
 
           <div class="mt-4">
