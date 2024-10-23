@@ -13,9 +13,10 @@ class Public::GroupsController < ApplicationController
     @user = current_user
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+
     if @group.save
       flash[:notice] = "作成されました"
-      redirect_to group_path(@group)
+      redirect_to my_page_path(@group)
     else
        flash.now[:alert] = "作成に失敗しました"
       render :new

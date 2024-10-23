@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :vegetables, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  
+  def my_groups
+    Group.where(id: group_users.pluck(:group_id)).or(Group.where(owner_id: self.id)).distinct
+  end
 
   validates :name, presence: :true, uniqueness: true, length: { in: 2..10 }
   validates :introduction, length: { maximum: 20 }

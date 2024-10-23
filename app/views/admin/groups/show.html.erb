@@ -30,6 +30,12 @@
             <td class="text-center"><%= @group.group_users.count %></td>
           </tr>
         </table>
+        
+        <div class="mt-5 d-flex justify-content-center">
+          <%= link_to admin_group_path(@group), class: "btn btn-danger form-control", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+            <i class="fa-solid fa-trash"></i> グループを削除する
+          <% end %>
+        </div>
       </div>
 
       <div class="col-md-6">

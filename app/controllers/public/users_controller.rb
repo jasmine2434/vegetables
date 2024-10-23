@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @groups = @user.groups
+    @groups = @user.my_groups
     @vegetables = @user.vegetables
   end
 
