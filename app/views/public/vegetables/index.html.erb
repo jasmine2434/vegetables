@@ -30,9 +30,10 @@
             <% end %>
           </td>
           <td class="text-center"><%= image_tag vegetable.get_image(80, 80) %></td>
-          <td class="text-center"><%= link_to vegetable_path(vegetable.id) do %>
+          <td class="text-center">
+            <%= link_to vegetable_path(vegetable.id) do %>
               <%= vegetable.name %>
-              <% end %>
+            <% end %>
           </td>
           <td id="favorite_btn_<%= vegetable.id %>">
             <%= render "public/favorites/favorite_btn", vegetable: vegetable %>
