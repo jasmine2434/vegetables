@@ -16,7 +16,7 @@ class Admin::GroupsController < ApplicationController
       flash[:notice] = "グループを削除しました"
       redirect_to admin_groups_path
     else
-      flash.now[:notice] = "削除に失敗しました"
+      flash.now[:notice] = "グループの削除に失敗しました"
       render :index
     end
   end

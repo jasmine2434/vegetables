@@ -7,13 +7,11 @@
     <div class="row">
       <div class="col-md-4 mt-4">
         <%= render "public/users/profile", user: @user %>
-
         <div class="mt-4">
           <% if @group.owner == current_user %>
             <%= link_to "グループの編集・削除", edit_group_path(@group), class: "btn btn-warning btn-block" %>
           <% end %>
         </div>
-
         <div class="mt-4">
           <% if @group.users.include?(current_user) %>
             <%= link_to '参加済み', '#', class: "btn btn-secondary btn-block", disabled: true %>

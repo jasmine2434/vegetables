@@ -11,8 +11,8 @@ class Public::GroupUsersController < ApplicationController
       redirect_to group_path(params[:group_id]), alert: 'グループへの参加に失敗しました。'
     end
   end
-  
-  
+
+
   def destroy
     @group_user = GroupUser.find_by(user_id: params[:user_id], group_id: params[:group_id])
     if @group_user&.destroy
@@ -21,6 +21,5 @@ class Public::GroupUsersController < ApplicationController
       redirect_to group_path(params[:group_id]), alert: 'グループの退会に失敗しました。'
     end
   end
-
 
 end
