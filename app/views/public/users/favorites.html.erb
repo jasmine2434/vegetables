@@ -1,0 +1,45 @@
+<div class="main-bg custom-background h-100">
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-5">
+        <h3 class="title text-center mt-4">いいねをした投稿一覧</h3>
+      <table class="table table-bordered mt-3 text-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" style="width: 20%;">投稿名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorite_vegetables.each do |vegetable| %>
+            <tr>
+              <td><%= link_to vegetable.name, vegetable_path(vegetable) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+      <!-- 作成したグループと参加しているグループ一覧 -->
+      <div class="col-6 offset-1">
+        <h3 class="text-center mt-4">グループ一覧</h3>
+          <table class="table table-bordered mt-3 text-center">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" style="width: 20%;">画像</th>
+                <th scope="col" style="width: 60%;">グループ名</th>
+                <th scope="col" style="width: 20%;">人数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @groups.each do |group| %>
+                <tr>
+                  <td><%= image_tag group.get_group_image(80, 80) %></td>
+                  <td><%= link_to group.name, group_path(group) %></td>
+                  <td><%= group.group_users.count %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

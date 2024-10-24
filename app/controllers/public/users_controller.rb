@@ -6,7 +6,6 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @groups = @user.my_groups
     @vegetables = @user.vegetables
   end
 
@@ -40,6 +39,16 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
+
+
+  def favorites
+    @user = current_user
+    @groups = @user.my_groups
+    favorites = Favorite.where(user_id: @user.id).pluck(:vegetable_id)
+    @favorite_vegetables = Vegetable.find(favorites)
+  end
+
+
 
   private
 

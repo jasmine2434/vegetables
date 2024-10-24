@@ -8,41 +8,27 @@
         <%= render "public/users/profile", user: @user %>
         <% if @user.email != "guest@example.com" %>
           <div class="mt-4">
-            <%= link_to edit_user_path(@user.id), class: "btn btn-warning btn-block" do %>
+            <%= link_to edit_user_path(@user.id), class: "btn btn-block", style: "background-color: #FFCC99" do %>
               <i class="fa-solid fa-user-gear"></i> プロフィール編集・退会
             <% end %>
           </div>
           <div class="mt-4">
-            <%= link_to new_vegetable_path, class: "btn btn-primary btn-block" do %>
+            <%= link_to new_vegetable_path, class: "btn btn-block", style: "background-color: #CCCC99;" do %>
               <i class="fa-solid fa-pen"></i> 新規投稿
             <% end %>
           </div>
           <div class="mt-4">
-            <%= link_to new_group_path, class: "btn btn-secondary btn-block" do %>
+            <%= link_to new_group_path, class: "btn btn-block", style: "background-color: #99CC99;" do %>
               <i class="fa-solid fa-user-group"></i> グループ作成
             <% end %>
           </div>
-        <% end %>
 
-         <h3 class="text-center mt-4">グループ一覧</h3>
-          <table class="table table-bordered mt-3 text-center">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col" style="width: 20%;">画像</th>
-                <th scope="col" style="width: 60%;">グループ名</th>
-                <th scope="col" style="width: 20%;">人数</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @groups.each do |group| %>
-                <tr>
-                  <td><%= image_tag group.get_group_image(80, 80) %></td>
-                  <td><%= link_to group.name, group_path(group) %></td>
-                  <td><%= group.group_users.count %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+          <div class="mt-4">
+            <%= link_to favorites_user_path(@user), class: "btn btn-block", style: "background-color: #66CC99;" do %>
+              <i class="fa-solid fa-thumbs-up"></i> いいねをした投稿一覧・<i class="fa-solid fa-people-group"></i>グループ一覧
+            <% end %>
+          </div>
+        <% end %>
       </div>
   <!-- 投稿一覧 -->
       <div class="col-md-7">

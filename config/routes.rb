@@ -34,7 +34,11 @@ Rails.application.routes.draw do
       resource :group_users, only: [:create, :destroy]
     end
 
-    resources :users, only: [:show, :edit, :update, :destroy]
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      member do
+        get :favorites
+      end
+    end
 
     resources :vegetables do
       resource :favorite, only: [:create, :destroy, :update]
