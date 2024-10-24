@@ -1,13 +1,13 @@
 <div class="main-bg custom-background h-100">
   <div class="container">
-    <div class="row pt-5">
-        <h2 class="title">投稿詳細画面</h2>
+    <div class="row pt-5 justify-content-center">
+        <h2>投稿詳細画面</h2>
     </div>
 
     <div class="row">
       <!-- ユーザー情報 -->
-      <div class="col-md-4 mt-4">
-        <table class="table table-bordered text-center mt-4">
+      <div class="col-md-4 mt-3">
+        <table class="table table-bordered text-center">
          <tr>
           <td class="text-center" colspan="2">
             <%= "投稿ユーザー" %>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <!-- 右半分 (投稿詳細情報) -->
-      <div class="col-md-7 mt-5">
+      <div class="col-md-7 mt-2">
         <table class="table table-bordered text-center mt-2">
           <tr>
             <td class="text-center" colspan="2">
@@ -80,9 +80,8 @@
       </div>
     </div>
     <!-- コメント一覧 -->
-    <div class="row mt-2">
-      <div class="col-12">
-        <h3>コメント一覧</h3>
+    <div class="row mt-2 justify-content-center">
+      <h3>コメント一覧</h3>
         <table class="table table-bordered mt-2 text-center">
           <thead class="thead-light">
             <tr>
@@ -95,7 +94,6 @@
             <%= render "public/comments/index", vegetable: @vegetable %>
           </tbody>
         </table>
-      </div>
     </div>
   </div>
 </div>

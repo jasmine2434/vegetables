@@ -1,37 +1,28 @@
 <div class="main-bg custom-background h-100">
   <div class="container">
     <%= render 'layouts/error', vegetable: @vegetable %>
-    <div class="row">
+    <div class="row justify-content-center">
       <h2 class="title pt-5 mb-5">投稿編集画面</h2>
     </div>
 
     <%= form_with model: @vegetable do |f| %>
-      <div class="row">
+      <div class="row mt-5">
         <div class="col-md-2 text-center pt-4">
           <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
           <%= f.file_field :image %>
         </div>
-
         <div class="col-md-8 offset-2">
-          <div class="row mb-3">
-            <h5 class="col-3">投稿名</h5>
-            <div class="col-5">
-              <%= f.text_field :name, class: "form-control" %>
-            </div>
+          <div class="col-3">投稿名</div>
+          <div class="col-5 mt-2">
+            <%= f.text_field :name, class: "form-control" %>
           </div>
-          <div class="row">
-            <h5 class="col-3">ジャンル</h5>
-            <div class="col-4">
-              <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name, selected: @vegetable.genre_id), { include_blank: '選択してください' }, class: "form-control fs-4" %>
-            </div>
+          <div class="col-3 mt-4">ジャンル</div>
+          <div class="col-4 mt-2">
+            <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name, selected: @vegetable.genre_id), { include_blank: '選択してください' }, class: "form-control fs-4" %>
           </div>
-          <div class="row">
-            <h5 class="col-3">説明文</h5>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <%= f.text_area :body, rows: 10, style: "width: 100%", class: "form-control" %>
-            </div>
+          <div class="col-3 mt-4">説明文</div>
+          <div class="col-md-12 mt-2">
+            <%= f.text_area :body, rows: 10, style: "width: 100%", class: "form-control" %>
           </div>
         </div>
       </div>
