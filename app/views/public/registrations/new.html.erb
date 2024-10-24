@@ -1,15 +1,15 @@
 
   <div class="main-bg custom-background h-100">
     <div class="container">
-
-      <%= render "public/shared/error_messages", resource: resource %>
+      <div class="row mt-3">
+        <%= render "public/shared/error_messages", resource: resource %>
+      </div>
 
       <%= form_with model: User.new, url: user_registration_path do |f| %>
-        <div class="row pt-4 content-center">
-          <div class="col-11">
-            <h2>新規登録</h2>
-          </div>
+        <div class="row justify-content-center pt-5">
+          <h4 class="col-3">新規会員登録</h4>
         </div>
+
         <div class="row pt-4">
           <h5 class="col-3 offset-3 text-end">
             <%= f.label :name, "名前" %>
@@ -62,8 +62,5 @@
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-info w-100" %>
       </div>
     </div>
-
-
-
   </div>
 </div>
