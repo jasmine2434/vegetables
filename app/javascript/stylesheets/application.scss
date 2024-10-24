@@ -12,16 +12,18 @@
   padding: 0;
 }
 
-.flash-top-nav {
-  position: relative;
-  .flash-message {
-    position: absolute;
-    top: 13px;
-    z-index: 1;
-    font-width: 350px;
-    left: 250px;
-  }
-}
+// .flash-top-nav {
+//   position: relative;
+//   .flash-message {
+//     position: absolute;
+//     top: 8px;
+//     z-index: 1;
+//     font-width: 350px;
+//     left: 250px;
+//   }
+// }
+
+
 
 
   body > main > div > div > div:nth-child(7) > div > a {
@@ -35,9 +37,9 @@
 }
 
 
-  body > header > section > div.flash-message > div > h5 {
+  body > header > section > div.flash-message > div > h6 {
   color: #000000;
-  margin: 20px;
+  margin: 25px;
 }
 
 
@@ -104,16 +106,16 @@
   width: 90px;
   height: 90px;
   position: fixed;
-  bottom: 8%;
-  right: 2%;
+  bottom: 9%;
+  right: 1%;
 }
 
 .pagetop__link {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 85%;
-  height: 85%;
+  width: 80%;
+  height: 80%;
   background-color: #33CCFF;
   border-radius: 50%;
   font-size: 23px;
