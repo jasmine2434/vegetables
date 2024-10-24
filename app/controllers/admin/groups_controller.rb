@@ -13,10 +13,10 @@ class Admin::GroupsController < ApplicationController
   def destroy
     group = Group.find(params[:id])
     if group.destroy
-      flash[:notice] = "コメントを削除しました"
+      flash[:notice] = "グループを削除しました"
       redirect_to admin_groups_path
     else
-      flash.now[:notice] = "コメント削除に失敗しました"
+      flash.now[:notice] = "削除に失敗しました"
       render :index
     end
   end

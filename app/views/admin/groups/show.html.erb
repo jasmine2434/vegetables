@@ -30,22 +30,21 @@
             <td class="text-center"><%= @group.group_users.count %></td>
           </tr>
         </table>
-        
-        <div class="mt-5 d-flex justify-content-center">
+
+        <div class="col-8 ml-5 mt-3 mb-2 d-flex justify-content-center">
           <%= link_to admin_group_path(@group), class: "btn btn-danger form-control", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
             <i class="fa-solid fa-trash"></i> グループを削除する
           <% end %>
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 ml-5">
       <h3 class="text-center mt-4">グループメンバー</h3>
       <table class="table table-bordered mt-3 text-center">
         <thead class="thead-light">
           <tr>
             <th scope="col" style="width: 25%;">ユーザー画像</th>
             <th scope="col" style="width: 50%;">ユーザー名</th>
-            <th scope="col" style="width: 25%;">グループから外す</th>
           </tr>
         </thead>
         <tbody>
@@ -53,10 +52,6 @@
             <tr>
               <td><%= image_tag user.get_profile_image(80, 80) %></td>
               <td><%= user.name %></td>
-              <td><%= link_to group_group_users_path(user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                  <i class="fa-solid fa-trash"></i> 削除
-                  <% end %>
-              </td>
             </tr>
           <% end %>
         </tbody>

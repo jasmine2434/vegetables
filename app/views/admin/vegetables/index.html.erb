@@ -7,7 +7,7 @@
     <h2 class="col mt-4">投稿一覧確認画面</h2>
   </div>
   <div class="row text-center mt-4">
-    <table class="table table-striped">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th scope="col" style="width: 15%;">ユーザー名</th>
@@ -28,7 +28,7 @@
             <td><%= vegetable.genre.name %></td>
             <td><%= truncate(vegetable.body, length: 20) %></td> <!-- 文字数制限 -->
             <td><%= link_to admin_vegetable_path(vegetable), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                  <i class="fa-solid fa-trash"></i> 削除
+                  <i class="fa-solid fa-trash"></i> 退会
                   <% end %>
               </td>
           </tr>
