@@ -56,7 +56,7 @@ class Public::VegetablesController < ApplicationController
       @vegetable.attributes = vegetable_params.merge(is_draft: false)
       if @vegetable.save(context: :publicaze)
          flash[:notice] = "投稿しました"
-        redirect_to my_page_path(@vegetable.id)
+        redirect_to vegetable_path(@vegetable.id)
       else
         @vegetable.is_draft = true
         flash.now[:alert] = "投稿に失敗しました"
