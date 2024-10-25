@@ -19,21 +19,18 @@
           <%= image_tag @group.get_group_image(150, 150), class: "img-fluid mb-3" %>
           <%= f.file_field :image %>
         </div>
-
         <div class="col-md-6">
           <!-- 右側：名前と紹介文 -->
           <div class="form-group">
             <div class="mb-2">グループ名</div>
             <%= f.text_field :name, placeholder: "2文字以上10文字以内", class: "form-control" %>
           </div>
-
           <div class="form-group mt-4">
             <div class="mb-2">紹介文</div>
             <%= f.text_area :introduction, placeholder: "20文字以内", rows: 5, class: "form-control" %>
           </div>
         </div>
       </div>
-
       <div class="row mt-5 d-flex justify-content-between">
         <div class="col-md-3">
           <%= link_to group_path(@group.id), class: "btn btn-success w-100" do %>

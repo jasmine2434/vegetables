@@ -3,7 +3,6 @@
     <div class="row pt-5 justify-content-center">
       <h2>グループ詳細画面</h2>
     </div>
-
     <div class="row">
       <div class="col-md-4 mt-2">
         <%= render "public/users/profile", user: @user %>
@@ -20,7 +19,7 @@
           <% end %>
         </div>
       </div>
-
+      <!-- グループ詳細 -->
       <div class="col-md-8">
         <h3 class="text-center mt-4">グループ概要</h3>
         <table class="table table-bordered mt-3 text-center">
@@ -41,7 +40,7 @@
             </tr>
           </tbody>
         </table>
-
+        <!-- グループメンバー -->
         <h3 class="text-center mt-4">グループメンバー</h3>
         <table class="table table-bordered mt-3 text-center">
           <thead class="thead-light">

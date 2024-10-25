@@ -8,7 +8,6 @@
       <div class="row justify-content-center pt-5">
         <h4 class="col-3">新規会員登録</h4>
       </div>
-
       <div class="row pt-4">
         <h5 class="col-3 offset-3 text-end">
           <%= f.label :name, "名前" %>
@@ -17,7 +16,6 @@
           <%= f.text_field :name %>
         </div>
       </div>
-
       <div class="row mt-3">
         <h5 class="col-3 offset-3 text-end">
           <%= f.label :email, "メールアドレス" %>
@@ -26,7 +24,6 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
       </div>
-
       <div class="row mt-3">
         <h5 class="col-3 offset-3 text-end">
           <%= f.label :password, "パスワード(6文字以上)" %>
@@ -35,7 +32,6 @@
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
       </div>
-
       <div class="row mt-3">
         <h5 class="col-3 offset-3 text-end">
           <%= f.label :password_confirmation, "パスワード（確認用）" %>
@@ -44,14 +40,13 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
       </div>
-
       <div class="row mt-4">
         <div class="col-4 offset-4">
           <%= f.submit "会員登録", class: "btn btn-success w-100" %>
         </div>
       </div>
     <% end %>
-
+      <!-- ログイン画面に遷移 -->
       <div class="row pt-5 justify-content-center">
         <h4>既に会員登録がお済みな方はこちらからログイン</h4>
       </div>

@@ -13,7 +13,6 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
       </div>
-
       <div class="row pt-3 justify-content-center">
         <h5 class="col-6">パスワード</h5>
       </div>
@@ -22,24 +21,22 @@
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
       </div>
-
       <div class="row mt-4 justify-content-center">
         <div class="col-5 pt-1">
           <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
         </div>
       </div>
     <% end %>
-
+      <!--　ゲストユーザーログイン -->
       <div class="row pt-5 justify-content-center">
         <h4>ゲストユーザーはこちらからログイン</h4>
       </div>
-
       <div class="row justify-content-center">
         <div class="col-4">
           <%= link_to "ログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "btn btn-warning w-100" %>
         </div>
       </div>
-
+      <!-- 新規会員登録画面に遷移 -->
       <div class="row pt-5 justify-content-center">
         <h4>会員登録がお済みでない方はこちらから登録</h4>
       </div>
