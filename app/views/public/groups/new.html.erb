@@ -1,14 +1,12 @@
 <div class="main-bg custom-background h-100">
   <div class="container">
     <% if @group.errors.any? %>
-      <div class="alert alert-danger mt-3">
-        <%= @group.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @group.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+      <%= @group.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
     <div class="row pt-5">
       <h2 class="col-9 text-center">グループ作成</h2>

@@ -20,7 +20,13 @@
         </tr>
         <tr>
           <td class="col-5 text-center">ユーザー名</td>
-          <td class="text-center"><%= link_to @user.name, user_path(@user.id) %></td>
+          <td class="text-center">
+            <% if @user == current_user %>
+              <%= link_to @user.name, my_page_path(@user.id) %>
+            <% else %>
+              <%= link_to @user.name, user_path(@user.id) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td class="col-5 text-center">紹介文</td>

@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @vegetables = @user.vegetables
+    @vegetables = @user.vegetables.where(is_draft: false)
   end
 
   def destroy

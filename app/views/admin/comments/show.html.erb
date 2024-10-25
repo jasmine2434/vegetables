@@ -1,17 +1,14 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-12" >
-      <h2 class="title">投稿コメント詳細画面</h2>
-    </div>
+  <div class="row mt-5 justify-content-center">
+    <h2 class="title">投稿コメント詳細画面</h2>
   </div>
 
   <div class="row">
     <div class="col-md-5 mt-4">
       <%= render "layouts/profile", user: @user %>
     </div>
-
     <div class="col-md-7 mt-5">
-      <table class="table table-bordered text-center mt-2">
+      <table class="table table-bordered text-center">
         <tr>
           <td class="text-center" colspan="2">
             <%= image_tag @vegetable.get_image(80, 80), class: "img-fluid" %>
@@ -53,14 +50,15 @@
            <% @vegetable.comments.each do |comment| %>
             <tr>
               <td><%= link_to admin_user_path(comment.user) do %>
-                    <%= image_tag comment.user.get_profile_image(80, 80) %><br>
+                    <%= image_tag comment.user.get_profile_image(50, 50) %><br>
                     <%= comment.user.name %>
                   <% end %>
               </td>
               <td><%= comment.body %></td>
               <td>
-                <%= link_to admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" do %>
-                <i class="fa-solid fa-triangle-exclamation"></i> コメントを削除する
+                <%= link_to admin_comment_path(comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" do %>
+                  <i class="fa-solid fa-triangle-exclamation"></i> 削除する
+                <% end %>
               </td>
             </tr>
             <% end %>

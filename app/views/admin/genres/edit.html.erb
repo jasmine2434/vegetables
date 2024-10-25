@@ -1,27 +1,25 @@
 <div class="container">
-  <div class="row mt-5">
-    <h2 class="title text-center mt-4">ジャンル編集画面</h2>
+  <div class="row mt-5 justify-content-center">
+    <h2>ジャンル編集画面</h2>
   </div>
 
   <%= form_with model: [:admin, @genre] do |f| %>
     <div class="row mt-4">
       <div class="col-md-6 offset-md-3">
         <div class="row mb-3">
-          <h4 class="col-md-3 text-end">名前</h4>
-          <div class="col-md-9">
+          <div class="col-md-3 text-end">名前</div>
+          <div class="col-md-8">
             <%= f.text_field :name %>
           </div>
         </div>
       </div>
     </div>
-
     <div class="row mt-4">
-      <div class="col-md-3 offset-md-4 pt-4">
+      <div class="col-md-3 offset-md-2 pt-4">
         <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
           <i class="fa-solid fa-arrows-rotate"></i> 更新する
         <% end %>
       </div>
-
       <div class="col-md-3 offset-md-1 pt-4">
         <%= link_to admin_genre_path(@genre.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
           <i class="fa-solid fa-triangle-exclamation"></i> 削除
