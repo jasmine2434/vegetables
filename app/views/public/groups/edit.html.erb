@@ -24,12 +24,12 @@
           <!-- 右側：名前と紹介文 -->
           <div class="form-group">
             <div class="mb-2">グループ名</div>
-            <%= f.text_field :name, class: "form-control" %>
+            <%= f.text_field :name, placeholder: "2文字以上10文字以内", class: "form-control" %>
           </div>
 
           <div class="form-group mt-4">
             <div class="mb-2">紹介文</div>
-            <%= f.text_area :introduction, rows: 5, class: "form-control" %>
+            <%= f.text_area :introduction, placeholder: "20文字以内", rows: 5, class: "form-control" %>
           </div>
         </div>
       </div>

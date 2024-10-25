@@ -38,6 +38,7 @@
             <tr>
               <th scope="col" style="width: 10%;">画像</th>
               <th scope="col" style="width: 30%;">投稿名</th>
+              <th scope="col" style="width: 15%;">ステータス</th>
               <th scope="col" style="width: 11%;">いいね数</th>
               <th scope="col" style="width: 11%;">コメント数</th>
             </tr>
@@ -47,6 +48,12 @@
               <tr>
                 <td><%= image_tag vegetable.get_image(80, 80) %></td>
                 <td><%= link_to vegetable.name, vegetable_path(vegetable.id) %></td>
+                <td><% if vegetable.is_draft %>
+                    <%= "未投稿" %>
+                    <% else %>
+                    <%= "投稿済" %>
+                    <% end %>
+                </td>
                 <td><%= vegetable.favorites.count %></td>
                 <td><%= vegetable.comments.count %></td>
               </tr>

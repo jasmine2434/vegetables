@@ -9,31 +9,35 @@
       <div class="col-md-4 mt-4">
         <%= render "public/users/profile", user: @user %>
       </div>
-
       <div class="col-md-5 offset-1 mt-5">
-        <%= form_with model: @vegetable, url: vegetables_path, method: :post do |f| %>
+        <%= form_with model: @vegetable, local:true do |f| %>
+          <!-- 投稿名 -->
           <div class="from-group">
             <%= f.label :name, "投稿名" %>
-            <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
+            <%= f.text_field :name, placeholder: "15文字以内", class: "form-control", autofocus: true, autocomplete: "name" %>
           </div>
-
+          <!-- 画像  -->
           <div class="form-group mt-3">
             <%= f.label :image, "画像" %>
             <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
           </div>
-
+          <!-- ジャンル -->
           <div class="form-group mt-3">ジャンル</div>
           <div>
             <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name), { include_blank: '選択してください' }, class: "form-control fs-4" %>
           </div>
-
+          <!-- 説明文 -->
           <div class="form-group mt-3">
             <%= f.label :body, "説明文" %>
-            <%= f.text_area :body, class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
+            <%= f.text_area :body, placeholder: "50文字以内", class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
           </div>
-
+          <!-- 下書き・投稿 -->
+            <%= f.hidden_field :is_draft %>
+          <div class="form-group mt-3">
+             <%= f.submit '下書き保存する', :name => 'draft', class: 'mr-5 btn btn-info' %>
+          </div>
           <div class="form-group mt-5 text-right">
-            <%= f.submit "投稿する", class: "btn btn-success btn-block" %>
+            <%= f.submit '投稿する', :name => 'post', class: "btn btn-success btn-block" %>
           </div>
         <% end %>
       </div>

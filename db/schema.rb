@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2024_10_15_070809) do
     t.string "name", null: false
     t.text "body", null: false
     t.integer "genre_id", null: false
+    t.boolean "is_draft", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

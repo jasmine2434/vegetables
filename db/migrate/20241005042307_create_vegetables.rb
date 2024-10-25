@@ -5,6 +5,7 @@ class CreateVegetables < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.text :body, null: false
       t.integer :genre_id, null: false
+      t.boolean :is_draft, default: true, null: false
       t.timestamps
     end
   end

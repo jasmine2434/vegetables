@@ -4,8 +4,8 @@ class Group < ApplicationRecord
   belongs_to :owner, class_name: 'User'
   has_many :users, through: :group_users
 
-  validates :name, presence: true
-  validates :introduction, presence: true
+  validates :name, presence: true, length: { in: 2..10 }
+  validates :introduction, presence: true, length: { maximum: 20 }
   has_one_attached :group_image
 
   def get_group_image(width, height)

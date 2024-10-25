@@ -6,7 +6,8 @@ class Vegetable < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :name, :body, presence: true
+  validates :name, length: {maximum: 15 }, presence: true
+  validates :body, length: {maximum: 50 }, presence: true
 
   def get_image(width, height)
     unless image.attached?

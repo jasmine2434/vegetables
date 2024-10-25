@@ -3,7 +3,7 @@ class Admin::VegetablesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @vegetables = Vegetable.all
+    @vegetables = Vegetable.where(is_draft: false)
   end
 
   def show

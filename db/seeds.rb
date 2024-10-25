@@ -37,9 +37,9 @@ Vegetable.find_or_create_by!(name: "ラブリーさくら") do |vegetable|
   vegetable.body = "糖度が高く、甘みと酸味のバランスがいいです。"
   vegetable.user = tomato
   vegetable.genre_id = 1
+  vegetable.is_draft = false
 end
 
-Admin.create!(
-  email: 'admin@example.com',
-  password: "satumaimo"
-)
+admin = Admin.find_by!(email: 'admin@example.com')
+  admin.password = "satumaimo"
+

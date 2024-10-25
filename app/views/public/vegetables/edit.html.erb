@@ -5,7 +5,7 @@
       <h2 class="title pt-5 mb-5">投稿編集画面</h2>
     </div>
 
-    <%= form_with model: @vegetable do |f| %>
+    <%= form_with model: @vegetable, local:true do |f| %>
       <div class="row mt-5">
         <div class="col-md-2 text-center pt-4">
           <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
@@ -14,7 +14,7 @@
         <div class="col-md-8 offset-2">
           <div class="col-3">投稿名</div>
           <div class="col-5 mt-2">
-            <%= f.text_field :name, class: "form-control" %>
+            <%= f.text_field :name, placeholder: "15文字以内", class: "form-control" %>
           </div>
           <div class="col-3 mt-4">ジャンル</div>
           <div class="col-4 mt-2">
@@ -22,29 +22,38 @@
           </div>
           <div class="col-3 mt-4">説明文</div>
           <div class="col-md-12 mt-2">
-            <%= f.text_area :body, rows: 10, style: "width: 100%", class: "form-control" %>
+            <%= f.text_area :body, placeholder: "50文字以内", rows: 10, style: "width: 100%", class: "form-control" %>
           </div>
         </div>
       </div>
 
-      <div class="row mt-5 mb-5 d-flex justify-content-between">
-        <div class="col-md-3 pt-4">
-          <%= link_to vegetable_path(@vegetable.id), class: "btn btn-success w-100" do %>
-            <i class="fa-solid fa-delete-left"></i> 戻る
-          <% end %>
-        </div>
+      <div class="row mb-5 justify-content-end">
+        <% if @vegetable.is_draft == true %>
+          <div class="col-md-3 pt-4">
+            <%= link_to vegetable_path(@vegetable.id), class: "btn btn-success w-100" do %>
+              <i class="fa-solid fa-delete-left"></i> 戻る
+            <% end %>
+          </div>
+          <div class="col-md-3 pt-4">
+            <%= f.submit "投稿する", :name => 'publicize_draft', class: "btn btn-primary w-100" %>
+          </div>
+          <div class="col-md-3 pt-4">
+          <%= f.submit "下書きを更新", :name => 'update_draft', class: "btn btn-warning text-white w-100" %>
+          </div>
+        <% else %>
+          <div class="col-md-3 pt-4">
+            <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
+              <i class="fa-solid fa-arrows-rotate"></i> 更新する
+            <% end %>
+          </div>
+        <% end %>
+          <div class="col-md-3 pt-4">
+            <%= link_to vegetable_path(@vegetable.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+              <i class="fa-solid fa-trash"></i> 削除
+            <% end %>
+          </div>
 
-        <div class="col-md-3 pt-4">
-          <%= button_tag(type: 'submit', class: "btn btn-primary w-100") do %>
-            <i class="fa-solid fa-arrows-rotate"></i> 更新する
-          <% end %>
-        </div>
-        <div class="col-md-3 pt-4">
-          <%= link_to vegetable_path(@vegetable.id), class: "btn btn-danger w-100", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-            <i class="fa-solid fa-trash"></i> 削除
-          <% end %>
-        </div>
-      </div>
     <% end %>
+    </div>
   </div>
 </div>
