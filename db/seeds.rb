@@ -43,3 +43,8 @@ end
 admin = Admin.find_by!(email: 'admin@example.com')
   admin.password = "satumaimo"
 
+admin = Admin.find_or_initialize_by(email: 'admin@example.com') do |admin|
+  admin.password = 'satumaimo'
+end
+
+admin.save!

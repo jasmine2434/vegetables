@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @vegetables = @user.vegetables
+    @vegetables = @user.vegetables.where(is_draft: false)
   end
 
   def edit
@@ -40,14 +40,12 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
   def favorites
     @user = current_user
     @groups = @user.my_groups
     favorites = Favorite.where(user_id: @user.id).pluck(:vegetable_id)
     @favorite_vegetables = Vegetable.find(favorites)
   end
-
 
 
   private

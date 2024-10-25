@@ -13,11 +13,11 @@
         <tr>
           <th scope="col" style="width: 15%;">登録日</th>  <!-- 新規ユーザー登録日 -->
           <th scope="col" style="width: 15%;">ユーザー画像</th>
-          <th scope="col" style="width: 25%;">ユーザー名</th>
+          <th scope="col" style="width: 24%;">ユーザー名</th>
           <th scope="col" style="width: 10%;">投稿数</th>
-          <th scope="col" style="width: 10%;">いいね数</th>
-          <th scope="col" style="width: 10%;">コメント数</th>
-          <th scope="col" style="width: 10%;">削除</th>
+          <th scope="col" style="width: 8%;">いいね数</th>
+          <th scope="col" style="width: 9%;">コメント数</th>
+          <th scope="col" style="width: 14%;">退会</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +31,7 @@
             <td><%= user.favorites.count %></td>
             <td><%= user.comments.count %></td>
             <td><%= link_to admin_user_path(user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-                  <i class="fa-solid fa-trash"></i> 削除
+                  <i class="fa-solid fa-triangle-exclamation"></i> 退会させる
                 <% end %>
             </td>
           </tr>

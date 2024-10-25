@@ -32,10 +32,10 @@
             <%= f.text_area :body, placeholder: "50文字以内", class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
           </div>
           <!-- 下書き・投稿 -->
-          <div class="form-group mt-3">
+          <div class="form-group mt-4">
              <%= f.submit '下書き保存する', :name => 'draft', class: 'mr-5 btn btn-info' %>
           </div>
-          <div class="form-group mt-5 text-right">
+          <div class="form-group mt-4 mb-4 text-right">
             <%= f.submit '投稿する', :name => 'post', class: "btn btn-success btn-block" %>
           </div>
         <% end %>

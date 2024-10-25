@@ -17,7 +17,7 @@ class Public::VegetablesController < ApplicationController
       @vegetable.is_draft = false
       if @vegetable.save
         flash[:notice] = "投稿されました"
-        redirect_to my_page_path(@vegetable)
+        redirect_to vegetable_path(@vegetable)
       else
         flash.now[:alert] = "投稿に失敗しました"
         render :new
@@ -25,7 +25,7 @@ class Public::VegetablesController < ApplicationController
     else
       if @vegetable.update(is_draft: true)
         flash[:notice] = "下書き保存されました"
-        redirect_to my_page_path(@vegetable)
+        redirect_to vegetable_path(@vegetable)
       else
         flash.now[:alert] = "下書き保存に失敗しました"
         render :new
@@ -66,7 +66,7 @@ class Public::VegetablesController < ApplicationController
         @vegetable.attributes = vegetable_params
         if @vegetable.save
           flash[:notice] = "更新されました"
-          redirect_to my_page_path(@vegetable.id)
+          redirect_to vegetable_path(@vegetable.id)
         else
           flash.now[:alert] = "更新に失敗しました"
           render :edit
@@ -74,7 +74,7 @@ class Public::VegetablesController < ApplicationController
     else
       if @vegetable.update(vegetable_params)
         flash[:notice] = "上書き保存しました"
-        redirect_to my_page_path(@vegetable.id)
+        redirect_to vegetable_path(@vegetable.id)
       else
         flash.now[:alert] = "上書きに失敗しました"
         render :edit

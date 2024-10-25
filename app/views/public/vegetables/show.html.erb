@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td class="col-5 text-center">ユーザー名</td>
-          <td class="text-center"><%= @user.name %></td>
+          <td class="text-center"><%= link_to @user.name, user_path(@user.id) %></td>
         </tr>
         <tr>
           <td class="col-5 text-center">紹介文</td>
@@ -68,9 +68,23 @@
           </tr>
         </table>
         <!-- ボタン -->
-        <div class="row d-flex justify-content-end">
+        <div class="row">
           <% if @user == current_user %>
-            <div class="col-md-5">
+            <div class="col-md-7">
+              <table class="table table-bordered">
+                <tr>
+                  <td class="col-md-4 text-center">ステータス</td>
+                  <td class="col-md-3 text-center">
+                    <% if @vegetable.is_draft %>
+                      <%= "未投稿" %>
+                    <% else %>
+                      <%= "投稿済" %>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-5 d-flex justify-content-end  align-items-center">
               <%= link_to edit_vegetable_path(@vegetable.id), class: "btn btn-warning form-control" do %>
                 <i class="fa-regular fa-pen-to-square"></i> 投稿編集・削除
               <% end %>
