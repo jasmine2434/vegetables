@@ -40,8 +40,6 @@ Vegetable.find_or_create_by!(name: "ラブリーさくら") do |vegetable|
   vegetable.is_draft = false
 end
 
-admin = Admin.find_by!(email: 'admin@example.com')
-  admin.password = "satumaimo"
 
 admin = Admin.find_or_initialize_by(email: 'admin@example.com') do |admin|
   admin.password = 'satumaimo'
