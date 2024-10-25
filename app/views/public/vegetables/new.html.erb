@@ -32,7 +32,6 @@
             <%= f.text_area :body, placeholder: "50文字以内", class: "form-control", rows: 4, autofocus: true, autocomplete: "body" %>
           </div>
           <!-- 下書き・投稿 -->
-            <%= f.hidden_field :is_draft %>
           <div class="form-group mt-3">
              <%= f.submit '下書き保存する', :name => 'draft', class: 'mr-5 btn btn-info' %>
           </div>
