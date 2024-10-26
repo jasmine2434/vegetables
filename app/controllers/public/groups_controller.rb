@@ -71,5 +71,4 @@ class Public::GroupsController < ApplicationController
     end
   end
 
-
 end
