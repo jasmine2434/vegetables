@@ -5,7 +5,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-4">
         <%= render "public/users/profile", user: @user %>
         <% if @user.email != "guest@example.com" %>
           <div class="mt-4">
@@ -31,16 +31,16 @@
         <% end %>
       </div>
   <!-- 投稿一覧 -->
-      <div class="col-md-7 mt-4">
-        <h3 class="text-center">投稿一覧</h3>
+      <div class="col-md-8 mt-4">
+        <h4 class="text-center">投稿一覧</h4>
         <table class="table table-bordered mt-3 text-center">
           <thead class="thead-light">
             <tr>
               <th scope="col" style="width: 10%;">画像</th>
-              <th scope="col" style="width: 30%;">投稿名</th>
-              <th scope="col" style="width: 15%;">ステータス</th>
+              <th scope="col" style="width: 35%;">投稿名</th>
+              <th scope="col" style="width: 14%;">ステータス</th>
               <th scope="col" style="width: 11%;">いいね数</th>
-              <th scope="col" style="width: 11%;">コメント数</th>
+              <th scope="col" style="width: 15%;">コメント数</th>
             </tr>
           </thead>
           <tbody>
