@@ -1,5 +1,5 @@
 <div class="main-bg custom-background h-100">
-  <div class="container mt-3">
+  <div class="container">
     <% if @group.errors.any? %>
       <%= @group.errors.count %>件のエラーが発生しました
       <ul>
@@ -16,7 +16,7 @@
       <div class="row mt-4">
         <div class="col-md-4">
           <!-- 左側：画像 -->
-          <%= image_tag @group.get_group_image(150, 150), class: "img-fluid mb-3" %>
+          <%= image_tag @group.get_group_image(100, 100), class: "img-fluid mb-3" %>
           <%= f.file_field :image %>
         </div>
         <div class="col-md-6">

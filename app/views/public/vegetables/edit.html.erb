@@ -1,17 +1,17 @@
 <div class="main-bg custom-background h-100">
-  <div class="container mt-3">
+  <div class="container">
     <%= render 'layouts/error', vegetable: @vegetable %>
-    <div class="row justify-content-center">
-      <h3 class="title pt-4 mb-5">投稿編集画面</h3>
+    <div class="row pt-4 justify-content-center">
+      <h3>投稿編集画面</h3>
     </div>
 
     <%= form_with model: @vegetable, local:true do |f| %>
-      <div class="row mt-5">
-        <div class="col-md-2 text-center pt-4">
-          <%= image_tag @vegetable.get_image(150, 150), class: "img-fluid" %>
+      <div class="row mt-3">
+        <div class="col-md-5 text-center pt-4">
+          <%= image_tag @vegetable.get_image(100, 100), class: "img-fluid" %></br>
           <%= f.file_field :image %>
         </div>
-        <div class="col-md-8 offset-2">
+        <div class="col-md-7">
           <div class="col-3">投稿名</div>
           <div class="col-5 mt-2">
             <%= f.text_field :name, placeholder: "15文字以内", class: "form-control" %>
@@ -22,7 +22,7 @@
           </div>
           <div class="col-3 mt-4">説明文</div>
           <div class="col-md-12 mt-2">
-            <%= f.text_area :body, placeholder: "50文字以内", rows: 10, style: "width: 100%", class: "form-control" %>
+            <%= f.text_area :body, placeholder: "50文字以内", rows: 8, style: "width: 100%", class: "form-control" %>
           </div>
         </div>
       </div>
