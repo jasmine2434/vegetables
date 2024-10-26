@@ -1,5 +1,5 @@
 <div class="main-bg custom-background h-100">
-  <div class="container pt-5">
+  <div class="container pt-3">
     <% if @user.errors.any? %>
     <%= @user.errors.count %>件のエラーが発生しました
     <ul>
@@ -8,7 +8,7 @@
       <% end %>
     </ul>
     <% end %>
-    <div class="row justify-content-center">
+    <div class="row pt-4 justify-content-center">
       <h3>プロフィール編集画面</h3>
     </div>
       <%= form_with model: @user do |f| %>
